@@ -44,7 +44,7 @@ update the `image` path. A quiet placeholder is shown when `image` is omitted.
 ### SEO metadata
 
 `index.html` holds the title, description, canonical URL, Open Graph, Twitter/X cards and JSON-LD.
-Search for `Robin Fremy` (update if needed) and `https://www.example.com` and replace them. Update `public/robots.txt`
+Search for `Robin Fremy` (update if needed) and `https://robinfux.vercel.app` and replace them. Update `public/robots.txt`
 and `public/sitemap.xml` with your domain as well, then run `./scripts/generate-assets.sh` after
 editing `scripts/og-template.html` with your name.
 
