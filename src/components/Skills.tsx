@@ -8,20 +8,15 @@ export function Skills() {
       number="04"
       title="Skills"
       intro="Organised by discipline, not by score. Each area reflects hands-on practice in real product teams."
+      wide
     >
-      <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
+      <div className="border-t border-ink">
         {skillGroups.map((group) => (
-          <div key={group.title} className="print-avoid-break">
-            <h3 className="mb-5 border-b border-line pb-3 text-sm font-medium uppercase tracking-[0.08em] text-ink">
-              {group.title}
-            </h3>
-            <ul className="space-y-2.5">
-              {group.skills.map((skill, i) => (
-                <li key={`${skill}-${i}`} className="text-[0.9375rem] text-ink-soft">
-                  {skill}
-                </li>
-              ))}
-            </ul>
+          <div key={group.title} className="print-avoid-break grid gap-4 border-b border-ink/15 py-8 md:grid-cols-12 md:gap-8">
+            <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink md:col-span-3">{group.title}</h3>
+            <p className="text-lg leading-relaxed tracking-tight text-ink md:col-span-9 md:text-2xl">
+              {group.skills.join('  /  ')}
+            </p>
           </div>
         ))}
       </div>

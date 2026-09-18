@@ -12,12 +12,9 @@ export function Projects() {
       intro="A few examples of how I approach digital products: understand the context, frame the problem, design and ship a measurable answer."
       wide
     >
-      <ul className="grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 print:block print:space-y-3 print:overflow-visible print:border-0 print:bg-transparent">
+      <ul>
         {projects.map((project, index) => (
-          <li
-            key={`${project.name}-${index}`}
-            className="print-avoid-break bg-paper print:rounded-sm print:border print:border-line"
-          >
+          <li key={`${project.name}-${index}`} className="print-avoid-break">
             <ProjectCard project={project} index={index} />
           </li>
         ))}
@@ -34,93 +31,86 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     { label: 'My role', value: project.role },
     { label: 'Result', value: project.result },
   ]
+  const flipped = index % 2 === 1
 
   return (
-    <article className="flex h-full flex-col p-6 md:p-8 print:p-3">
-      <figure className="mb-8 print:mb-3">
-        {project.image ? (
-          <ImageLightbox
-            src={project.image}
-            alt={project.imageAlt ?? `${project.name} — preview`}
-            caption={`${project.name} — ${project.category}`}
-            className="print:h-[48mm] print:w-full print:object-cover print:object-top"
-          />
-        ) : (
-          <div className="print-hidden">
-            <ImagePlaceholder index={index} />
-          </div>
-        )}
-      </figure>
-
-      <header className="mb-6 print:mb-3">
-        <p className="eyebrow mb-3">{project.category}</p>
-        <h3 className="text-2xl font-medium tracking-tight text-ink">
-          {project.link ? (
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-underline">
-              {project.name}
-            </a>
+    <article className="border-t border-ink py-12 md:py-16 print:py-4">
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <figure className={`lg:col-span-5 ${flipped ? 'lg:order-2' : ''}`}>
+          {project.image ? (
+            <ImageLightbox
+              src={project.image}
+              alt={project.imageAlt ?? `${project.name} — preview`}
+              caption={`${project.name} — ${project.category}`}
+              className="print:h-[48mm] print:w-full print:object-cover print:object-top"
+            />
           ) : (
-            project.name
-          )}
-        </h3>
-        {project.timeframe ? <p className="mt-2 text-sm text-muted">{project.timeframe}</p> : null}
-      </header>
-
-      {project.metrics && project.metrics.length > 0 ? (
-        <dl className="mb-6 grid grid-cols-3 gap-4 border-y border-line py-5 print:mb-3 print:py-2">
-          {project.metrics.map((metric) => (
-            <div key={metric.label} className="flex flex-col-reverse">
-              <dt className="mt-1 text-xs leading-snug text-muted">{metric.label}</dt>
-              <dd className="text-xl font-medium tracking-tight text-ink md:text-2xl print:text-lg">{metric.value}</dd>
+            <div className="print-hidden">
+              <ImagePlaceholder index={index} />
             </div>
-          ))}
-        </dl>
-      ) : null}
+          )}
+        </figure>
 
-      <dl className="flex-1 divide-y divide-line">
-        {rows.map((row) => (
-          <div key={row.label} className="grid gap-1 py-3.5 sm:grid-cols-[6.5rem_1fr] sm:gap-4 print:py-1">
-            <dt className="text-xs font-medium uppercase tracking-[0.08em] text-muted sm:pt-0.5">{row.label}</dt>
-            <dd className="text-[0.9375rem] leading-relaxed text-ink-soft print:text-[9pt] print:leading-snug">{row.value}</dd>
-          </div>
-        ))}
-      </dl>
+        <div className={`flex flex-col lg:col-span-7 ${flipped ? 'lg:order-1' : ''}`}>
+          <header className="mb-8 print:mb-3">
+            <p className="eyebrow mb-4">
+              {String(index + 1).padStart(2, '0')}
+              <span className="mx-3 text-ink/30">/</span>
+              {project.category}
+            </p>
+            <h3 className="font-display text-3xl tracking-tight text-ink md:text-5xl">
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-underline">
+                  {project.name}
+                </a>
+              ) : (
+                project.name
+              )}
+            </h3>
+            {project.timeframe ? <p className="mt-3 text-sm text-muted">{project.timeframe}</p> : null}
+          </header>
 
-      <footer className="mt-6 flex flex-wrap gap-2 border-t border-line pt-5 print:mt-3 print:pt-3">
-        <span className="sr-only">Tools:</span>
-        {project.tools.map((tool, i) => (
-          <span
-            key={`${tool}-${i}`}
-            className="rounded-full border border-line px-3 py-1 text-xs text-ink-soft"
-          >
-            {tool}
-          </span>
-        ))}
-      </footer>
+          {project.metrics && project.metrics.length > 0 ? (
+            <dl className="mb-8 grid grid-cols-3 gap-px bg-ink/15 print:mb-3 print:bg-transparent">
+              {project.metrics.map((metric) => (
+                <div key={metric.label} className="bg-paper px-3 py-4 print:px-0 print:py-1">
+                  <dt className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted">{metric.label}</dt>
+                  <dd className="mt-2 font-sans text-3xl leading-none font-medium tracking-tight text-ink md:text-4xl print:text-lg">
+                    {metric.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          ) : null}
+
+          <dl className="flex-1">
+            {rows.map((row) => (
+              <div key={row.label} className="grid gap-1 border-t border-ink/15 py-3.5 sm:grid-cols-[7rem_1fr] sm:gap-6 print:py-1">
+                <dt className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted sm:pt-0.5">{row.label}</dt>
+                <dd className="text-sm leading-relaxed text-ink-soft print:text-[9pt] print:leading-snug">{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="mt-6 border-t border-ink/15 pt-5 font-mono text-[11px] leading-relaxed text-muted print:mt-3 print:pt-3">
+            <span className="sr-only">Tools: </span>
+            {project.tools.join('  /  ')}
+          </p>
+        </div>
+      </div>
     </article>
   )
 }
 
-/**
- * Deliberately quiet placeholder: fine grid on a paper surface with a
- * centred label. Swap for a real mockup via `project.image`.
- */
 function ImagePlaceholder({ index }: { index: number }) {
   return (
     <div
       role="img"
       aria-label="Project visual placeholder"
-      className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-sm border border-line bg-surface"
-      style={{
-        backgroundImage:
-          'linear-gradient(to right, rgba(0,0,0,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.045) 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
-      }}
+      className="relative flex aspect-[16/10] w-full items-center justify-center border border-ink/20 bg-surface"
     >
-      <span className="absolute left-4 top-3 text-xs tabular-nums text-muted">
-        {String(index + 1).padStart(2, '0')}
-      </span>
-      <span className="text-xs uppercase tracking-[0.12em] text-muted">Mockup</span>
+      <span className="absolute top-3 left-4 font-mono text-xs text-muted">{String(index + 1).padStart(2, '0')}</span>
+      <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted">Mockup</span>
     </div>
   )
 }

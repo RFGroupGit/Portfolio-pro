@@ -2,50 +2,70 @@ import type { ReactNode } from 'react'
 
 interface SectionProps {
   id: string
-  /** Two-digit index displayed as an editorial marker, e.g. "01". */
   number: string
   title: string
-  /** Optional short intro under the title. */
   intro?: string
   children: ReactNode
   className?: string
-  /** Render children full-width under the header instead of in the right column. */
   wide?: boolean
+  inverted?: boolean
 }
 
 /**
- * Editorial section: numbered label + title on the left column,
- * content on the right (stacked on mobile). Provides consistent rhythm.
+ * Monograph section: ghost folio number, hairline, display title.
  */
-export function Section({ id, number, title, intro, children, className = '', wide = false }: SectionProps) {
-  const header = (
-    <header className={wide ? 'mb-12 md:mb-16 print:mb-5' : 'md:col-span-4 lg:col-span-3 print:mb-5'}>
-      <p className="eyebrow mb-4 text-accent" aria-hidden="true">
-        {number}
-      </p>
-      <h2 id={`${id}-title`} className="font-display text-h2 text-ink">
-        {title}
-      </h2>
-      {intro ? <p className="mt-5 max-w-md text-sm leading-relaxed text-muted">{intro}</p> : null}
-    </header>
-  )
+export function Section({
+  id,
+  number,
+  title,
+  intro,
+  children,
+  className = '',
+  wide = false,
+  inverted = false,
+}: SectionProps) {
+  const ink = inverted ? 'text-paper' : 'text-ink'
+  const mute = inverted ? 'text-paper/50' : 'text-muted'
 
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={`border-t border-line py-20 md:py-28 lg:py-32 ${className}`}
+      className={`relative overflow-hidden border-t border-ink/15 py-20 md:py-28 lg:py-36 ${
+        inverted ? 'bg-night text-paper' : 'bg-paper text-ink'
+      } ${className}`}
     >
-      <div className="mx-auto max-w-6xl px-6 md:px-10">
+      <span
+        aria-hidden="true"
+        className={`print-hidden pointer-events-none absolute -top-8 right-0 font-sans text-[28vw] leading-none font-medium text-ink/[0.045] select-none ${
+          inverted ? 'text-paper/5' : ''
+        }`}
+      >
+        {number}
+      </span>
+
+      <div className="relative mx-auto max-w-7xl px-6 md:px-10">
         {wide ? (
           <>
-            {header}
+            <header className="mb-12 max-w-4xl md:mb-16 print:mb-5">
+              <p className={`eyebrow mb-5 ${mute}`}>{number}</p>
+              <h2 id={`${id}-title`} className={`font-display text-h2 ${ink}`}>
+                {title}
+              </h2>
+              {intro ? <p className={`mt-6 max-w-xl text-sm leading-relaxed ${mute}`}>{intro}</p> : null}
+            </header>
             {children}
           </>
         ) : (
-          <div className="grid gap-10 md:grid-cols-12 md:gap-8 print:block">
-            {header}
-            <div className="md:col-span-8 lg:col-span-8 lg:col-start-5">{children}</div>
+          <div className="grid gap-10 md:grid-cols-12 md:gap-12 print:block">
+            <header className="md:col-span-4 print:mb-5">
+              <p className={`eyebrow mb-5 ${mute}`}>{number}</p>
+              <h2 id={`${id}-title`} className={`font-display text-h2 ${ink}`}>
+                {title}
+              </h2>
+              {intro ? <p className={`mt-6 max-w-sm text-sm leading-relaxed ${mute}`}>{intro}</p> : null}
+            </header>
+            <div className="md:col-span-8">{children}</div>
           </div>
         )}
       </div>

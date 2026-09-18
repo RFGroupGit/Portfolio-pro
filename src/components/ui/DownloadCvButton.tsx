@@ -29,7 +29,7 @@ export function DownloadCvButton({
 
   if (profile.cvPdfUrl) {
     return (
-      <a href={profile.cvPdfUrl} download className={classes} onClick={onDone}>
+      <a href={profile.cvPdfUrl} download="Robin-Fremy-CV.pdf" className={classes} onClick={onDone}>
         {label}
         <DownloadIcon />
       </a>

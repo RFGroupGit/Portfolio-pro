@@ -1,3 +1,4 @@
+import { IndexRail } from './components/IndexRail'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
@@ -15,12 +16,13 @@ export default function App() {
     <>
       <a
         href="#main"
-        className="sr-only z-[60] rounded-sm bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        className="sr-only z-[90] bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
         Skip to content
       </a>
+      <IndexRail />
       <Navbar />
-      <main id="main">
+      <main id="main" className="lg:pl-16">
         <Hero />
         <About />
         <Experience />

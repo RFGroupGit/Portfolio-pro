@@ -6,19 +6,10 @@ import { DownloadCvButton } from './ui/DownloadCvButton'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const ids = useMemo(() => navigation.map((n) => n.id), [])
   const active = useActiveSection(ids)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  // Close the mobile menu with Escape and restore focus to the toggle
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
@@ -31,7 +22,6 @@ export function Navbar() {
     return () => document.removeEventListener('keydown', onKey)
   }, [open])
 
-  // Close the menu automatically if the viewport grows to desktop
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)')
     const onChange = () => mq.matches && setOpen(false)
@@ -39,27 +29,14 @@ export function Navbar() {
     return () => mq.removeEventListener('change', onChange)
   }, [])
 
-  const initials = `${profile.firstName.replace(/[[\]]/g, '').charAt(0)}${profile.lastName
-    .replace(/[[\]]/g, '')
-    .charAt(0)}`
-
   return (
-    <header
-      className={`print-hidden sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled || open ? 'border-line bg-paper/90 backdrop-blur-md' : 'border-transparent bg-paper'
-      }`}
-    >
-      <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
-        <a href="#top" className="font-display text-xl tracking-tight text-ink transition-colors hover:text-accent">
-          {initials || 'CV'}
-          <span className="text-accent">.</span>
-          <span className="sr-only">
-            {' '}
-            — {profile.firstName} {profile.lastName}, back to top
-          </span>
+    <header className="print-hidden sticky top-0 z-50 border-b border-ink/15 bg-paper/90 backdrop-blur-md lg:ml-16">
+      <nav aria-label="Main" className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6 md:px-10">
+        <a href="#top" className="text-xs font-medium tracking-[0.22em] uppercase text-ink">
+          {profile.firstName} {profile.lastName}
+          <span className="sr-only">, back to top</span>
         </a>
 
-        {/* Desktop links */}
         <ul className="hidden items-center gap-7 md:flex">
           {navigation.map((item) => {
             const isActive = active === item.id
@@ -68,8 +45,8 @@ export function Navbar() {
                 <a
                   href={`#${item.id}`}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`relative py-1 text-sm transition-colors duration-200 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-out-quart hover:text-ink ${
-                    isActive ? 'text-ink after:scale-x-100' : 'text-muted'
+                  className={`text-[11px] font-medium tracking-[0.16em] uppercase transition-colors ${
+                    isActive ? 'text-ink' : 'text-muted hover:text-ink'
                   }`}
                 >
                   {item.label}
@@ -78,15 +55,14 @@ export function Navbar() {
             )
           })}
           <li>
-            <DownloadCvButton variant="secondary" className="h-9 px-4 text-xs" />
+            <DownloadCvButton variant="primary" className="h-8 px-4 text-[10px]" />
           </li>
         </ul>
 
-        {/* Mobile toggle */}
         <button
           ref={toggleRef}
           type="button"
-          className="-mr-2 inline-flex h-10 w-10 items-center justify-center rounded-sm text-ink md:hidden"
+          className="-mr-2 inline-flex h-10 w-10 items-center justify-center text-ink md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -94,7 +70,7 @@ export function Navbar() {
         >
           <span className="relative block h-3 w-5" aria-hidden="true">
             <span
-              className={`absolute left-0 top-0 h-px w-5 bg-current transition-transform duration-300 ease-out-quart ${
+              className={`absolute top-0 left-0 h-px w-5 bg-current transition-transform duration-300 ease-out-quart ${
                 open ? 'translate-y-[5.5px] rotate-45' : ''
               }`}
             />
@@ -107,31 +83,23 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
-      <div
-        id="mobile-menu"
-        hidden={!open}
-        className="border-t border-line bg-paper md:hidden"
-      >
-        <ul className="mx-auto flex max-w-6xl flex-col px-6 py-4">
+      <div id="mobile-menu" hidden={!open} className="border-t border-ink/15 bg-paper md:hidden">
+        <ul className="flex flex-col px-6 py-2">
           {navigation.map((item) => (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
                 onClick={() => setOpen(false)}
                 aria-current={active === item.id ? 'true' : undefined}
-                className={`flex items-center justify-between border-b border-line py-4 text-base transition-colors hover:text-accent ${
+                className={`flex items-center justify-between border-b border-ink/10 py-4 text-sm tracking-[0.12em] uppercase ${
                   active === item.id ? 'text-ink' : 'text-ink-soft'
                 }`}
               >
                 {item.label}
-                {active === item.id ? (
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                ) : null}
               </a>
             </li>
           ))}
-          <li className="pt-5">
+          <li className="py-5">
             <DownloadCvButton variant="primary" className="w-full" onDone={() => setOpen(false)} />
           </li>
         </ul>

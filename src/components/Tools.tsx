@@ -3,10 +3,10 @@ import { Section } from './ui/Section'
 
 export function Tools() {
   return (
-    <Section id="tools" number="05" title="Tools">
-      <ul className="grid grid-cols-2 gap-x-8 sm:grid-cols-3" aria-label="Tools I work with">
+    <Section id="tools" number="05" title="Tools" wide>
+      <ul className="grid grid-cols-2 border-t border-ink sm:grid-cols-3 md:grid-cols-4" aria-label="Tools I work with">
         {tools.map((tool) => (
-          <li key={tool} className="border-t border-line py-3.5 text-base text-ink md:text-lg">
+          <li key={tool} className="border-r border-b border-ink/15 px-4 py-5 text-sm text-ink sm:px-5">
             {tool}
           </li>
         ))}
