@@ -3,7 +3,7 @@ import { Section } from './ui/Section'
 
 export function Languages() {
   return (
-    <Section id="languages" number="07" title="Languages">
+    <Section id="languages" number="07" title="Languages" wide>
       <dl className="grid gap-4 sm:grid-cols-2">
         {languages.map((language, index) => (
           <div

@@ -55,7 +55,7 @@ export function Hero() {
             LinkedIn
             <ArrowIcon />
           </a>
-          <a href="#contact" className="btn-ghost btn-on-dark">
+          <a href="#contact" className="btn-secondary btn-on-dark">
             Contact
           </a>
         </div>

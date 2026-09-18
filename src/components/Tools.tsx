@@ -3,7 +3,7 @@ import { Section } from './ui/Section'
 
 export function Tools() {
   return (
-    <Section id="tools" number="05" title="Tools">
+    <Section id="tools" number="05" title="Tools" wide>
       <ul className="flex flex-wrap gap-2.5" aria-label="Tools I work with">
         {tools.map((tool) => (
           <li key={tool}>

@@ -9,6 +9,7 @@ export function Skills() {
       title="Skills"
       intro="Organised by discipline, not by score. Each area reflects hands-on practice in real product teams."
       tone="cream"
+      wide
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {skillGroups.map((group, index) => (

@@ -3,7 +3,7 @@ import { Section } from './ui/Section'
 
 export function Education() {
   return (
-    <Section id="education" number="06" title="Education" tone="cream">
+    <Section id="education" number="06" title="Education" tone="cream" wide>
       <ul className="space-y-3">
         {education.map((item, index) => (
           <li

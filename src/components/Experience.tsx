@@ -3,7 +3,7 @@ import { Section } from './ui/Section'
 
 export function Experience() {
   return (
-    <Section id="experience" number="02" title="Experience" tone="cream">
+    <Section id="experience" number="02" title="Experience" tone="cream" wide>
       <ol className="space-y-4">
         {experience.map((item, index) => (
           <li

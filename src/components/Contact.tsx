@@ -4,7 +4,6 @@ export function Contact() {
   const fullName = `${profile.firstName} ${profile.lastName}`
   const subject = encodeURIComponent(`Contact from your website — ${fullName}`)
   const mailto = `mailto:${profile.email}?subject=${subject}`
-  const linkedinLabel = profile.linkedin.replace(/^https?:\/\/(www\.)?/, '')
 
   return (
     <section
@@ -58,7 +57,7 @@ export function Contact() {
                   rel="noopener noreferrer"
                   className="text-lg text-paper underline decoration-paper/25 underline-offset-4 transition-colors hover:text-gold hover:decoration-gold"
                 >
-                  {linkedinLabel}
+                  {fullName}
                 </a>
               </dd>
             </div>
