@@ -6,19 +6,22 @@ import { DownloadCvButton } from './ui/DownloadCvButton'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [overHero, setOverHero] = useState(true)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const ids = useMemo(() => navigation.map((n) => n.id), [])
   const active = useActiveSection(ids)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => {
+      const hero = document.getElementById('top')
+      const threshold = Math.max((hero?.offsetHeight ?? 520) - 72, 80)
+      setOverHero(window.scrollY < threshold)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close the mobile menu with Escape and restore focus to the toggle
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
@@ -31,7 +34,6 @@ export function Navbar() {
     return () => document.removeEventListener('keydown', onKey)
   }, [open])
 
-  // Close the menu automatically if the viewport grows to desktop
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)')
     const onChange = () => mq.matches && setOpen(false)
@@ -43,24 +45,30 @@ export function Navbar() {
     .replace(/[[\]]/g, '')
     .charAt(0)}`
 
+  const inverted = overHero && !open
+
   return (
     <header
-      className={`print-hidden sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled || open ? 'border-line bg-paper/90 backdrop-blur-md' : 'border-transparent bg-paper'
+      className={`print-hidden sticky top-0 z-50 transition-colors duration-300 ${
+        inverted ? 'bg-transparent' : 'border-b border-line/80 bg-paper/80 backdrop-blur-xl'
       }`}
     >
-      <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
-        <a href="#top" className="font-display text-xl tracking-tight text-ink transition-colors hover:text-accent">
+      <nav aria-label="Main" className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-6 md:px-10">
+        <a
+          href="#top"
+          className={`flex items-center gap-2 font-display text-2xl tracking-tight transition-colors ${
+            inverted ? 'text-paper hover:text-gold' : 'text-ink hover:text-accent'
+          }`}
+        >
           {initials || 'CV'}
-          <span className="text-accent">.</span>
+          <span className="inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
           <span className="sr-only">
             {' '}
             — {profile.firstName} {profile.lastName}, back to top
           </span>
         </a>
 
-        {/* Desktop links */}
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {navigation.map((item) => {
             const isActive = active === item.id
             return (
@@ -68,8 +76,14 @@ export function Navbar() {
                 <a
                   href={`#${item.id}`}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`relative py-1 text-sm transition-colors duration-200 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-out-quart hover:text-ink ${
-                    isActive ? 'text-ink after:scale-x-100' : 'text-muted'
+                  className={`rounded-full px-3 py-1.5 text-[0.8125rem] font-medium transition-colors duration-200 ${
+                    inverted
+                      ? isActive
+                        ? 'bg-paper/10 text-paper'
+                        : 'text-fog hover:text-paper'
+                      : isActive
+                        ? 'bg-ink text-paper'
+                        : 'text-muted hover:text-ink'
                   }`}
                 >
                   {item.label}
@@ -77,16 +91,20 @@ export function Navbar() {
               </li>
             )
           })}
-          <li>
-            <DownloadCvButton variant="secondary" className="h-9 px-4 text-xs" />
+          <li className="ml-2">
+            <DownloadCvButton
+              variant={inverted ? 'primary' : 'secondary'}
+              className={`h-9 px-4 text-xs ${inverted ? 'btn-on-dark' : ''}`}
+            />
           </li>
         </ul>
 
-        {/* Mobile toggle */}
         <button
           ref={toggleRef}
           type="button"
-          className="-mr-2 inline-flex h-10 w-10 items-center justify-center rounded-sm text-ink md:hidden"
+          className={`-mr-2 inline-flex h-10 w-10 items-center justify-center rounded-full md:hidden ${
+            inverted ? 'text-paper' : 'text-ink'
+          }`}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -107,12 +125,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
-      <div
-        id="mobile-menu"
-        hidden={!open}
-        className="border-t border-line bg-paper md:hidden"
-      >
+      <div id="mobile-menu" hidden={!open} className="border-t border-line bg-paper md:hidden">
         <ul className="mx-auto flex max-w-6xl flex-col px-6 py-4">
           {navigation.map((item) => (
             <li key={item.id}>

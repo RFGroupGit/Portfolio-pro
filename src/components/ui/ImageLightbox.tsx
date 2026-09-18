@@ -22,7 +22,7 @@ export function ImageLightbox({ src, alt, caption, className = '' }: ImageLightb
       <button
         type="button"
         onClick={open}
-        className="group block w-full cursor-zoom-in rounded-sm bg-transparent p-0 text-left print:cursor-default"
+        className="group block w-full cursor-zoom-in rounded-xl bg-transparent p-0 text-left print:cursor-default"
         aria-label={`Enlarge visual: ${alt}`}
       >
         <img
@@ -32,23 +32,23 @@ export function ImageLightbox({ src, alt, caption, className = '' }: ImageLightb
           decoding="async"
           width={1200}
           height={750}
-          className={`aspect-[16/10] w-full rounded-sm border border-line object-cover transition-opacity duration-200 group-hover:opacity-90 ${className}`}
+          className={`aspect-[16/10] w-full rounded-xl border border-line object-cover transition duration-300 group-hover:scale-[1.02] ${className}`}
         />
       </button>
 
       <dialog
         ref={dialogRef}
-        className="print-hidden m-auto w-[min(96vw,1200px)] rounded-sm border border-line bg-paper p-0 shadow-2xl backdrop:bg-ink/70 backdrop:backdrop-blur-sm"
+        className="print-hidden m-auto w-[min(96vw,1200px)] rounded-2xl border border-line bg-night p-0 text-paper shadow-2xl backdrop:bg-ink/80 backdrop:backdrop-blur-sm"
         aria-label={alt}
         onClick={(e) => {
           if (e.target === e.currentTarget) close()
         }}
       >
-        <div className="flex items-center justify-between gap-4 border-b border-line px-4 py-3">
-          <p className="truncate text-sm text-ink-soft">{caption ?? alt}</p>
-          <button type="button" onClick={close} className="btn-ghost h-8 px-2 text-xs" autoFocus>
+        <div className="flex items-center justify-between gap-4 border-b border-paper/10 px-4 py-3">
+          <p className="truncate text-sm text-fog">{caption ?? alt}</p>
+          <button type="button" onClick={close} className="btn-ghost btn-on-dark h-8 px-2 text-xs" autoFocus>
             Close
-            <span aria-hidden="true" className="text-muted">
+            <span aria-hidden="true" className="text-fog">
               Esc
             </span>
           </button>

@@ -40,7 +40,6 @@
     U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* Metric-compatible fallbacks: the layout barely moves when the web font arrives */
 @font-face {
   font-family: 'Inter Fallback';
   src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
@@ -59,59 +58,53 @@
 }
 
 /* ------------------------------------------------------------------
-   Design system
-   ------------------------------------------------------------------
-   Typography
-     - Sans (body, UI):      Inter Variable — Swiss neutral grotesque
-     - Display (name, h2):   Instrument Serif — editorial counterpoint
-   Type scale (rem)
-     - display  clamp(3rem, 8vw, 6rem)     hero name
-     - h2       clamp(2rem, 4vw, 3rem)     section title
-     - h3       1.25rem                    entry title
-     - body     1rem / 1.125rem            paragraphs
-     - small    0.875rem                   meta
-     - label    0.75rem uppercase tracking  section numbers, eyebrows
-   Spacing scale: Tailwind 4px base. Sections use py-20 (mobile) → py-32 (desktop).
-   Border radius: 2px (sm) for cards & buttons, 9999 for chips. Nothing else.
-   Colours: paper / ink / 4 greys / 1 accent. Accent is used sparingly
-   (links, active nav, section numbers, one primary button).
+   Design system — Atelier
+   Warm paper, night hero, vermillion + gold + moss accents.
    ------------------------------------------------------------------ */
 @theme {
   --font-sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, serif;
 
-  --color-paper: #ffffff;
-  --color-surface: #f6f6f4;
-  --color-ink: #121212;
-  --color-ink-soft: #3d3d3d;
-  --color-muted: #6a6a6a;
-  --color-line: #e3e3e0;
-  --color-line-strong: #c9c9c4;
-  --color-accent: #b3261e;
-  --color-accent-hover: #93190f;
+  --color-paper: #f3ece3;
+  --color-surface: #fff8f0;
+  --color-ink: #16120f;
+  --color-ink-soft: #3d352e;
+  --color-muted: #6d645b;
+  --color-line: #e4d8c8;
+  --color-line-strong: #cbbba6;
+  --color-accent: #ee4b2b;
+  --color-accent-hover: #d13c20;
+  --color-night: #171410;
+  --color-night-soft: #231e19;
+  --color-fog: #cfc4b6;
+  --color-gold: #e8b84a;
+  --color-moss: #2f6a57;
+  --color-cobalt: #2c4de0;
 
-  --text-display: clamp(3rem, 8vw, 6rem);
-  --text-display--line-height: 0.95;
-  --text-display--letter-spacing: -0.02em;
-  --text-h2: clamp(2rem, 4vw, 3rem);
-  --text-h2--line-height: 1.05;
-  --text-h2--letter-spacing: -0.015em;
-  --text-lede: clamp(1.125rem, 1.6vw, 1.375rem);
-  --text-lede--line-height: 1.5;
-  --text-label: 0.75rem;
+  --text-display: clamp(3.75rem, 14vw, 9.5rem);
+  --text-display--line-height: 0.82;
+  --text-display--letter-spacing: -0.045em;
+  --text-h2: clamp(2.5rem, 6vw, 4.75rem);
+  --text-h2--line-height: 0.95;
+  --text-h2--letter-spacing: -0.03em;
+  --text-lede: clamp(1.15rem, 1.8vw, 1.45rem);
+  --text-lede--line-height: 1.55;
+  --text-label: 0.72rem;
   --text-label--line-height: 1;
-  --text-label--letter-spacing: 0.12em;
+  --text-label--letter-spacing: 0.16em;
 
-  --radius-sm: 2px;
+  --radius-sm: 0.75rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Keep anchored sections clear of the sticky nav */
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -123,7 +116,11 @@
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+    .marquee-track {
+      animation: none !important;
     }
   }
 
@@ -131,18 +128,18 @@
     @apply bg-paper font-sans text-ink antialiased;
     font-feature-settings: 'ss01', 'cv11';
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
   ::selection {
-    background: var(--color-ink);
-    color: var(--color-paper);
+    background: var(--color-accent);
+    color: #fff8f0;
   }
 
-  /* Accessible, consistent focus ring for keyboard users only */
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
-    border-radius: var(--radius-sm);
+    border-radius: 0.5rem;
   }
   :focus:not(:focus-visible) {
     outline: none;
@@ -151,11 +148,11 @@
 
 @layer components {
   .eyebrow {
-    @apply font-sans text-label font-medium uppercase text-muted;
+    @apply font-sans text-label font-semibold uppercase text-muted;
   }
 
   .link-underline {
-    @apply relative text-ink underline decoration-line-strong decoration-1 underline-offset-[5px] transition-colors duration-200;
+    @apply relative text-ink underline decoration-line-strong decoration-2 underline-offset-[6px] transition-colors duration-200;
   }
   .link-underline:hover {
     @apply text-accent decoration-accent;
@@ -164,17 +161,86 @@
   .btn-primary,
   .btn-secondary,
   .btn-ghost {
-    @apply inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-sm px-5 text-sm font-medium transition-colors duration-200 ease-out-quart;
+    @apply inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold tracking-tight transition-all duration-300 ease-out-expo;
   }
   .btn-primary {
-    @apply bg-ink text-paper hover:bg-accent;
+    @apply bg-accent text-surface shadow-[0_10px_30px_-12px_rgba(238,75,43,0.7)] hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_16px_36px_-12px_rgba(238,75,43,0.8)];
   }
   .btn-secondary {
-    @apply border border-line-strong bg-transparent text-ink hover:border-ink;
+    @apply border border-ink/15 bg-surface/70 text-ink backdrop-blur-sm hover:border-ink hover:bg-ink hover:text-surface;
   }
   .btn-ghost {
-    @apply px-2 text-ink hover:text-accent;
+    @apply px-3 text-ink hover:text-accent;
   }
+
+  .btn-on-dark.btn-primary {
+    @apply bg-accent text-surface;
+  }
+  .btn-on-dark.btn-secondary {
+    @apply border-paper/25 bg-transparent text-paper hover:border-paper hover:bg-paper hover:text-ink;
+  }
+  .btn-on-dark.btn-ghost {
+    @apply text-paper hover:text-gold;
+  }
+
+  .grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    opacity: 0.09;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(243, 236, 227, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(243, 236, 227, 0.06) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .marquee {
+    @apply relative overflow-hidden border-y border-paper/10;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 32s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm text-ink-soft transition-colors duration-200;
+  }
+  .chip:hover {
+    @apply border-ink bg-ink text-surface;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 8%, 0) scale(1.08);
+  }
+}
+
+.hero-blob {
+  animation: blob-drift 18s ease-in-out infinite;
 }
 
 /* ------------------------------------------------------------------
@@ -194,6 +260,7 @@
   body {
     background: #fff !important;
     color: #000 !important;
+    overflow: visible;
   }
 
   *,
@@ -205,45 +272,46 @@
     text-shadow: none !important;
   }
 
-  /* Elements that make no sense on paper */
   .print-hidden,
-  dialog {
+  .grain,
+  dialog,
+  .hero-blob,
+  .hero-grid,
+  .marquee {
     display: none !important;
   }
 
-  /* Reveal print-only content (e.g. contact line under the name) */
   .print-only {
     display: block !important;
   }
 
-  /* Tighten vertical rhythm */
   section {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-bottom: 8mm !important;
     border: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
   }
 
-  /* Never split individual entries or cards across pages */
   .print-avoid-break {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /* Keep headings attached to the content that follows */
-  /* Keep section titles attached to the content that follows.
-     Deliberately not applied to h3: Chrome then pushes whole list items
-     to the next page even when they fit. */
   h2 {
     break-after: avoid;
     page-break-after: avoid;
+    font-size: 16pt !important;
+    margin-bottom: 3mm !important;
+    color: #000 !important;
   }
+
   section > div > header,
   section > div > div > header {
     break-inside: avoid;
   }
 
-  /* Short sections fit on a page: keep each one whole */
   #tools,
   #education,
   #languages,
@@ -252,18 +320,10 @@
     page-break-inside: avoid;
   }
 
-  h2 {
-    font-size: 16pt !important;
-    margin-bottom: 3mm !important;
-  }
-
-  /* Section numbers stay with their title */
-
-
-  /* Prevent text overflow issues with clamps */
   .text-display {
     font-size: 30pt !important;
     line-height: 1 !important;
+    color: #000 !important;
   }
   .text-lede {
     font-size: 11pt !important;
@@ -274,7 +334,12 @@
     text-decoration: none !important;
   }
 
-  .bg-surface {
+  .bg-surface,
+  .bg-paper,
+  .bg-night,
+  .bg-night-soft,
+  .bg-moss,
+  .bg-accent {
     background: #fff !important;
   }
 

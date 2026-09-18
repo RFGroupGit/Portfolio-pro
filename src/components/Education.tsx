@@ -3,14 +3,14 @@ import { Section } from './ui/Section'
 
 export function Education() {
   return (
-    <Section id="education" number="06" title="Education">
-      <ul className="divide-y divide-line border-y border-line">
+    <Section id="education" number="06" title="Education" tone="cream">
+      <ul className="space-y-3">
         {education.map((item, index) => (
           <li
             key={`${item.degree}-${index}`}
-            className="print-avoid-break grid gap-2 py-6 md:grid-cols-12 md:gap-8"
+            className="print-avoid-break grid gap-2 rounded-2xl border border-line bg-paper p-5 md:grid-cols-12 md:items-baseline md:gap-8 md:p-6"
           >
-            <p className="text-sm font-medium tabular-nums text-ink md:col-span-4">{item.period}</p>
+            <p className="text-sm font-semibold tabular-nums text-accent md:col-span-4">{item.period}</p>
             <div className="md:col-span-8">
               <h3 className="text-lg font-medium tracking-tight text-ink">{item.degree}</h3>
               <p className="mt-1 text-muted">{item.school}</p>

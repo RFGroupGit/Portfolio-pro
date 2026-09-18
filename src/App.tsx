@@ -13,9 +13,10 @@ import { Footer } from './components/Footer'
 export default function App() {
   return (
     <>
+      <div className="grain print-hidden" aria-hidden="true" />
       <a
         href="#main"
-        className="sr-only z-[60] rounded-sm bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        className="sr-only z-[90] rounded-full bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
         Skip to content
       </a>
