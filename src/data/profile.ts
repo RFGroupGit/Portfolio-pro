@@ -12,8 +12,7 @@ export const profile: Profile = {
   location: 'Lausanne / Vaud, Switzerland',
   email: 'robin.fremy12@gmail.com',
   phone: '+33 6 15 91 06 64',
-  // TODO: replace with your real LinkedIn profile URL
-  linkedin: 'https://www.linkedin.com/in/your-profile',
+  linkedin: 'https://www.linkedin.com/in/robin-fremy-343578198/',
   // cvPdfUrl: '/cv.pdf',
   siteUrl: 'https://www.example.com',
 }
