@@ -4,12 +4,10 @@ import { Section } from './ui/Section'
 export function Tools() {
   return (
     <Section id="tools" number="05" title="Tools" wide>
-      <ul className="flex flex-wrap gap-2.5" aria-label="Tools I work with">
+      <ul className="grid grid-cols-2 border-t border-ink sm:grid-cols-3 md:grid-cols-4" aria-label="Tools I work with">
         {tools.map((tool) => (
-          <li key={tool}>
-            <span className="inline-flex rounded-full bg-night px-4 py-2 text-sm font-medium text-paper transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accent print:bg-transparent print:px-0 print:text-ink">
-              {tool}
-            </span>
+          <li key={tool} className="border-r border-b border-ink/15 px-4 py-5 text-sm text-ink sm:px-5">
+            {tool}
           </li>
         ))}
       </ul>

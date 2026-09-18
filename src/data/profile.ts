@@ -13,7 +13,7 @@ export const profile: Profile = {
   email: 'robin.fremy12@gmail.com',
   phone: '+33 6 15 91 06 64',
   linkedin: 'https://www.linkedin.com/in/robin-fremy-343578198/',
-  // cvPdfUrl: '/cv.pdf',
+  cvPdfUrl: '/Robin-Fremy-CV.pdf',
   siteUrl: 'https://www.example.com',
 }
 

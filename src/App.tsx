@@ -1,3 +1,4 @@
+import { IndexRail } from './components/IndexRail'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
@@ -13,15 +14,15 @@ import { Footer } from './components/Footer'
 export default function App() {
   return (
     <>
-      <div className="grain print-hidden" aria-hidden="true" />
       <a
         href="#main"
-        className="sr-only z-[90] rounded-full bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        className="sr-only z-[90] bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
         Skip to content
       </a>
+      <IndexRail />
       <Navbar />
-      <main id="main">
+      <main id="main" className="lg:pl-16">
         <Hero />
         <About />
         <Experience />

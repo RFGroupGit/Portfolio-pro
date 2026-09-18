@@ -2,27 +2,17 @@ import type { ReactNode } from 'react'
 
 interface SectionProps {
   id: string
-  /** Two-digit index displayed as an editorial marker, e.g. "01". */
   number: string
   title: string
-  /** Optional short intro under the title. */
   intro?: string
   children: ReactNode
   className?: string
-  /** Render children full-width under the header instead of in the right column. */
   wide?: boolean
-  tone?: 'sand' | 'cream' | 'night'
+  inverted?: boolean
 }
 
-const tones = {
-  sand: 'bg-paper text-ink',
-  cream: 'bg-surface text-ink',
-  night: 'bg-night text-paper',
-} as const
-
 /**
- * Numbered section with a large display title. `wide` stacks the header
- * above the content; otherwise the title sits on the left on desktop.
+ * Monograph section: ghost folio number, hairline, display title.
  */
 export function Section({
   id,
@@ -32,39 +22,50 @@ export function Section({
   children,
   className = '',
   wide = false,
-  tone = 'sand',
+  inverted = false,
 }: SectionProps) {
-  const night = tone === 'night'
-  const header = (
-    <header className={wide ? 'mb-12 md:mb-16 print:mb-5' : 'md:col-span-4 lg:col-span-4 print:mb-5'}>
-      <p className={`eyebrow mb-4 ${night ? 'text-gold' : 'text-accent'}`} aria-hidden="true">
-        {number} — {title}
-      </p>
-      <h2 id={`${id}-title`} className={`font-display text-h2 ${night ? 'text-paper' : 'text-ink'}`}>
-        {title}
-      </h2>
-      {intro ? (
-        <p className={`mt-5 max-w-md text-sm leading-relaxed ${night ? 'text-fog' : 'text-muted'}`}>{intro}</p>
-      ) : null}
-    </header>
-  )
+  const ink = inverted ? 'text-paper' : 'text-ink'
+  const mute = inverted ? 'text-paper/50' : 'text-muted'
 
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={`relative py-20 md:py-28 lg:py-32 ${tones[tone]} ${className}`}
+      className={`relative overflow-hidden border-t border-ink/15 py-20 md:py-28 lg:py-36 ${
+        inverted ? 'bg-night text-paper' : 'bg-paper text-ink'
+      } ${className}`}
     >
-      <div className="mx-auto max-w-6xl px-6 md:px-10">
+      <span
+        aria-hidden="true"
+        className={`print-hidden pointer-events-none absolute -top-8 right-0 font-sans text-[28vw] leading-none font-medium text-ink/[0.045] select-none ${
+          inverted ? 'text-paper/5' : ''
+        }`}
+      >
+        {number}
+      </span>
+
+      <div className="relative mx-auto max-w-7xl px-6 md:px-10">
         {wide ? (
           <>
-            {header}
+            <header className="mb-12 max-w-4xl md:mb-16 print:mb-5">
+              <p className={`eyebrow mb-5 ${mute}`}>{number}</p>
+              <h2 id={`${id}-title`} className={`font-display text-h2 ${ink}`}>
+                {title}
+              </h2>
+              {intro ? <p className={`mt-6 max-w-xl text-sm leading-relaxed ${mute}`}>{intro}</p> : null}
+            </header>
             {children}
           </>
         ) : (
-          <div className="grid gap-10 md:grid-cols-12 md:gap-10 print:block">
-            {header}
-            <div className="md:col-span-8 lg:col-span-8">{children}</div>
+          <div className="grid gap-10 md:grid-cols-12 md:gap-12 print:block">
+            <header className="md:col-span-4 print:mb-5">
+              <p className={`eyebrow mb-5 ${mute}`}>{number}</p>
+              <h2 id={`${id}-title`} className={`font-display text-h2 ${ink}`}>
+                {title}
+              </h2>
+              {intro ? <p className={`mt-6 max-w-sm text-sm leading-relaxed ${mute}`}>{intro}</p> : null}
+            </header>
+            <div className="md:col-span-8">{children}</div>
           </div>
         )}
       </div>

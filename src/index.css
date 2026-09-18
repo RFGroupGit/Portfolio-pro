@@ -58,44 +58,42 @@
 }
 
 /* ------------------------------------------------------------------
-   Design system — Atelier
-   Warm paper, night hero, vermillion + gold + moss accents.
+   Design system — Monograph
+   Pure black on paper. Scale, hairlines and a book-spine index
+   do the work. No chromatic accent, no elevation, no pills.
    ------------------------------------------------------------------ */
 @theme {
   --font-sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
 
-  --color-paper: #f3ece3;
-  --color-surface: #fff8f0;
-  --color-ink: #16120f;
-  --color-ink-soft: #3d352e;
-  --color-muted: #6d645b;
-  --color-line: #e4d8c8;
-  --color-line-strong: #cbbba6;
-  --color-accent: #ee4b2b;
-  --color-accent-hover: #d13c20;
-  --color-night: #171410;
-  --color-night-soft: #231e19;
-  --color-fog: #cfc4b6;
-  --color-gold: #e8b84a;
-  --color-moss: #2f6a57;
-  --color-cobalt: #2c4de0;
+  --color-paper: #f4f4f1;
+  --color-surface: #ffffff;
+  --color-ink: #0b0b0b;
+  --color-ink-soft: #2a2a2a;
+  --color-muted: #6e6e6e;
+  --color-line: #d9d9d4;
+  --color-line-strong: #0b0b0b;
+  --color-accent: #0b0b0b;
+  --color-accent-hover: #0b0b0b;
+  --color-night: #0b0b0b;
+  --color-fog: #a3a3a3;
 
-  --text-display: clamp(3.75rem, 14vw, 9.5rem);
-  --text-display--line-height: 0.82;
-  --text-display--letter-spacing: -0.045em;
-  --text-h2: clamp(2.5rem, 6vw, 4.75rem);
-  --text-h2--line-height: 0.95;
-  --text-h2--letter-spacing: -0.03em;
-  --text-lede: clamp(1.15rem, 1.8vw, 1.45rem);
+  --text-display: clamp(4.25rem, 16vw, 11rem);
+  --text-display--line-height: 0.76;
+  --text-display--letter-spacing: -0.055em;
+  --text-h2: clamp(3rem, 8vw, 6.5rem);
+  --text-h2--line-height: 0.86;
+  --text-h2--letter-spacing: -0.04em;
+  --text-lede: clamp(1.05rem, 1.5vw, 1.25rem);
   --text-lede--line-height: 1.55;
-  --text-label: 0.72rem;
+  --text-label: 0.6875rem;
   --text-label--line-height: 1;
-  --text-label--letter-spacing: 0.16em;
+  --text-label--letter-spacing: 0.18em;
 
-  --radius-sm: 0.75rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 1.75rem;
+  --radius-sm: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -104,7 +102,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 4.5rem;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -119,9 +117,6 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    .marquee-track {
-      animation: none !important;
-    }
   }
 
   body {
@@ -132,14 +127,13 @@
   }
 
   ::selection {
-    background: var(--color-accent);
-    color: #fff8f0;
+    background: var(--color-ink);
+    color: var(--color-paper);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 1px solid var(--color-ink);
     outline-offset: 3px;
-    border-radius: 0.5rem;
   }
   :focus:not(:focus-visible) {
     outline: none;
@@ -148,99 +142,50 @@
 
 @layer components {
   .eyebrow {
-    @apply font-sans text-label font-semibold uppercase text-muted;
+    @apply font-mono text-label font-medium uppercase text-muted;
   }
 
   .link-underline {
-    @apply relative text-ink underline decoration-line-strong decoration-2 underline-offset-[6px] transition-colors duration-200;
+    @apply text-ink underline decoration-ink/25 decoration-1 underline-offset-[6px] transition-colors duration-200;
   }
   .link-underline:hover {
-    @apply text-accent decoration-accent;
+    @apply decoration-ink;
   }
 
   .btn-primary,
   .btn-secondary,
   .btn-ghost {
-    @apply inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold tracking-tight transition-all duration-300 ease-out-expo;
+    @apply inline-flex h-11 cursor-pointer items-center justify-center gap-2 px-5 text-xs font-medium uppercase tracking-[0.16em] transition-colors duration-200 ease-out-quart;
   }
   .btn-primary {
-    @apply bg-accent text-surface shadow-[0_10px_30px_-12px_rgba(238,75,43,0.7)] hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_16px_36px_-12px_rgba(238,75,43,0.8)];
+    @apply bg-ink text-paper hover:bg-paper hover:text-ink hover:ring-1 hover:ring-ink;
   }
   .btn-secondary {
-    @apply border border-ink/15 bg-surface/70 text-ink backdrop-blur-sm hover:border-ink hover:bg-ink hover:text-surface;
+    @apply border border-ink bg-transparent text-ink hover:bg-ink hover:text-paper;
   }
   .btn-ghost {
-    @apply px-3 text-ink hover:text-accent;
+    @apply px-0 text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink;
   }
 
   .btn-on-dark.btn-primary {
-    @apply bg-accent text-surface;
+    @apply bg-paper text-ink hover:bg-ink hover:text-paper hover:ring-paper;
   }
   .btn-on-dark.btn-secondary {
-    @apply border-paper/25 bg-transparent text-paper hover:border-paper hover:bg-paper hover:text-ink;
+    @apply border-paper text-paper hover:bg-paper hover:text-ink;
   }
   .btn-on-dark.btn-ghost {
-    @apply text-paper hover:text-gold;
+    @apply text-paper decoration-paper/40 hover:decoration-paper;
   }
 
-  .grain {
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    z-index: 80;
-    opacity: 0.09;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.4px var(--color-ink);
   }
 
-  .hero-grid {
-    background-image:
-      linear-gradient(to right, rgba(243, 236, 227, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(243, 236, 227, 0.06) 1px, transparent 1px);
-    background-size: 72px 72px;
+  .spine-year {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
   }
-
-  .marquee {
-    @apply relative overflow-hidden border-y border-paper/10;
-  }
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 32s linear infinite;
-  }
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-
-  .chip {
-    @apply inline-flex items-center rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm text-ink-soft transition-colors duration-200;
-  }
-  .chip:hover {
-    @apply border-ink bg-ink text-surface;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes blob-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(6%, 8%, 0) scale(1.08);
-  }
-}
-
-.hero-blob {
-  animation: blob-drift 18s ease-in-out infinite;
 }
 
 /* ------------------------------------------------------------------
@@ -273,16 +218,17 @@
   }
 
   .print-hidden,
-  .grain,
-  dialog,
-  .hero-blob,
-  .hero-grid,
-  .marquee {
+  dialog {
     display: none !important;
   }
 
   .print-only {
     display: block !important;
+  }
+
+  .text-outline {
+    color: #000 !important;
+    -webkit-text-stroke: 0 !important;
   }
 
   section {
@@ -305,11 +251,6 @@
     font-size: 16pt !important;
     margin-bottom: 3mm !important;
     color: #000 !important;
-  }
-
-  section > div > header,
-  section > div > div > header {
-    break-inside: avoid;
   }
 
   #tools,
@@ -336,10 +277,7 @@
 
   .bg-surface,
   .bg-paper,
-  .bg-night,
-  .bg-night-soft,
-  .bg-moss,
-  .bg-accent {
+  .bg-night {
     background: #fff !important;
   }
 

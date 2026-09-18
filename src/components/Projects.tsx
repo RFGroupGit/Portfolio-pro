@@ -3,9 +3,6 @@ import type { Project } from '../data/types'
 import { Section } from './ui/Section'
 import { ImageLightbox } from './ui/ImageLightbox'
 
-const accents = ['bg-accent', 'bg-moss', 'bg-gold', 'bg-cobalt'] as const
-const accentText = ['text-accent', 'text-moss', 'text-gold', 'text-cobalt'] as const
-
 export function Projects() {
   return (
     <Section
@@ -15,7 +12,7 @@ export function Projects() {
       intro="A few examples of how I approach digital products: understand the context, frame the problem, design and ship a measurable answer."
       wide
     >
-      <ul className="space-y-8 print:space-y-3">
+      <ul>
         {projects.map((project, index) => (
           <li key={`${project.name}-${index}`} className="print-avoid-break">
             <ProjectCard project={project} index={index} />
@@ -37,11 +34,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const flipped = index % 2 === 1
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_20px_50px_-32px_rgba(22,18,15,0.45)] print:rounded-sm print:shadow-none">
-      <div className={`h-2 ${accents[index % accents.length]} print:hidden`} aria-hidden="true" />
-
-      <div className="grid gap-0 lg:grid-cols-12">
-        <figure className={`p-6 md:p-8 lg:col-span-5 print:p-3 ${flipped ? 'lg:order-2' : ''}`}>
+    <article className="border-t border-ink py-12 md:py-16 print:py-4">
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <figure className={`lg:col-span-5 ${flipped ? 'lg:order-2' : ''}`}>
           {project.image ? (
             <ImageLightbox
               src={project.image}
@@ -56,16 +51,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           )}
         </figure>
 
-        <div className={`flex flex-col p-6 md:p-8 lg:col-span-7 print:p-3 ${flipped ? 'lg:order-1' : ''}`}>
-          <header className="mb-6 print:mb-3">
-            <p className="eyebrow mb-3">
-              <span className={accentText[index % accentText.length]} aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <span className="mx-2 text-line-strong">/</span>
+        <div className={`flex flex-col lg:col-span-7 ${flipped ? 'lg:order-1' : ''}`}>
+          <header className="mb-8 print:mb-3">
+            <p className="eyebrow mb-4">
+              {String(index + 1).padStart(2, '0')}
+              <span className="mx-3 text-ink/30">/</span>
               {project.category}
             </p>
-            <h3 className="font-display text-3xl tracking-tight text-ink md:text-4xl">
+            <h3 className="font-display text-3xl tracking-tight text-ink md:text-5xl">
               {project.link ? (
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-underline">
                   {project.name}
@@ -74,15 +67,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 project.name
               )}
             </h3>
-            {project.timeframe ? <p className="mt-2 text-sm text-muted">{project.timeframe}</p> : null}
+            {project.timeframe ? <p className="mt-3 text-sm text-muted">{project.timeframe}</p> : null}
           </header>
 
           {project.metrics && project.metrics.length > 0 ? (
-            <dl className="mb-6 grid grid-cols-3 gap-3 print:mb-3">
+            <dl className="mb-8 grid grid-cols-3 gap-px bg-ink/15 print:mb-3 print:bg-transparent">
               {project.metrics.map((metric) => (
-                <div key={metric.label} className="rounded-xl bg-paper px-3 py-3 print:bg-transparent print:px-0 print:py-1">
-                  <dt className="text-[0.7rem] uppercase tracking-[0.1em] text-muted">{metric.label}</dt>
-                  <dd className="mt-1 font-display text-2xl tracking-tight text-ink md:text-3xl print:text-lg">
+                <div key={metric.label} className="bg-paper px-3 py-4 print:px-0 print:py-1">
+                  <dt className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted">{metric.label}</dt>
+                  <dd className="mt-2 font-sans text-3xl leading-none font-medium tracking-tight text-ink md:text-4xl print:text-lg">
                     {metric.value}
                   </dd>
                 </div>
@@ -90,25 +83,19 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </dl>
           ) : null}
 
-          <dl className="flex-1 divide-y divide-line">
+          <dl className="flex-1">
             {rows.map((row) => (
-              <div key={row.label} className="grid gap-1 py-3.5 sm:grid-cols-[6.5rem_1fr] sm:gap-4 print:py-1">
-                <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-muted sm:pt-0.5">{row.label}</dt>
-                <dd className="text-[0.9375rem] leading-relaxed text-ink-soft print:text-[9pt] print:leading-snug">
-                  {row.value}
-                </dd>
+              <div key={row.label} className="grid gap-1 border-t border-ink/15 py-3.5 sm:grid-cols-[7rem_1fr] sm:gap-6 print:py-1">
+                <dt className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted sm:pt-0.5">{row.label}</dt>
+                <dd className="text-sm leading-relaxed text-ink-soft print:text-[9pt] print:leading-snug">{row.value}</dd>
               </div>
             ))}
           </dl>
 
-          <footer className="mt-6 flex flex-wrap gap-2 print:mt-3">
-            <span className="sr-only">Tools:</span>
-            {project.tools.map((tool, i) => (
-              <span key={`${tool}-${i}`} className="chip">
-                {tool}
-              </span>
-            ))}
-          </footer>
+          <p className="mt-6 border-t border-ink/15 pt-5 font-mono text-[11px] leading-relaxed text-muted print:mt-3 print:pt-3">
+            <span className="sr-only">Tools: </span>
+            {project.tools.join('  /  ')}
+          </p>
         </div>
       </div>
     </article>
@@ -120,17 +107,10 @@ function ImagePlaceholder({ index }: { index: number }) {
     <div
       role="img"
       aria-label="Project visual placeholder"
-      className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-xl border border-line bg-paper"
-      style={{
-        backgroundImage:
-          'linear-gradient(to right, rgba(22,18,15,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(22,18,15,0.05) 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
-      }}
+      className="relative flex aspect-[16/10] w-full items-center justify-center border border-ink/20 bg-surface"
     >
-      <span className="absolute left-4 top-3 font-display text-2xl text-muted">
-        {String(index + 1).padStart(2, '0')}
-      </span>
-      <span className="text-xs uppercase tracking-[0.12em] text-muted">Mockup</span>
+      <span className="absolute top-3 left-4 font-mono text-xs text-muted">{String(index + 1).padStart(2, '0')}</span>
+      <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted">Mockup</span>
     </div>
   )
 }

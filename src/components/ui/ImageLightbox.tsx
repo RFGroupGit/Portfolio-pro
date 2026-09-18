@@ -7,10 +7,6 @@ interface ImageLightboxProps {
   className?: string
 }
 
-/**
- * Thumbnail that opens the full-size visual in a native <dialog>.
- * Escape and clicking the backdrop close it; focus returns to the trigger.
- */
 export function ImageLightbox({ src, alt, caption, className = '' }: ImageLightboxProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -22,7 +18,7 @@ export function ImageLightbox({ src, alt, caption, className = '' }: ImageLightb
       <button
         type="button"
         onClick={open}
-        className="group block w-full cursor-zoom-in rounded-xl bg-transparent p-0 text-left print:cursor-default"
+        className="group block w-full cursor-zoom-in bg-transparent p-0 text-left print:cursor-default"
         aria-label={`Enlarge visual: ${alt}`}
       >
         <img
@@ -32,23 +28,23 @@ export function ImageLightbox({ src, alt, caption, className = '' }: ImageLightb
           decoding="async"
           width={1200}
           height={750}
-          className={`aspect-[16/10] w-full rounded-xl border border-line object-cover transition duration-300 group-hover:scale-[1.02] ${className}`}
+          className={`aspect-[16/10] w-full border border-ink/15 object-cover grayscale transition duration-500 group-hover:grayscale-0 ${className}`}
         />
       </button>
 
       <dialog
         ref={dialogRef}
-        className="print-hidden m-auto w-[min(96vw,1200px)] rounded-2xl border border-line bg-night p-0 text-paper shadow-2xl backdrop:bg-ink/80 backdrop:backdrop-blur-sm"
+        className="print-hidden m-auto w-[min(96vw,1200px)] border border-ink bg-paper p-0 text-ink shadow-none backdrop:bg-ink/80"
         aria-label={alt}
         onClick={(e) => {
           if (e.target === e.currentTarget) close()
         }}
       >
-        <div className="flex items-center justify-between gap-4 border-b border-paper/10 px-4 py-3">
-          <p className="truncate text-sm text-fog">{caption ?? alt}</p>
-          <button type="button" onClick={close} className="btn-ghost btn-on-dark h-8 px-2 text-xs" autoFocus>
+        <div className="flex items-center justify-between gap-4 border-b border-ink/15 px-4 py-3">
+          <p className="truncate font-mono text-[11px] tracking-[0.12em] uppercase text-muted">{caption ?? alt}</p>
+          <button type="button" onClick={close} className="btn-ghost h-8 text-[10px]" autoFocus>
             Close
-            <span aria-hidden="true" className="text-fog">
+            <span aria-hidden="true" className="text-muted">
               Esc
             </span>
           </button>
