@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="#ECECEA"/>
+  <text x="40" y="40" font-size="13" fill="#7A7A76">Quote Builder  /  Step 2 &#183; Configuration  &#8212;  Desktop 1440</text>
+
+  <g filter="url(#shadow)">
+    <rect x="40" y="56" width="1120" height="654" rx="6" fill="#FFFFFF" stroke="#DADAD6"/>
+  </g>
+
+  <!-- App bar -->
+  <rect x="40" y="56" width="1120" height="52" rx="6" fill="#FFFFFF"/>
+  <line x1="40" y1="108" x2="1160" y2="108" stroke="#E6E6E2"/>
+  <rect x="64" y="74" width="16" height="16" rx="3" fill="#121212"/>
+  <text x="90" y="87" font-size="14" font-weight="600" fill="#121212">Techform CPQ</text>
+  <g font-size="12" fill="#6A6A66">
+    <text x="220" y="87">Quotes</text>
+    <text x="284" y="87">Customers</text>
+    <text x="368" y="87">Catalog</text>
+    <text x="432" y="87">Reports</text>
+  </g>
+  <text x="1108" y="87" font-size="12" fill="#3D3D3D" text-anchor="end">Quote Q-2210-118 &#183; Draft</text>
+  <circle cx="1132" cy="82" r="12" fill="#E3E3E0"/>
+  <text x="1132" y="86" font-size="10" fill="#3D3D3D" text-anchor="middle">RF</text>
+
+  <!-- Stepper -->
+  <g font-size="12">
+    <circle cx="80" cy="150" r="10" fill="#121212"/><path d="M75.5 150.5l3 3 6-6" fill="none" stroke="#FFF" stroke-width="1.6"/>
+    <text x="98" y="154" fill="#6A6A66">1 &#183; Product</text>
+    <line x1="190" y1="150" x2="270" y2="150" stroke="#121212"/>
+    <circle cx="290" cy="150" r="10" fill="#B3261E"/><text x="290" y="154" fill="#FFF" text-anchor="middle" font-size="10" font-weight="600">2</text>
+    <text x="308" y="154" fill="#121212" font-weight="600">2 &#183; Configuration</text>
+    <line x1="440" y1="150" x2="520" y2="150" stroke="#E3E3E0"/>
+    <circle cx="540" cy="150" r="10" fill="#FFF" stroke="#C9C9C4"/><text x="540" y="154" fill="#8A8A86" text-anchor="middle" font-size="10">3</text>
+    <text x="558" y="154" fill="#8A8A86">3 &#183; Summary &amp; quote</text>
+  </g>
+
+  <!-- Left: option groups -->
+  <text x="72" y="200" font-size="18" font-weight="600" fill="#121212">Hydraulic press HP-400</text>
+  <text x="72" y="220" font-size="12" fill="#6A6A66">Configure the frame, drive and control options. Incompatible choices are flagged as you go.</text>
+
+  <!-- Group 1: Frame -->
+  <text x="72" y="262" font-size="11" fill="#8A8A86" letter-spacing="1.2">FRAME SIZE</text>
+  <g font-size="12">
+    <rect x="72" y="274" width="160" height="60" rx="4" fill="#FFF" stroke="#121212" stroke-width="1.5"/>
+    <circle cx="90" cy="292" r="7" fill="#FFF" stroke="#121212" stroke-width="1.5"/><circle cx="90" cy="292" r="3.5" fill="#121212"/>
+    <text x="104" y="296" fill="#121212" font-weight="500">Standard &#183; 400 t</text><text x="104" y="318" fill="#6A6A66" font-size="11">Included</text>
+    <rect x="244" y="274" width="160" height="60" rx="4" fill="#FFF" stroke="#DADAD6"/>
+    <circle cx="262" cy="292" r="7" fill="#FFF" stroke="#C9C9C4" stroke-width="1.5"/>
+    <text x="276" y="296" fill="#121212">Extended &#183; 400 t</text><text x="276" y="318" fill="#6A6A66" font-size="11">+ CHF 18,400</text>
+    <rect x="416" y="274" width="160" height="60" rx="4" fill="#FFF" stroke="#DADAD6"/>
+    <circle cx="434" cy="292" r="7" fill="#FFF" stroke="#C9C9C4" stroke-width="1.5"/>
+    <text x="448" y="296" fill="#121212">Heavy duty &#183; 600 t</text><text x="448" y="318" fill="#6A6A66" font-size="11">+ CHF 46,900</text>
+  </g>
+
+  <!-- Group 2: Drive -->
+  <text x="72" y="376" font-size="11" fill="#8A8A86" letter-spacing="1.2">DRIVE SYSTEM</text>
+  <g font-size="12">
+    <rect x="72" y="388" width="504" height="46" rx="4" fill="#FFF" stroke="#DADAD6"/>
+    <rect x="88" y="403" width="16" height="16" rx="3" fill="#121212"/><path d="M92 411l3 3 5.5-6" fill="none" stroke="#FFF" stroke-width="1.6"/>
+    <text x="116" y="415" fill="#121212">Servo-hydraulic drive</text>
+    <text x="560" y="415" fill="#3D3D3D" text-anchor="end">+ CHF 22,000</text>
+
+    <rect x="72" y="442" width="504" height="64" rx="4" fill="#FDF4F3" stroke="#B3261E"/>
+    <rect x="88" y="457" width="16" height="16" rx="3" fill="#121212"/><path d="M92 465l3 3 5.5-6" fill="none" stroke="#FFF" stroke-width="1.6"/>
+    <text x="116" y="469" fill="#121212">Energy recovery module</text>
+    <text x="560" y="469" fill="#3D3D3D" text-anchor="end">+ CHF 9,800</text>
+    <circle cx="121" cy="490" r="5" fill="#B3261E"/><text x="121" y="493" font-size="8" fill="#FFF" text-anchor="middle" font-weight="700">!</text>
+    <text x="132" y="494" font-size="11" fill="#B3261E">Requires Servo-hydraulic drive and Control unit v3 &#8212; Control unit v2 will be replaced.</text>
+  </g>
+
+  <!-- Group 3: Control -->
+  <text x="72" y="548" font-size="11" fill="#8A8A86" letter-spacing="1.2">CONTROL UNIT</text>
+  <g font-size="12">
+    <rect x="72" y="560" width="246" height="46" rx="4" fill="#FFF" stroke="#DADAD6"/>
+    <circle cx="90" cy="583" r="7" fill="#FFF" stroke="#C9C9C4" stroke-width="1.5"/>
+    <text x="104" y="587" fill="#9A9A96">Control unit v2</text>
+    <line x1="104" y1="583" x2="196" y2="583" stroke="#9A9A96"/>
+    <rect x="330" y="560" width="246" height="46" rx="4" fill="#FFF" stroke="#121212" stroke-width="1.5"/>
+    <circle cx="348" cy="583" r="7" fill="#FFF" stroke="#121212" stroke-width="1.5"/><circle cx="348" cy="583" r="3.5" fill="#121212"/>
+    <text x="362" y="587" fill="#121212" font-weight="500">Control unit v3 &#183; touch HMI</text>
+  </g>
+
+  <!-- Quantity -->
+  <text x="72" y="646" font-size="11" fill="#8A8A86" letter-spacing="1.2">QUANTITY</text>
+  <rect x="72" y="656" width="110" height="34" rx="3" fill="#FFF" stroke="#C9C9C4"/>
+  <text x="90" y="678" font-size="14" fill="#121212">&#8722;</text>
+  <text x="127" y="678" font-size="13" fill="#121212" text-anchor="middle">2</text>
+  <text x="160" y="678" font-size="14" fill="#121212">+</text>
+  <text x="196" y="678" font-size="11" fill="#6A6A66">Volume pricing applied from 2 units</text>
+
+  <!-- Right: live summary -->
+  <rect x="640" y="184" width="480" height="494" rx="6" fill="#F7F7F5" stroke="#E6E6E2"/>
+  <text x="664" y="216" font-size="11" fill="#8A8A86" letter-spacing="1.2">LIVE SUMMARY</text>
+  <text x="664" y="244" font-size="16" font-weight="600" fill="#121212">Hydraulic press HP-400 &#215; 2</text>
+  <text x="664" y="264" font-size="12" fill="#6A6A66">Customer &#183; Meier Umformtechnik AG &#183; Delivery Q3</text>
+
+  <g font-size="12" fill="#3D3D3D">
+    <line x1="664" y1="284" x2="1096" y2="284" stroke="#E3E3E0"/>
+    <text x="664" y="310">Base unit &#183; Standard frame 400 t</text><text x="1096" y="310" text-anchor="end" fill="#121212">CHF 186,000</text>
+    <text x="664" y="338">Servo-hydraulic drive</text><text x="1096" y="338" text-anchor="end" fill="#121212">CHF 22,000</text>
+    <text x="664" y="366">Energy recovery module</text><text x="1096" y="366" text-anchor="end" fill="#121212">CHF 9,800</text>
+    <text x="664" y="394">Control unit v3 &#183; touch HMI</text><text x="1096" y="394" text-anchor="end" fill="#121212">CHF 14,500</text>
+    <text x="664" y="422" fill="#B3261E">Volume discount &#183; 2 units</text><text x="1096" y="422" text-anchor="end" fill="#B3261E">&#8722; CHF 11,600</text>
+    <line x1="664" y1="444" x2="1096" y2="444" stroke="#E3E3E0"/>
+    <text x="664" y="470" fill="#6A6A66">Unit price</text><text x="1096" y="470" text-anchor="end" fill="#121212">CHF 226,500</text>
+    <text x="664" y="496" fill="#6A6A66">Margin</text><text x="1096" y="496" text-anchor="end" fill="#121212">31.4 %</text>
+  </g>
+  <line x1="664" y1="518" x2="1096" y2="518" stroke="#121212"/>
+  <text x="664" y="552" font-size="13" fill="#121212">Total excl. VAT</text>
+  <text x="1096" y="556" font-size="24" font-weight="600" fill="#121212" text-anchor="end">CHF 441,400</text>
+
+  <g font-size="11">
+    <rect x="664" y="578" width="146" height="24" rx="12" fill="#FFFFFF" stroke="#DADAD6"/>
+    <circle cx="678" cy="590" r="4" fill="#121212"/>
+    <text x="688" y="594" fill="#3D3D3D">All rules satisfied</text>
+    <rect x="818" y="578" width="132" height="24" rx="12" fill="#FFFFFF" stroke="#DADAD6"/>
+    <text x="832" y="594" fill="#3D3D3D">Lead time &#183; 14 weeks</text>
+  </g>
+
+  <rect x="664" y="622" width="210" height="38" rx="3" fill="#FFFFFF" stroke="#C9C9C4"/>
+  <text x="769" y="646" font-size="12" font-weight="500" fill="#121212" text-anchor="middle">Save draft</text>
+  <rect x="886" y="622" width="210" height="38" rx="3" fill="#121212"/>
+  <text x="991" y="646" font-size="12" font-weight="500" fill="#FFFFFF" text-anchor="middle">Continue to summary &#8594;</text>
+</svg>

@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B3261E" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#B3261E" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="#ECECEA"/>
+  <text x="40" y="40" font-size="13" fill="#7A7A76">Product site  /  Landing  &#8212;  Desktop 1280</text>
+  <text x="760" y="40" font-size="13" fill="#7A7A76">Mobile 390</text>
+  <text x="960" y="40" font-size="13" fill="#7A7A76">Search Console  &#8212;  6 months</text>
+
+  <!-- Desktop landing -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="56" width="690" height="654" rx="6" fill="#FFFFFF" stroke="#DADAD6"/>
+  </g>
+  <!-- Browser bar -->
+  <rect x="40" y="56" width="690" height="36" rx="6" fill="#F3F3F1"/>
+  <line x1="40" y1="92" x2="730" y2="92" stroke="#E6E6E2"/>
+  <circle cx="62" cy="74" r="5" fill="#DADAD6"/><circle cx="78" cy="74" r="5" fill="#DADAD6"/><circle cx="94" cy="74" r="5" fill="#DADAD6"/>
+  <rect x="120" y="65" width="360" height="18" rx="9" fill="#FFFFFF" stroke="#E3E3E0"/>
+  <text x="134" y="78" font-size="10" fill="#6A6A66">cegedim-solutions.example/pharmacy-management</text>
+
+  <!-- Site nav -->
+  <rect x="64" y="112" width="18" height="18" rx="3" fill="#121212"/>
+  <text x="90" y="126" font-size="13" font-weight="600" fill="#121212">Cegedim Solutions</text>
+  <g font-size="11" fill="#3D3D3D">
+    <text x="360" y="126">Products</text><text x="426" y="126">Industries</text><text x="500" y="126">Resources</text><text x="570" y="126">Company</text>
+  </g>
+  <rect x="632" y="110" width="74" height="24" rx="3" fill="#121212"/>
+  <text x="669" y="126" font-size="10" fill="#FFF" text-anchor="middle" font-weight="500">Book a demo</text>
+
+  <!-- Hero -->
+  <text x="64" y="186" font-size="11" fill="#B3261E" letter-spacing="1.2">PHARMACY MANAGEMENT SOFTWARE</text>
+  <text x="64" y="222" font-size="24" font-weight="600" fill="#121212" letter-spacing="-0.4">Run your pharmacy on</text>
+  <text x="64" y="252" font-size="24" font-weight="600" fill="#121212" letter-spacing="-0.4">one connected platform.</text>
+  <text x="64" y="284" font-size="12" fill="#6A6A66">Dispensing, stock, ordering and patient</text>
+  <text x="64" y="302" font-size="12" fill="#6A6A66">follow-up &#8212; compliant by default.</text>
+  <rect x="64" y="322" width="104" height="32" rx="3" fill="#121212"/>
+  <text x="116" y="342" font-size="11" fill="#FFF" text-anchor="middle" font-weight="500">Book a demo</text>
+  <rect x="180" y="322" width="104" height="32" rx="3" fill="#FFF" stroke="#C9C9C4"/>
+  <text x="232" y="342" font-size="11" fill="#121212" text-anchor="middle" font-weight="500">See features</text>
+  <!-- Hero visual -->
+  <rect x="400" y="164" width="306" height="196" rx="6" fill="#F6F6F4" stroke="#E6E6E2"/>
+  <rect x="416" y="180" width="80" height="164" rx="3" fill="#FFFFFF" stroke="#E6E6E2"/>
+  <g fill="#E3E3E0"><rect x="426" y="194" width="60" height="6" rx="3"/><rect x="426" y="210" width="44" height="6" rx="3"/><rect x="426" y="226" width="52" height="6" rx="3"/><rect x="426" y="242" width="40" height="6" rx="3"/></g>
+  <rect x="508" y="180" width="182" height="72" rx="3" fill="#FFFFFF" stroke="#E6E6E2"/>
+  <text x="520" y="200" font-size="9" fill="#8A8A86" letter-spacing="1">STOCK ALERTS</text>
+  <text x="520" y="226" font-size="18" font-weight="600" fill="#121212">14</text>
+  <text x="548" y="226" font-size="10" fill="#B3261E">3 urgent</text>
+  <rect x="508" y="262" width="182" height="82" rx="3" fill="#FFFFFF" stroke="#E6E6E2"/>
+  <polyline points="520,330 548,318 576,322 604,300 632,306 660,288 680,292" fill="none" stroke="#121212" stroke-width="1.5"/>
+
+  <!-- Feature grid -->
+  <line x1="64" y1="392" x2="706" y2="392" stroke="#E6E6E2"/>
+  <g font-size="12" font-weight="600" fill="#121212">
+    <text x="64" y="428">Dispensing</text><text x="284" y="428">Stock &amp; ordering</text><text x="504" y="428">Patient follow-up</text>
+  </g>
+  <g font-size="11" fill="#6A6A66">
+    <text x="64" y="448">Scan, check interactions and</text><text x="64" y="464">dispense in under a minute.</text>
+    <text x="284" y="448">Automatic reorder points and</text><text x="284" y="464">supplier integration.</text>
+    <text x="504" y="448">Reminders, vaccination records</text><text x="504" y="464">and secure messaging.</text>
+  </g>
+  <g fill="#B3261E"><rect x="64" y="408" width="24" height="2"/><rect x="284" y="408" width="24" height="2"/><rect x="504" y="408" width="24" height="2"/></g>
+
+  <!-- Trust / SEO block -->
+  <rect x="64" y="500" width="642" height="94" rx="6" fill="#F6F6F4"/>
+  <g font-size="22" font-weight="600" fill="#121212">
+    <text x="88" y="546">2,400+</text><text x="272" y="546">99.98 %</text><text x="466" y="546">ISO 27001</text>
+  </g>
+  <g font-size="11" fill="#6A6A66">
+    <text x="88" y="568">pharmacies equipped</text><text x="272" y="568">platform availability</text><text x="466" y="568">certified hosting</text>
+  </g>
+  <!-- FAQ (SEO) -->
+  <g font-size="11" fill="#121212">
+    <text x="64" y="628">Is the software compliant with e-prescription requirements?</text>
+    <text x="700" y="628" text-anchor="end">+</text>
+    <line x1="64" y1="642" x2="706" y2="642" stroke="#E6E6E2"/>
+    <text x="64" y="668">How long does migration from another system take?</text>
+    <text x="700" y="668" text-anchor="end">+</text>
+    <line x1="64" y1="682" x2="706" y2="682" stroke="#E6E6E2"/>
+  </g>
+
+  <!-- Mobile -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="56" width="176" height="374" rx="22" fill="#121212"/>
+    <rect x="766" y="62" width="164" height="362" rx="18" fill="#FFFFFF"/>
+  </g>
+  <rect x="822" y="68" width="52" height="12" rx="6" fill="#121212"/>
+  <rect x="780" y="94" width="12" height="12" rx="2" fill="#121212"/>
+  <g stroke="#121212" stroke-width="1.4"><path d="M902 96h14M902 101h14M902 106h14"/></g>
+  <text x="780" y="132" font-size="8" fill="#B3261E" letter-spacing="1">PHARMACY SOFTWARE</text>
+  <text x="780" y="152" font-size="15" font-weight="600" fill="#121212" letter-spacing="-0.2">Run your pharmacy</text>
+  <text x="780" y="170" font-size="15" font-weight="600" fill="#121212" letter-spacing="-0.2">on one platform.</text>
+  <g fill="#E3E3E0"><rect x="780" y="184" width="136" height="5" rx="2.5"/><rect x="780" y="195" width="112" height="5" rx="2.5"/></g>
+  <rect x="780" y="212" width="136" height="30" rx="3" fill="#121212"/>
+  <text x="848" y="231" font-size="10" fill="#FFF" text-anchor="middle" font-weight="500">Book a demo</text>
+  <rect x="780" y="254" width="136" height="72" rx="4" fill="#F6F6F4" stroke="#E6E6E2"/>
+  <polyline points="790,312 812,300 834,306 856,290 878,296 906,282" fill="none" stroke="#121212" stroke-width="1.2"/>
+  <g font-size="9" fill="#121212" font-weight="600">
+    <text x="780" y="352">Dispensing</text><text x="780" y="384">Stock &amp; ordering</text>
+  </g>
+  <g fill="#E3E3E0"><rect x="780" y="358" width="120" height="4" rx="2"/><rect x="780" y="390" width="104" height="4" rx="2"/></g>
+  <g fill="#B3261E"><rect x="780" y="340" width="16" height="2"/><rect x="780" y="372" width="16" height="2"/></g>
+
+  <!-- Analytics panel -->
+  <g filter="url(#shadow)">
+    <rect x="960" y="56" width="200" height="374" rx="6" fill="#FFFFFF" stroke="#DADAD6"/>
+  </g>
+  <text x="978" y="84" font-size="10" fill="#8A8A86" letter-spacing="1">ORGANIC CLICKS</text>
+  <text x="978" y="112" font-size="22" font-weight="600" fill="#121212">48.2K</text>
+  <text x="1046" y="112" font-size="11" fill="#B3261E" font-weight="600">+64 %</text>
+  <g>
+    <path d="M978 236 L1008 230 L1038 226 L1068 214 L1098 196 L1128 174 L1142 160 L1142 240 L978 240 Z" fill="url(#area)"/>
+    <polyline points="978,236 1008,230 1038,226 1068,214 1098,196 1128,174 1142,160" fill="none" stroke="#B3261E" stroke-width="1.8"/>
+    <line x1="1038" y1="150" x2="1038" y2="240" stroke="#C9C9C4" stroke-dasharray="3 3"/>
+    <text x="1042" y="160" font-size="9" fill="#6A6A66">launch</text>
+  </g>
+  <g font-size="9" fill="#8A8A86">
+    <text x="978" y="256">Sep</text><text x="1050" y="256">Dec</text><text x="1124" y="256">Mar</text>
+  </g>
+  <line x1="978" y1="272" x2="1142" y2="272" stroke="#E6E6E2"/>
+  <g font-size="10" fill="#3D3D3D">
+    <text x="978" y="296">Avg. position</text><text x="1142" y="296" text-anchor="end" fill="#121212" font-weight="600">7.8 &#8594; 3.4</text>
+    <text x="978" y="320">Mobile bounce</text><text x="1142" y="320" text-anchor="end" fill="#121212" font-weight="600">&#8722;35 %</text>
+    <text x="978" y="344">Core Web Vitals</text><text x="1142" y="344" text-anchor="end" fill="#121212" font-weight="600">Pass</text>
+    <text x="978" y="368">Demo requests &#183; mobile</text><text x="1142" y="368" text-anchor="end" fill="#121212" font-weight="600">&#215; 2.1</text>
+  </g>
+  <rect x="978" y="388" width="164" height="24" rx="12" fill="#F6F6F4"/>
+  <text x="1060" y="404" font-size="9" fill="#3D3D3D" text-anchor="middle">Indexed pages 212 &#183; 0 errors</text>
+
+  <!-- Workshop artefact -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="460" width="400" height="250" rx="6" fill="#FFFFFF" stroke="#DADAD6"/>
+  </g>
+  <text x="780" y="488" font-size="10" fill="#8A8A86" letter-spacing="1">WORKSHOP &#183; AUDIENCES &#215; PAGE GOALS</text>
+  <g font-size="9" fill="#6A6A66">
+    <text x="880" y="514" text-anchor="middle">Discover</text>
+    <text x="970" y="514" text-anchor="middle">Compare</text>
+    <text x="1060" y="514" text-anchor="middle">Convert</text>
+  </g>
+  <g font-size="10" fill="#121212">
+    <text x="780" y="548">Pharmacist</text>
+    <text x="780" y="600">Chain buyer</text>
+    <text x="780" y="652">IT manager</text>
+  </g>
+  <g stroke="#E6E6E2"><line x1="780" y1="524" x2="1140" y2="524"/><line x1="780" y1="574" x2="1140" y2="574"/><line x1="780" y1="626" x2="1140" y2="626"/></g>
+  <g rx="3">
+    <rect x="846" y="532" width="68" height="30" rx="3" fill="#FBEDEB"/>
+    <rect x="936" y="532" width="68" height="30" rx="3" fill="#F6F6F4"/>
+    <rect x="1026" y="532" width="68" height="30" rx="3" fill="#121212"/>
+    <rect x="846" y="584" width="68" height="30" rx="3" fill="#F6F6F4"/>
+    <rect x="936" y="584" width="68" height="30" rx="3" fill="#121212"/>
+    <rect x="1026" y="584" width="68" height="30" rx="3" fill="#FBEDEB"/>
+    <rect x="846" y="636" width="68" height="30" rx="3" fill="#F6F6F4"/>
+    <rect x="936" y="636" width="68" height="30" rx="3" fill="#FBEDEB"/>
+    <rect x="1026" y="636" width="68" height="30" rx="3" fill="#F6F6F4"/>
+  </g>
+  <g font-size="8" text-anchor="middle">
+    <text x="880" y="551" fill="#B3261E">Use cases</text>
+    <text x="970" y="551" fill="#3D3D3D">Pricing</text>
+    <text x="1060" y="551" fill="#FFF">Demo</text>
+    <text x="880" y="603" fill="#3D3D3D">Case studies</text>
+    <text x="970" y="603" fill="#FFF">Comparison</text>
+    <text x="1060" y="603" fill="#B3261E">RFP kit</text>
+    <text x="880" y="655" fill="#3D3D3D">Security</text>
+    <text x="970" y="655" fill="#B3261E">Integrations</text>
+    <text x="1060" y="655" fill="#3D3D3D">Docs</text>
+  </g>
+  <text x="780" y="694" font-size="9" fill="#8A8A86">Black = primary goal &#183; Red = SEO opportunity &#183; 3 workshops, 11 participants</text>
+</svg>

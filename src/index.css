@@ -1,0 +1,284 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Self-hosted fonts (no third-party requests, preloaded in index.html)
+   ------------------------------------------------------------------ */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Metric-compatible fallbacks: the layout barely moves when the web font arrives */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Instrument Serif Fallback';
+  src: local('Times New Roman'), local('Times'), local('Georgia');
+  size-adjust: 96%;
+  ascent-override: 92%;
+  descent-override: 23%;
+  line-gap-override: 0%;
+}
+
+/* ------------------------------------------------------------------
+   Design system
+   ------------------------------------------------------------------
+   Typography
+     - Sans (body, UI):      Inter Variable — Swiss neutral grotesque
+     - Display (name, h2):   Instrument Serif — editorial counterpoint
+   Type scale (rem)
+     - display  clamp(3rem, 8vw, 6rem)     hero name
+     - h2       clamp(2rem, 4vw, 3rem)     section title
+     - h3       1.25rem                    entry title
+     - body     1rem / 1.125rem            paragraphs
+     - small    0.875rem                   meta
+     - label    0.75rem uppercase tracking  section numbers, eyebrows
+   Spacing scale: Tailwind 4px base. Sections use py-20 (mobile) → py-32 (desktop).
+   Border radius: 2px (sm) for cards & buttons, 9999 for chips. Nothing else.
+   Colours: paper / ink / 4 greys / 1 accent. Accent is used sparingly
+   (links, active nav, section numbers, one primary button).
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, serif;
+
+  --color-paper: #ffffff;
+  --color-surface: #f6f6f4;
+  --color-ink: #121212;
+  --color-ink-soft: #3d3d3d;
+  --color-muted: #6a6a6a;
+  --color-line: #e3e3e0;
+  --color-line-strong: #c9c9c4;
+  --color-accent: #b3261e;
+  --color-accent-hover: #93190f;
+
+  --text-display: clamp(3rem, 8vw, 6rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: clamp(2rem, 4vw, 3rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.015em;
+  --text-lede: clamp(1.125rem, 1.6vw, 1.375rem);
+  --text-lede--line-height: 1.5;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: 0.12em;
+
+  --radius-sm: 2px;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchored sections clear of the sticky nav */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  /* Accessible, consistent focus ring for keyboard users only */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-sans text-label font-medium uppercase text-muted;
+  }
+
+  .link-underline {
+    @apply relative text-ink underline decoration-line-strong decoration-1 underline-offset-[5px] transition-colors duration-200;
+  }
+  .link-underline:hover {
+    @apply text-accent decoration-accent;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    @apply inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-sm px-5 text-sm font-medium transition-colors duration-200 ease-out-quart;
+  }
+  .btn-primary {
+    @apply bg-ink text-paper hover:bg-accent;
+  }
+  .btn-secondary {
+    @apply border border-line-strong bg-transparent text-ink hover:border-ink;
+  }
+  .btn-ghost {
+    @apply px-2 text-ink hover:text-accent;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Print — clean A4 résumé
+   ------------------------------------------------------------------ */
+@page {
+  size: A4;
+  margin: 14mm 16mm;
+}
+
+@media print {
+  html {
+    scroll-behavior: auto;
+    font-size: 10.5pt;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Elements that make no sense on paper */
+  .print-hidden,
+  dialog {
+    display: none !important;
+  }
+
+  /* Reveal print-only content (e.g. contact line under the name) */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Tighten vertical rhythm */
+  section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 8mm !important;
+    border: 0 !important;
+  }
+
+  /* Never split individual entries or cards across pages */
+  .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Keep headings attached to the content that follows */
+  /* Keep section titles attached to the content that follows.
+     Deliberately not applied to h3: Chrome then pushes whole list items
+     to the next page even when they fit. */
+  h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  section > div > header,
+  section > div > div > header {
+    break-inside: avoid;
+  }
+
+  /* Short sections fit on a page: keep each one whole */
+  #tools,
+  #education,
+  #languages,
+  #contact {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h2 {
+    font-size: 16pt !important;
+    margin-bottom: 3mm !important;
+  }
+
+  /* Section numbers stay with their title */
+
+
+  /* Prevent text overflow issues with clamps */
+  .text-display {
+    font-size: 30pt !important;
+    line-height: 1 !important;
+  }
+  .text-lede {
+    font-size: 11pt !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  .bg-surface {
+    background: #fff !important;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+}

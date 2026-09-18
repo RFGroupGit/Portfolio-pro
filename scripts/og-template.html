@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      @font-face {
+        font-family: 'Inter Variable';
+        src: url('../public/fonts/inter-latin-wght-normal.woff2') format('woff2');
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: 'Instrument Serif';
+        src: url('../public/fonts/instrument-serif-latin-400-normal.woff2') format('woff2');
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        background: #ffffff;
+        font-family: 'Inter Variable', system-ui, sans-serif;
+        color: #121212;
+      }
+      .card {
+        box-sizing: border-box;
+        width: 1200px;
+        height: 630px;
+        padding: 88px 96px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 18px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #6a6a6a;
+        font-weight: 500;
+      }
+      .eyebrow::before {
+        content: '';
+        width: 48px;
+        height: 2px;
+        background: #b3261e;
+      }
+      h1 {
+        margin: 0;
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-weight: 400;
+        font-size: 128px;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+      }
+      .roles {
+        margin-top: 28px;
+        font-size: 30px;
+        font-weight: 500;
+        color: #3d3d3d;
+      }
+      .roles span {
+        color: #c9c9c4;
+        margin: 0 14px;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        font-size: 22px;
+        color: #6a6a6a;
+        border-top: 1px solid #e3e3e0;
+        padding-top: 28px;
+      }
+      .dot {
+        color: #b3261e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div>
+        <div class="eyebrow">Lausanne / Vaud, Switzerland</div>
+        <h1 style="margin-top: 36px">Robin<br />Fremy<span class="dot">.</span></h1>
+        <div class="roles">UX Designer<span>·</span>Product Designer<span>·</span>Digital Project Manager</div>
+      </div>
+      <div class="footer">
+        <div>UX design · Web development · Project management</div>
+        <div>www.example.com</div>
+      </div>
+    </div>
+  </body>
+</html>

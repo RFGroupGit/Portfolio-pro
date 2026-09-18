@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="Inter, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="#ECECEA"/>
+  <text x="40" y="40" font-size="13" fill="#7A7A76">Prism DS  /  Foundations  &#8212;  Colour &#183; Type &#183; Spacing</text>
+  <text x="620" y="40" font-size="13" fill="#7A7A76">Prism DS  /  Components  &#8212;  Button &#183; Input &#183; Card</text>
+
+  <!-- Foundations frame -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="56" width="540" height="654" rx="6" fill="#FFFFFF" stroke="#DADAD6"/>
+  </g>
+
+  <!-- Colour tokens -->
+  <text x="72" y="96" font-size="11" fill="#8A8A86" letter-spacing="1.2">COLOUR TOKENS</text>
+  <g font-size="11" fill="#5C5C58">
+    <rect x="72" y="112" width="56" height="56" rx="4" fill="#121212"/><text x="72" y="184">ink.900</text>
+    <rect x="140" y="112" width="56" height="56" rx="4" fill="#3D3D3D"/><text x="140" y="184">ink.700</text>
+    <rect x="208" y="112" width="56" height="56" rx="4" fill="#6A6A6A"/><text x="208" y="184">ink.500</text>
+    <rect x="276" y="112" width="56" height="56" rx="4" fill="#C9C9C4"/><text x="276" y="184">line.300</text>
+    <rect x="344" y="112" width="56" height="56" rx="4" fill="#E3E3E0"/><text x="344" y="184">line.200</text>
+    <rect x="412" y="112" width="56" height="56" rx="4" fill="#F6F6F4" stroke="#E3E3E0"/><text x="412" y="184">surface</text>
+    <rect x="480" y="112" width="56" height="56" rx="4" fill="#B3261E"/><text x="480" y="184">accent.600</text>
+  </g>
+
+  <!-- Type scale -->
+  <text x="72" y="228" font-size="11" fill="#8A8A86" letter-spacing="1.2">TYPE SCALE</text>
+  <g fill="#121212">
+    <text x="72" y="272" font-size="32" font-weight="600" letter-spacing="-0.5">Display 32 / 40</text>
+    <text x="72" y="308" font-size="24" font-weight="600" letter-spacing="-0.3">Heading 24 / 32</text>
+    <text x="72" y="338" font-size="18" font-weight="500">Title 18 / 28</text>
+    <text x="72" y="364" font-size="15">Body 15 / 24 &#8212; Clear, useful and business-oriented.</text>
+    <text x="72" y="386" font-size="13" fill="#6A6A6A">Caption 13 / 20 &#8212; Secondary information</text>
+    <text x="72" y="406" font-size="11" fill="#8A8A86" letter-spacing="1.2">LABEL 11 / 16 &#183; TRACKING 0.1EM</text>
+  </g>
+  <g font-size="10" fill="#8A8A86" text-anchor="end">
+    <text x="548" y="272">display</text>
+    <text x="548" y="308">h1</text>
+    <text x="548" y="338">h2</text>
+    <text x="548" y="364">body</text>
+    <text x="548" y="386">caption</text>
+    <text x="548" y="406">label</text>
+  </g>
+
+  <!-- Spacing -->
+  <text x="72" y="452" font-size="11" fill="#8A8A86" letter-spacing="1.2">SPACING &#183; 4PX BASE</text>
+  <g fill="#B3261E" fill-opacity="0.18" stroke="#B3261E" stroke-width="1">
+    <rect x="72" y="468" width="4" height="24"/>
+    <rect x="92" y="468" width="8" height="24"/>
+    <rect x="116" y="468" width="12" height="24"/>
+    <rect x="144" y="468" width="16" height="24"/>
+    <rect x="176" y="468" width="24" height="24"/>
+    <rect x="216" y="468" width="32" height="24"/>
+    <rect x="264" y="468" width="48" height="24"/>
+    <rect x="328" y="468" width="64" height="24"/>
+  </g>
+  <g font-size="10" fill="#6A6A6A">
+    <text x="72" y="508">4</text><text x="92" y="508">8</text><text x="116" y="508">12</text><text x="144" y="508">16</text>
+    <text x="176" y="508">24</text><text x="216" y="508">32</text><text x="264" y="508">48</text><text x="328" y="508">64</text>
+  </g>
+
+  <!-- Radius / elevation -->
+  <text x="72" y="552" font-size="11" fill="#8A8A86" letter-spacing="1.2">RADIUS &amp; ELEVATION</text>
+  <g fill="#FFFFFF" stroke="#DADAD6">
+    <rect x="72" y="568" width="72" height="56" rx="2"/>
+    <rect x="160" y="568" width="72" height="56" rx="6"/>
+    <rect x="248" y="568" width="72" height="56" rx="12"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="352" y="568" width="72" height="56" rx="6" fill="#FFFFFF"/>
+  </g>
+  <rect x="440" y="568" width="72" height="56" rx="6" fill="#F6F6F4"/>
+  <g font-size="10" fill="#6A6A6A">
+    <text x="72" y="644">radius.sm &#183; 2</text>
+    <text x="160" y="644">radius.md &#183; 6</text>
+    <text x="248" y="644">radius.lg &#183; 12</text>
+    <text x="352" y="644">elevation.1</text>
+    <text x="440" y="644">surface</text>
+  </g>
+  <text x="72" y="690" font-size="11" fill="#8A8A86">Contrast checked &#183; WCAG AA on every token pair</text>
+
+  <!-- Components frame -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="56" width="540" height="654" rx="6" fill="#FFFFFF" stroke="#DADAD6"/>
+  </g>
+
+  <!-- Buttons -->
+  <g font-size="11" fill="#7B61FF">
+    <text x="652" y="92">&#10070; Button / Primary</text>
+    <text x="652" y="182">&#10070; Button / Secondary</text>
+    <text x="652" y="272">&#10070; Input / Text</text>
+    <text x="652" y="446">&#10070; Selection</text>
+    <text x="652" y="540">&#10070; Card / Metric</text>
+  </g>
+  <g font-size="10" fill="#8A8A86">
+    <text x="652" y="150">default</text><text x="760" y="150">hover</text><text x="868" y="150">focus</text><text x="976" y="150">disabled</text>
+    <text x="652" y="240">default</text><text x="760" y="240">hover</text><text x="868" y="240">focus</text><text x="976" y="240">disabled</text>
+  </g>
+  <!-- Primary states -->
+  <rect x="652" y="104" width="92" height="34" rx="3" fill="#121212"/>
+  <rect x="760" y="104" width="92" height="34" rx="3" fill="#B3261E"/>
+  <rect x="868" y="104" width="92" height="34" rx="3" fill="#121212"/>
+  <rect x="865" y="101" width="98" height="40" rx="5" fill="none" stroke="#B3261E" stroke-width="2"/>
+  <rect x="976" y="104" width="92" height="34" rx="3" fill="#E3E3E0"/>
+  <g font-size="12" font-weight="500" fill="#FFFFFF" text-anchor="middle">
+    <text x="698" y="126">Save changes</text>
+    <text x="806" y="126">Save changes</text>
+    <text x="914" y="126">Save changes</text>
+    <text x="1022" y="126" fill="#9A9A96">Save changes</text>
+  </g>
+  <!-- Secondary states -->
+  <g fill="#FFFFFF" stroke="#C9C9C4">
+    <rect x="652" y="194" width="92" height="34" rx="3"/>
+    <rect x="760" y="194" width="92" height="34" rx="3" stroke="#121212"/>
+    <rect x="868" y="194" width="92" height="34" rx="3"/>
+    <rect x="976" y="194" width="92" height="34" rx="3" stroke="#E3E3E0"/>
+  </g>
+  <rect x="865" y="191" width="98" height="40" rx="5" fill="none" stroke="#B3261E" stroke-width="2"/>
+  <g font-size="12" font-weight="500" fill="#121212" text-anchor="middle">
+    <text x="698" y="216">Cancel</text>
+    <text x="806" y="216">Cancel</text>
+    <text x="914" y="216">Cancel</text>
+    <text x="1022" y="216" fill="#C9C9C4">Cancel</text>
+  </g>
+
+  <!-- Inputs -->
+  <g font-size="11" fill="#3D3D3D">
+    <text x="652" y="298">Email address</text>
+    <rect x="652" y="306" width="200" height="38" rx="3" fill="#FFFFFF" stroke="#C9C9C4"/>
+    <text x="664" y="330" fill="#8A8A86" font-size="13">name@company.com</text>
+
+    <text x="880" y="298">Email address</text>
+    <rect x="880" y="306" width="200" height="38" rx="3" fill="#FFFFFF" stroke="#B3261E" stroke-width="1.5"/>
+    <text x="892" y="330" fill="#121212" font-size="13">robin@lensys</text>
+    <text x="880" y="362" fill="#B3261E" font-size="11">Enter a valid email address.</text>
+
+    <rect x="652" y="378" width="200" height="38" rx="3" fill="#F6F6F4" stroke="#E3E3E0"/>
+    <text x="664" y="402" fill="#9A9A96" font-size="13">Product squad B</text>
+    <rect x="880" y="378" width="200" height="38" rx="3" fill="#FFFFFF" stroke="#C9C9C4"/>
+    <circle cx="897" cy="397" r="5" fill="none" stroke="#6A6A6A" stroke-width="1.4"/>
+    <path d="M901 401l4 4" stroke="#6A6A6A" stroke-width="1.4"/>
+    <text x="912" y="402" fill="#8A8A86" font-size="13">Search components&#8230;</text>
+  </g>
+
+  <!-- Selection controls -->
+  <g font-size="12" fill="#121212">
+    <rect x="652" y="458" width="16" height="16" rx="3" fill="#121212"/><path d="M656 446l3 3 5.5-6" fill="none" stroke="#FFF" stroke-width="1.6"/><text x="678" y="471">Checked</text>
+    <rect x="760" y="458" width="16" height="16" rx="3" fill="#FFFFFF" stroke="#C9C9C4"/><text x="786" y="471">Unchecked</text>
+    <circle cx="880" cy="466" r="8" fill="#FFFFFF" stroke="#121212" stroke-width="1.5"/><circle cx="880" cy="466" r="4" fill="#121212"/><text x="898" y="471">Radio</text>
+    <rect x="976" y="457" width="36" height="18" rx="9" fill="#121212"/><circle cx="1003" cy="466" r="7" fill="#FFF"/><text x="1022" y="471">On</text>
+  </g>
+  <g font-size="11">
+    <rect x="652" y="492" width="64" height="24" rx="12" fill="#FFFFFF" stroke="#C9C9C4"/><text x="684" y="508" fill="#3D3D3D" text-anchor="middle">Design</text>
+    <rect x="724" y="492" width="80" height="24" rx="12" fill="#121212"/><text x="764" y="508" fill="#FFF" text-anchor="middle">Selected</text>
+    <rect x="812" y="492" width="72" height="24" rx="12" fill="#FBEDEB"/><text x="848" y="508" fill="#B3261E" text-anchor="middle">3 issues</text>
+  </g>
+
+  <!-- Card component -->
+  <rect x="652" y="552" width="200" height="132" rx="6" fill="#FFFFFF" stroke="#E3E3E0"/>
+  <text x="668" y="578" font-size="11" fill="#8A8A86" letter-spacing="1">ACTIVE USERS</text>
+  <text x="668" y="612" font-size="26" font-weight="600" fill="#121212">12,480</text>
+  <text x="668" y="634" font-size="12" fill="#3D3D3D"><tspan fill="#B3261E" font-weight="600">+8.2 %</tspan> vs last month</text>
+  <polyline points="668,668 700,660 724,664 752,652 780,656 808,642 836,648" fill="none" stroke="#121212" stroke-width="1.5"/>
+
+  <rect x="880" y="552" width="200" height="132" rx="6" fill="#FFFFFF" stroke="#E3E3E0"/>
+  <text x="896" y="578" font-size="11" fill="#8A8A86" letter-spacing="1">ANATOMY</text>
+  <g font-size="11" fill="#3D3D3D">
+    <text x="896" y="602">1 &#183; Label</text>
+    <text x="896" y="620">2 &#183; Value</text>
+    <text x="896" y="638">3 &#183; Trend</text>
+    <text x="896" y="656">4 &#183; Sparkline (optional)</text>
+    <text x="896" y="674" fill="#8A8A86">padding 16 &#183; gap 8 &#183; radius.md</text>
+  </g>
+
+  <text x="652" y="702" font-size="11" fill="#8A8A86">64 components &#183; 312 variants &#183; synced with code via tokens</text>
+</svg>
