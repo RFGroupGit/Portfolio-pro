@@ -14,7 +14,7 @@ export const profile: Profile = {
   phone: '+33 6 15 91 06 64',
   linkedin: 'https://www.linkedin.com/in/robin-fremy-343578198/',
   cvPdfUrl: '/Robin-Fremy-CV.pdf',
-  siteUrl: 'https://www.example.com',
+  siteUrl: 'https://robinfux.vercel.app',
 }
 
 export const about: AboutContent = {
