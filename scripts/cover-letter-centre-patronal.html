@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Robin Fremy — Lettre de motivation · Centre Patronal</title>
+    <style>
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 200 800;
+        src: url('../public/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2-variations');
+      }
+      @font-face {
+        font-family: 'Outfit';
+        font-style: normal;
+        font-weight: 100 900;
+        src: url('../public/fonts/outfit-latin-wght-normal.woff2') format('woff2-variations');
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 210mm;
+        height: 297mm;
+        background: #fff;
+        color: #0b0b0b;
+        font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        padding: 16mm 18mm 15mm;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: start;
+        gap: 16px;
+        padding-bottom: 11mm;
+        border-bottom: 1px solid #0b0b0b;
+      }
+
+      .name {
+        font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+        font-size: 22.5pt;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .role {
+        margin-top: 7px;
+        font-size: 8.5pt;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .contact {
+        text-align: right;
+        font-size: 8.5pt;
+        line-height: 1.55;
+        color: #0b0b0b;
+      }
+
+      .contact span {
+        display: block;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 8mm 0 7mm;
+        font-size: 9pt;
+        line-height: 1.45;
+      }
+
+      .meta .date {
+        color: #3a3a3a;
+      }
+
+      .meta .to strong {
+        display: block;
+        font-size: 10pt;
+        font-weight: 650;
+        margin-bottom: 2px;
+      }
+
+      .subject {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8mm;
+      }
+
+      .subject-bar {
+        background: #0b0b0b;
+        color: #fff;
+        font-size: 8pt;
+        font-weight: 650;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 7px 11px;
+        white-space: nowrap;
+      }
+
+      .subject-text {
+        font-size: 10pt;
+        font-weight: 550;
+        line-height: 1.3;
+        white-space: nowrap;
+      }
+
+      .greeting {
+        font-size: 11pt;
+        font-weight: 600;
+        margin-bottom: 4.5mm;
+      }
+
+      p {
+        font-size: 10.15pt;
+        line-height: 1.48;
+        margin-bottom: 3.8mm;
+        text-align: justify;
+        hyphens: auto;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .sign {
+        margin-top: 2mm;
+      }
+
+      .sign .closing {
+        font-size: 10pt;
+        line-height: 1.45;
+        margin-bottom: 8mm;
+      }
+
+      .sign .who {
+        font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+        font-size: 16pt;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .sign .who-role {
+        margin-top: 3px;
+        font-size: 8pt;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #3a3a3a;
+      }
+
+      .attachments {
+        margin-top: 5mm;
+        font-size: 8.5pt;
+        line-height: 1.5;
+        color: #3a3a3a;
+      }
+
+      .attachments strong {
+        color: #0b0b0b;
+        font-weight: 650;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 7.5pt;
+        margin-right: 8px;
+      }
+
+      footer {
+        margin-top: auto;
+        padding-top: 6mm;
+        border-top: 1px solid #0b0b0b;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 7.5pt;
+        letter-spacing: 0.06em;
+        color: #3a3a3a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div>
+          <div class="name">Robin Fremy</div>
+          <div class="role">UX Designer</div>
+        </div>
+        <div class="contact">
+          <span>Lausanne, Switzerland</span>
+          <span>+33 6 15 91 06 64</span>
+          <span>robin.fremy12@gmail.com</span>
+        </div>
+      </header>
+
+      <div class="meta">
+        <div class="date">Lausanne, le 19 septembre 2026</div>
+        <div class="to">
+          <strong>Madame Julie Bucher</strong>
+          Centre Patronal<br />
+          Route du Lac 2 · 1094 Paudex
+        </div>
+      </div>
+
+      <div class="subject">
+        <div class="subject-bar">Objet</div>
+        <div class="subject-text">
+          Candidature — Webmaster spécialisé UI/UX (80–100&nbsp;%), Paudex
+        </div>
+      </div>
+
+      <p class="greeting">Madame,</p>
+
+      <p>
+        Le poste de Webmaster spécialisé UI/UX au Centre Patronal réunit ce que je pratique depuis
+        trois ans&nbsp;: faire vivre des sites au quotidien, les concevoir côté UX/UI, et les relier
+        au métier, au marketing et à l’IT. Installé à Lausanne, je suis UX Designer, diplômé d’un
+        Master UX/UI Design (Digital Campus) après une Licence UX et un DUT MMI.
+      </p>
+
+      <p>
+        Chez Cegedim, j’ai assuré un webmastering concret sur des sites produits&nbsp;: contenus,
+        templates responsive, formulaires, liens, images, cohérence de marque, SEO (Google Search
+        Console, Analytics) et suivi des parcours jusqu’à la demande de démonstration. Chez
+        Techform, j’ai développé et maintenu en HTML, CSS et JavaScript un parcours de conversion
+        (configurateur CPQ)&nbsp;: étapes guidées, validation en ligne, prix visible — le type de
+        travail qui prépare des recommandations UX et des tests A/B. Chez Lensys puis Dronemapping
+        (Melbourne), j’ai conçu des design systems et des prototypes Figma, pour qu’une identité
+        tienne d’un écran à l’autre et reste tenable côté développement.
+      </p>
+
+      <p>
+        Je maîtrise Figma, Adobe Creative Cloud et Canva, WordPress, ainsi que l’intégration web.
+        Mon anglais est C1, consolidé par deux années en Australie. J’ai l’habitude de travailler
+        en binôme avec des chefs de projet, d’animer des ateliers avec des équipes
+        pluridisciplinaires et de coordonner les évolutions avec l’IT, en Agile.
+      </p>
+
+      <p>
+        Ce qui m’attire chez vous, c’est la mission&nbsp;: des sites utiles à des entreprises —
+        AVS, prévoyance, conseil, formation — pas seulement une vitrine. L’intégration de Trianon
+        SA et le travail sur plusieurs sites, jusqu’à Berne, demandent cette double casquette
+        webmaster et UX. Vous en trouverez le détail sur le site que j’ai conçu pour cette
+        candidature&nbsp;:
+        <a href="https://robinfux.vercel.app">robinfux.vercel.app</a>
+        — notamment l’étude de cas Cegedim
+        (<a href="https://robinfux.vercel.app/projects/cegedim-web">sites produits, SEO, formulaires</a>).
+      </p>
+
+      <div class="sign">
+        <p class="closing">
+          Je serais heureux de vous rencontrer à Paudex.<br />
+          Je vous prie d’agréer, Madame, l’expression de mes salutations distinguées.
+        </p>
+        <div class="who">Robin Fremy</div>
+        <div class="who-role">UX Designer · Lausanne</div>
+        <p class="attachments">
+          <strong>Pièces jointes</strong>
+          CV · Portfolio robinfux.vercel.app · certificats de travail et diplômes
+        </p>
+      </div>
+
+      <footer>
+        <span>Lettre de motivation · Centre Patronal</span>
+        <span>linkedin.com/in/robin-fremy-343578198</span>
+      </footer>
+    </div>
+  </body>
+</html>
