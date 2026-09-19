@@ -76,7 +76,7 @@ export function ProjectPage() {
 
         <nav
           aria-label="Case study sections"
-          className="print-hidden sticky top-14 z-30 border-b border-ink/10 bg-paper/90 backdrop-blur-md"
+          className="print-hidden sticky top-14 z-30 border-b border-ink/10 bg-paper"
         >
           <ol className="mx-auto flex max-w-7xl gap-6 overflow-x-auto px-6 py-3 md:gap-10 md:px-10">
             {toc.map((item) => (
