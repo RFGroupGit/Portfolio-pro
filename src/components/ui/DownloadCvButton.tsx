@@ -1,4 +1,5 @@
 import { profile } from '../../data/profile'
+import { downloadFile } from '../../lib/downloadFile'
 
 interface DownloadCvButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost'
@@ -13,11 +14,13 @@ const variantClass = {
   ghost: 'btn-ghost',
 } as const
 
+const CV_FILENAME = 'Robin-Fremy-CV.pdf'
+
 /**
  * "Download CV" action.
- * - If `profile.cvPdfUrl` is set, it links directly to that static PDF.
- * - Otherwise it opens the print dialog, where the dedicated print stylesheet
- *   produces a clean A4 document that can be saved as PDF.
+ * - If `profile.cvPdfUrl` is set, fetches the PDF and triggers a real file
+ *   download (the HTML `download` attribute is kept as a no-JS fallback).
+ * - Otherwise it opens the browser print dialog.
  */
 export function DownloadCvButton({
   variant = 'primary',
@@ -26,10 +29,23 @@ export function DownloadCvButton({
   onDone,
 }: DownloadCvButtonProps) {
   const classes = `${variantClass[variant]} ${className}`
+  const href = profile.cvPdfUrl
 
-  if (profile.cvPdfUrl) {
+  if (href) {
     return (
-      <a href={profile.cvPdfUrl} download="Robin-Fremy-CV.pdf" className={classes} onClick={onDone}>
+      <a
+        href={href}
+        download={CV_FILENAME}
+        type="application/pdf"
+        className={classes}
+        onClick={(event) => {
+          event.preventDefault()
+          void downloadFile(href, CV_FILENAME).catch(() => {
+            window.location.assign(href)
+          })
+          onDone?.()
+        }}
+      >
         {label}
         <DownloadIcon />
       </a>
@@ -42,7 +58,6 @@ export function DownloadCvButton({
       className={classes}
       onClick={() => {
         onDone?.()
-        // Let the menu close / repaint before the print dialog blocks the thread
         window.setTimeout(() => window.print(), 50)
       }}
       title="Opens the print dialog — choose “Save as PDF”"
