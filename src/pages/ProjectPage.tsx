@@ -174,6 +174,12 @@ function CaseHero({
             <Meta label="When" value={project.timeframe ?? '—'} />
             <Meta label="Tools" value={project.tools.join(' · ')} />
           </dl>
+          <div className="mt-10 flex flex-wrap items-center gap-2 border border-dashed border-ink/20 bg-[#fafafa] p-4">
+            <span className="rounded-sm bg-ink px-4 py-2 text-xs text-white">Primary</span>
+            <span className="rounded-sm border border-ink px-4 py-2 text-xs">Secondary</span>
+            <span className="px-4 py-2 text-xs text-muted">Disabled</span>
+            <span className="ml-auto font-mono text-[10px] text-muted">Prism / button · stable</span>
+          </div>
         </div>
       </header>
     )
@@ -182,7 +188,7 @@ function CaseHero({
   if (id === 'cpq') {
     return (
       <header className="border-b-2 border-ink">
-        <div className="mx-auto max-w-7xl px-6 pt-14 md:px-10 md:pt-20">
+        <div className="mx-auto max-w-7xl px-6 pt-14 pb-0 md:px-10 md:pt-20">
           {back}
           <p className="mt-10 font-mono text-[10px] uppercase">
             {folio} — {identityLabel.cpq}
@@ -191,18 +197,21 @@ function CaseHero({
           <p className="mt-6 max-w-2xl text-sm leading-relaxed">{project.thesis}</p>
           <ol className="mt-10 grid border-2 border-ink md:grid-cols-3">
             {['01 Product', '02 Configuration', '03 Summary'].map((step, i) => (
-              <li key={step} className={`px-4 py-3 font-mono text-[11px] uppercase ${i > 0 ? 'border-t-2 border-ink md:border-t-0 md:border-l-2' : ''}`}>
+              <li
+                key={step}
+                className={`px-4 py-3 font-mono text-[11px] uppercase ${i > 0 ? 'border-t-2 border-ink md:border-t-0 md:border-l-2' : ''}`}
+              >
                 {step}
               </li>
             ))}
           </ol>
+          <dl className="mb-0 grid border-2 border-t-0 border-ink sm:grid-cols-4">
+            <MetaHeavy label="Client" value={project.company} />
+            <MetaHeavy label="Role" value={shortRole} />
+            <MetaHeavy label="When" value={project.timeframe ?? '—'} />
+            <MetaHeavy label="Tools" value={project.tools.join(' · ')} />
+          </dl>
         </div>
-        <dl className="mx-auto grid max-w-7xl border-t-2 border-ink sm:grid-cols-4">
-          <MetaHeavy label="Client" value={project.company} />
-          <MetaHeavy label="Role" value={shortRole} />
-          <MetaHeavy label="When" value={project.timeframe ?? '—'} />
-          <MetaHeavy label="Tools" value={project.tools.join(' · ')} />
-        </dl>
       </header>
     )
   }
