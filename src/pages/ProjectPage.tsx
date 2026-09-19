@@ -120,7 +120,9 @@ function CaseHero({
   const back = (
     <Link
       to={homeSection('projects')}
-      className={`inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.16em] uppercase ${linkMute(id)}`}
+      className={`inline-flex items-center gap-2 font-sans text-[10px] tracking-[0.16em] uppercase ${
+        id === 'system' ? 'text-white/70 hover:text-white' : linkMute(id)
+      }`}
     >
       <span aria-hidden="true">←</span>
       Selected projects

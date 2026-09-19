@@ -100,6 +100,8 @@ export interface Project {
   decisions: ProjectDecision[]
   process: ProjectProcessStep[]
   screens: ProjectScreen[]
+  /** Screen shown on the homepage card. Defaults to screens[0]. */
+  previewScreen?: string
 }
 
 export interface SkillGroup {

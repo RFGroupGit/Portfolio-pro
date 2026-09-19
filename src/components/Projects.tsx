@@ -34,7 +34,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     { label: 'Result', value: project.result },
   ]
   const flipped = index % 2 === 1
-  const preview = project.screens[0]?.id
+  const preview = project.previewScreen ?? project.screens[0]?.id
 
   return (
     <article className="border-t border-ink py-12 md:py-16 print:py-4">

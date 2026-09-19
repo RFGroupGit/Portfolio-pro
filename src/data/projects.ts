@@ -311,6 +311,7 @@ export const projects: Project[] = [
       'Reps could produce a complex quote in one sitting. Conflicts were visible before submit, so engineering stopped being the validation layer. The same three-step pattern was reused on other product lines.',
     image: '/projects/cpq-quote-builder.svg',
     imageAlt: 'Quote Builder industrial three-step configurator with live pricing column',
+    previewScreen: 'quote-step1',
     responsibilities: [
       'Developed front-end features for CPQ software solutions',
       'Implemented responsive user interfaces',
