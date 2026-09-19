@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
-import type { Project } from '../data/types'
+import type { Project, ProjectIdentity } from '../data/types'
+import { ProjectMock } from './screens/ProjectMocks'
 import { Section } from './ui/Section'
 
 export function Projects() {
@@ -9,7 +10,7 @@ export function Projects() {
       id="projects"
       number="03"
       title="Selected projects"
-      intro="Four pieces of work, each opened as a case study: the problem, the process that matches the CV, and the screens that were designed or built."
+      intro="Four pieces of work, each with its own product language. Open a case study for the people, the decisions, the process that matches the CV, and the screens."
       wide
     >
       <ul>
@@ -33,25 +34,30 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     { label: 'Result', value: project.result },
   ]
   const flipped = index % 2 === 1
+  const preview = project.screens[0]?.id
 
   return (
     <article className="border-t border-ink py-12 md:py-16 print:py-4">
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <figure className={`lg:col-span-5 ${flipped ? 'lg:order-2' : ''}`}>
           <Link to={href} className="print-hidden group block" aria-label={`Open case study: ${project.name}`}>
-            {project.image ? (
-              <img
-                src={project.image}
-                alt={project.imageAlt ?? `${project.name} — preview`}
-                loading="eager"
-                decoding="async"
-                width={1200}
-                height={750}
-                className="aspect-[16/10] w-full border border-ink/15 object-cover grayscale transition duration-500 group-hover:grayscale-0"
-              />
-            ) : (
-              <ImagePlaceholder index={index} />
-            )}
+            <div className={`overflow-hidden ${previewFrame(project.identity)}`}>
+              {preview ? (
+                <div className="pointer-events-none origin-top scale-[0.99]">
+                  <ProjectMock id={preview} />
+                </div>
+              ) : project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.imageAlt ?? `${project.name} — preview`}
+                  width={1200}
+                  height={750}
+                  className="aspect-[16/10] w-full object-cover"
+                />
+              ) : (
+                <ImagePlaceholder index={index} />
+              )}
+            </div>
           </Link>
           {project.image ? (
             <img
@@ -106,7 +112,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </p>
 
           <p className="print-hidden mt-6">
-            <Link to={href} className="btn-secondary">
+            <Link to={href} className={project.identity === 'cpq' ? 'btn-secondary rounded-none' : 'btn-secondary'}>
               Open case study
             </Link>
           </p>
@@ -114,6 +120,19 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       </div>
     </article>
   )
+}
+
+function previewFrame(identity: ProjectIdentity) {
+  switch (identity) {
+    case 'ops':
+      return 'bg-ink'
+    case 'system':
+      return 'border border-ink/20 bg-white'
+    case 'cpq':
+      return 'border-2 border-ink bg-[#e8e6e1]'
+    case 'editorial':
+      return 'rounded-2xl bg-white shadow-[0_20px_50px_-32px_rgba(11,11,11,0.35)]'
+  }
 }
 
 function ImagePlaceholder({ index }: { index: number }) {

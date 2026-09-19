@@ -46,6 +46,7 @@ export interface ProjectMetric {
 export interface ProjectProcessStep {
   title: string
   body: string
+  artifacts?: string[]
 }
 
 export interface ProjectScreen {
@@ -55,15 +56,32 @@ export interface ProjectScreen {
   device: 'desktop' | 'mobile'
 }
 
+export interface ProjectUser {
+  name: string
+  role: string
+  need: string
+}
+
+export interface ProjectDecision {
+  title: string
+  body: string
+}
+
+/** Visual language of the case-study page and reconstructed product UI. */
+export type ProjectIdentity = 'ops' | 'system' | 'cpq' | 'editorial'
+
 export interface Project {
   slug: string
   name: string
   company: string
+  identity: ProjectIdentity
   /** Short tag line under the name, e.g. "B2B SaaS · Redesign" */
   category: string
   /** e.g. "2024 — 2025 · 8 months" */
   timeframe?: string
   summary: string
+  /** Longer framing paragraph on the case-study hero. */
+  thesis: string
   context: string
   problem: string
   solution: string
@@ -77,6 +95,9 @@ export interface Project {
   imageAlt?: string
   /** CV-aligned responsibilities shown on the case-study page. */
   responsibilities: string[]
+  users: ProjectUser[]
+  constraints: string[]
+  decisions: ProjectDecision[]
   process: ProjectProcessStep[]
   screens: ProjectScreen[]
 }
