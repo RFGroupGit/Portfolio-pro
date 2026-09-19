@@ -107,7 +107,7 @@ export function ProjectPage() {
           </div>
         ) : null}
 
-        <section id="overview" className="scroll-mt-28 border-b border-ink/15 py-20 md:scroll-mt-16 md:py-28">
+        <section id="overview" className="scroll-mt-32 border-b border-ink/15 py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
             <p className="eyebrow mb-10">Overview</p>
             <div className="grid gap-12 lg:grid-cols-3">
@@ -118,7 +118,7 @@ export function ProjectPage() {
           </div>
         </section>
 
-        <section id="responsibilities" className="scroll-mt-28 border-b border-ink/15 py-20 md:scroll-mt-16 md:py-28">
+        <section id="responsibilities" className="scroll-mt-32 border-b border-ink/15 py-20 md:py-28">
           <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <p className="eyebrow mb-5">Role</p>
@@ -139,7 +139,7 @@ export function ProjectPage() {
           </div>
         </section>
 
-        <section id="process" className="scroll-mt-28 border-b border-ink/15 py-20 md:scroll-mt-16 md:py-28">
+        <section id="process" className="scroll-mt-32 border-b border-ink/15 py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
             <p className="eyebrow mb-5">Process</p>
             <h2 className="font-display mb-16 max-w-3xl text-3xl tracking-tight text-ink md:text-5xl">
@@ -164,7 +164,7 @@ export function ProjectPage() {
           </div>
         </section>
 
-        <section id="screens" className="scroll-mt-28 border-b border-ink/15 py-20 md:scroll-mt-16 md:py-28">
+        <section id="screens" className="scroll-mt-32 border-b border-ink/15 py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
             <p className="eyebrow mb-5">Screens</p>
             <h2 className="font-display mb-6 max-w-3xl text-3xl tracking-tight text-ink md:text-5xl">
@@ -196,7 +196,7 @@ export function ProjectPage() {
           </div>
         </section>
 
-        <section id="outcome" className="scroll-mt-28 py-20 md:scroll-mt-16 md:py-28">
+        <section id="outcome" className="scroll-mt-32 py-20 md:py-28">
           <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <p className="eyebrow mb-5">Outcome</p>
