@@ -178,7 +178,7 @@ export function ProjectPage() {
             <ol className="space-y-24">
               {project.screens.map((screen, i) => (
                 <li key={screen.id} className="grid items-start gap-8 lg:grid-cols-12">
-                  <div className="lg:col-span-4 lg:sticky lg:top-28">
+                  <div className="lg:col-span-4">
                     <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-muted">
                       {String(i + 1).padStart(2, '0')}
                       <span className="mx-2 text-ink/30">/</span>
