@@ -428,7 +428,7 @@ function Colour() {
       <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(opsColorCss).map(([key, { token, value, use }]) => (
           <div key={key} className="border border-white/10">
-            <div className="h-20 border-b border-white/10" style={{ background: value }} />
+            <div className="h-20 border-b border-white/10" style={{ background: value, boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.12)' }} />
             <div className="p-3">
               <p className="font-mono text-[10px]">{token}</p>
               <p className="mt-1 font-mono text-[10px] text-white/40">{value}</p>

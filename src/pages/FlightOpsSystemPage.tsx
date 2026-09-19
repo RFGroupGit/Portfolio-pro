@@ -1,11 +1,12 @@
 import { useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { DsPanel, dsNav, isDsPageId, type DsPageId } from '../design-system/flight-ops/panels'
 
 export function FlightOpsSystemPage() {
-  const [params, setParams] = useSearchParams()
+  const { search } = useLocation()
+  const [, setParams] = useSearchParams()
   const [query, setQuery] = useState('')
-  const requested = params.get('p') ?? 'overview'
+  const requested = new URLSearchParams(search).get('p') ?? 'overview'
   const page: DsPageId = isDsPageId(requested) ? requested : 'overview'
 
   const groups = useMemo(() => {
@@ -73,7 +74,8 @@ export function FlightOpsSystemPage() {
                   {group.items.map((item) => (
                     <li key={item.id}>
                       <Link
-                        to={`/projects/flight-ops/system?p=${item.id}`}
+                        to={{ pathname: '/projects/flight-ops/system', search: `?p=${item.id}` }}
+                        onClick={() => setParams({ p: item.id })}
                         aria-current={page === item.id ? 'page' : undefined}
                         className={`block py-1 font-mono text-[11px] ${
                           page === item.id ? 'text-white' : 'text-white/40 hover:text-white'
