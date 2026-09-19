@@ -17,9 +17,9 @@ const toc = [
 
 const identityLabel: Record<ProjectIdentity, string> = {
   ops: 'Xpatial · Dronemapping',
-  system: 'Design-system documentation',
-  cpq: 'Industrial CPQ',
-  editorial: 'Product marketing',
+  system: 'Lensys · Bow Medical',
+  cpq: 'Techform · Visiativ CPQ',
+  editorial: 'Cegedim Santé',
 }
 
 export function ProjectPage() {
@@ -162,30 +162,30 @@ function CaseHero({
 
   if (id === 'system') {
     return (
-      <header className="border-b border-ink/15 bg-white">
+      <header className="border-b border-[#1B4F9E]/12 bg-gradient-to-br from-[#1B4F9E] via-[#0C71C3] to-[#5BA3D9] text-white">
         <div className="mx-auto max-w-7xl px-6 pt-14 pb-16 md:px-10 md:pt-20 md:pb-20">
           {back}
           <div className="mt-12 grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted">
+              <p className="font-sans text-[10px] font-semibold tracking-[0.18em] uppercase text-white/70">
                 {folio} / {identityLabel.system}
               </p>
               <h1 className="font-display mt-4 text-5xl leading-none tracking-tight md:text-6xl">{project.name}</h1>
-              <p className="mt-2 font-mono text-sm text-muted">{project.company} library</p>
+              <p className="mt-2 font-sans text-sm text-white/70">{project.company} library</p>
             </div>
-            <p className="max-w-xl text-lg leading-relaxed text-ink-soft lg:col-span-8">{project.thesis}</p>
+            <p className="max-w-xl text-lg leading-relaxed text-white/80 lg:col-span-8">{project.thesis}</p>
           </div>
-          <dl className="mt-12 grid gap-px bg-ink/10 sm:grid-cols-4">
-            <Meta label="Client" value={project.company} />
-            <Meta label="Role" value={shortRole} />
-            <Meta label="When" value={project.timeframe ?? '—'} />
-            <Meta label="Tools" value={project.tools.join(' · ')} />
+          <dl className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-4">
+            <MetaOnBlue label="Client" value={project.company} />
+            <MetaOnBlue label="Role" value={shortRole} />
+            <MetaOnBlue label="When" value={project.timeframe ?? '—'} />
+            <MetaOnBlue label="Tools" value={project.tools.join(' · ')} />
           </dl>
-          <div className="mt-10 flex flex-wrap items-center gap-2 border border-dashed border-ink/20 bg-[#fafafa] p-4">
-            <span className="rounded-sm bg-ink px-4 py-2 text-xs text-white">Primary</span>
-            <span className="rounded-sm border border-ink px-4 py-2 text-xs">Secondary</span>
-            <span className="px-4 py-2 text-xs text-muted">Disabled</span>
-            <span className="ml-auto font-mono text-[10px] text-muted">Prism / button · stable</span>
+          <div className="mt-10 flex flex-wrap items-center gap-2 rounded-2xl bg-white/10 p-4">
+            <span className="rounded-full bg-white px-4 py-2 text-xs text-[#1B4F9E]">Primary</span>
+            <span className="rounded-full border border-white/70 px-4 py-2 text-xs text-white">Secondary</span>
+            <span className="px-4 py-2 text-xs text-white/50">Disabled</span>
+            <span className="ml-auto font-sans text-[10px] text-white/60">Prism / button · Bow Medical navy</span>
           </div>
         </div>
       </header>
@@ -194,29 +194,28 @@ function CaseHero({
 
   if (id === 'cpq') {
     return (
-      <header className="border-b-2 border-ink">
-        <div className="mx-auto max-w-7xl px-6 pt-14 pb-0 md:px-10 md:pt-20">
+      <header className="border-b border-black/8">
+        <div className="mx-auto max-w-7xl px-6 pt-14 pb-10 md:px-10 md:pt-20">
           {back}
-          <p className="mt-10 font-mono text-[10px] uppercase">
-            {folio} — {identityLabel.cpq}
-          </p>
-          <h1 className="font-display mt-3 text-5xl leading-none tracking-tight md:text-7xl">{project.name}</h1>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed">{project.thesis}</p>
-          <ol className="mt-10 grid border-2 border-ink md:grid-cols-3">
-            {['01 Product', '02 Configuration', '03 Summary'].map((step, i) => (
-              <li
-                key={step}
-                className={`px-4 py-3 font-mono text-[11px] uppercase ${i > 0 ? 'border-t-2 border-ink md:border-t-0 md:border-l-2' : ''}`}
-              >
-                {step}
-              </li>
-            ))}
-          </ol>
-          <dl className="mb-0 grid border-2 border-t-0 border-ink sm:grid-cols-4">
-            <MetaHeavy label="Client" value={project.company} />
-            <MetaHeavy label="Role" value={shortRole} />
-            <MetaHeavy label="When" value={project.timeframe ?? '—'} />
-            <MetaHeavy label="Tools" value={project.tools.join(' · ')} />
+          <div className="mt-10 overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#ffb56a] via-[#c44bff] to-[#62c4ff] p-8 text-white md:p-12">
+            <p className="font-sans text-[10px] font-semibold tracking-[0.16em] uppercase text-white/80">
+              {folio} — {identityLabel.cpq}
+            </p>
+            <h1 className="font-display mt-3 text-5xl leading-none font-semibold tracking-tight md:text-7xl">{project.name}</h1>
+            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/85">{project.thesis}</p>
+            <ol className="mt-10 flex flex-wrap gap-2">
+              {['01 Product', '02 Configuration', '03 Summary'].map((step) => (
+                <li key={step} className="rounded-full bg-white/20 px-4 py-2 font-sans text-[11px] font-medium">
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+          <dl className="mt-6 grid gap-3 sm:grid-cols-4">
+            <MetaSoft label="Client" value={project.company} />
+            <MetaSoft label="Role" value={shortRole} />
+            <MetaSoft label="When" value={project.timeframe ?? '—'} />
+            <MetaSoft label="Tools" value={project.tools.join(' · ')} />
           </dl>
         </div>
       </header>
@@ -224,17 +223,18 @@ function CaseHero({
   }
 
   return (
-    <header className="border-b border-ink/10">
+    <header className="border-b border-[#105C77]/10">
       <div className="mx-auto max-w-3xl px-6 pt-16 pb-20 text-center md:px-10 md:pt-24 md:pb-28">
         {back}
-        <p className="mt-12 text-[10px] tracking-[0.22em] uppercase text-muted">
+        <p className="mt-12 text-[10px] tracking-[0.22em] uppercase text-[#13BBB2]">
           {folio} · {identityLabel.editorial}
         </p>
-        <h1 className="font-display mt-6 text-5xl leading-[0.92] tracking-tight md:text-7xl">{project.name}</h1>
-        <p className="mt-8 text-lede text-ink-soft">{project.thesis}</p>
-        <p className="mt-8 font-mono text-[10px] tracking-[0.14em] uppercase text-muted">
+        <h1 className="font-display mt-6 text-5xl leading-[0.92] font-light tracking-tight md:text-7xl">{project.name}</h1>
+        <p className="mt-8 text-lede text-[#105C77]/80">{project.thesis}</p>
+        <p className="mt-8 font-sans text-[10px] tracking-[0.14em] uppercase text-[#105C77]/50">
           {project.company} · {shortRole} · {project.timeframe}
         </p>
+        <p className="mt-8 inline-block rounded bg-[#FB5080] px-5 py-2.5 text-[11px] font-medium text-white">Request a demo</p>
       </div>
     </header>
   )
@@ -257,11 +257,11 @@ function MetricsBand({ project }: { project: Project }) {
   }
   if (id === 'cpq') {
     return (
-      <dl className="grid border-b-2 border-ink sm:grid-cols-3">
+      <dl className="grid border-b border-black/8 sm:grid-cols-3">
         {items.map((metric) => (
-          <div key={metric.label} className="border-ink px-6 py-6 sm:border-r-2 last:border-r-0 md:px-10">
-            <dt className="font-mono text-[10px] uppercase">{metric.label}</dt>
-            <dd className="mt-1 font-display text-3xl">{metric.value}</dd>
+          <div key={metric.label} className="border-black/8 px-6 py-6 sm:border-r last:border-r-0 md:px-10">
+            <dt className="font-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6000FF]">{metric.label}</dt>
+            <dd className="mt-1 font-display text-3xl font-semibold">{metric.value}</dd>
           </div>
         ))}
       </dl>
@@ -272,19 +272,19 @@ function MetricsBand({ project }: { project: Project }) {
       <dl className="mx-auto grid max-w-3xl gap-10 px-6 py-16 md:grid-cols-3 md:px-10">
         {items.map((metric) => (
           <div key={metric.label} className="text-center">
-            <dd className="font-display text-3xl">{metric.value}</dd>
-            <dt className="mt-2 text-[11px] text-muted">{metric.label}</dt>
+            <dd className="font-display text-3xl font-light text-[#105C77]">{metric.value}</dd>
+            <dt className="mt-2 text-[11px] text-[#13BBB2]">{metric.label}</dt>
           </div>
         ))}
       </dl>
     )
   }
   return (
-    <dl className="mx-auto grid max-w-7xl grid-cols-1 gap-px bg-ink/10 sm:grid-cols-3">
+    <dl className="mx-auto grid max-w-7xl grid-cols-1 gap-px bg-[#1B4F9E]/10 sm:grid-cols-3">
       {items.map((metric) => (
         <div key={metric.label} className="bg-white px-6 py-10 md:px-10">
-          <dt className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted">{metric.label}</dt>
-          <dd className="mt-3 font-display text-4xl leading-none tracking-tight md:text-5xl">{metric.value}</dd>
+          <dt className="font-sans text-[10px] font-semibold tracking-[0.14em] uppercase text-[#1B4F9E]/55">{metric.label}</dt>
+          <dd className="mt-3 font-display text-4xl leading-none tracking-tight text-[#1B4F9E] md:text-5xl">{metric.value}</dd>
         </div>
       ))}
     </dl>
@@ -327,23 +327,25 @@ function PeopleSection({ project }: { project: Project }) {
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <p className={`mb-5 ${eyebrow(id)}`}>People</p>
         <h2 className="font-display mb-12 max-w-3xl text-3xl tracking-tight md:text-5xl">Who this was for</h2>
-        <ul className={id === 'cpq' ? 'grid border-2 border-ink md:grid-cols-3' : 'grid gap-8 md:grid-cols-3'}>
+        <ul className="grid gap-8 md:grid-cols-3">
           {project.users.map((user) => (
             <li
               key={user.name}
               className={
                 id === 'cpq'
-                  ? 'border-ink p-5 md:border-r-2 last:border-r-0'
+                  ? 'rounded-2xl bg-white p-5 shadow-[0_12px_40px_-28px_rgba(18,18,18,0.35)]'
                   : id === 'ops'
                     ? 'border border-white/15 p-5'
-                    : 'border-t border-current/15 pt-5'
+                    : id === 'system'
+                      ? 'rounded-2xl border border-[#1B4F9E]/12 bg-white p-5'
+                      : id === 'editorial'
+                        ? 'rounded-xl border border-[#105C77]/10 bg-[#EDF3F6] p-5'
+                        : 'border-t border-current/15 pt-5'
               }
             >
               <p className="font-display text-2xl">{user.name}</p>
-              <p className={`mt-1 font-mono text-[10px] tracking-[0.14em] uppercase ${id === 'ops' ? 'text-white/40' : 'text-muted'}`}>
-                {user.role}
-              </p>
-              <p className={`mt-4 text-sm leading-relaxed ${id === 'ops' ? 'text-white/70' : 'text-ink-soft'}`}>{user.need}</p>
+              <p className={`mt-1 font-sans text-[10px] tracking-[0.14em] uppercase ${mute(id)}`}>{user.role}</p>
+              <p className={`mt-4 text-sm leading-relaxed ${soft(id)}`}>{user.need}</p>
             </li>
           ))}
         </ul>
@@ -351,7 +353,7 @@ function PeopleSection({ project }: { project: Project }) {
           <p className={`mb-5 ${eyebrow(id)}`}>Constraints</p>
           <ul className="max-w-3xl space-y-3">
             {project.constraints.map((item) => (
-              <li key={item} className={`text-sm leading-relaxed ${id === 'ops' ? 'text-white/70' : 'text-ink-soft'}`}>
+              <li key={item} className={`text-sm leading-relaxed ${soft(id)}`}>
                 — {item}
               </li>
             ))}
@@ -371,11 +373,11 @@ function DecisionsSection({ project }: { project: Project }) {
         <h2 className="font-display mb-12 max-w-3xl text-3xl tracking-tight md:text-5xl">Calls that shaped the product</h2>
         <ol>
           {project.decisions.map((item, i) => (
-            <li key={item.title} className={`grid gap-4 py-8 md:grid-cols-12 ${id === 'cpq' ? 'border-t-2 border-ink' : 'border-t border-current/20'}`}>
+            <li key={item.title} className={`grid gap-4 py-8 md:grid-cols-12 ${id === 'cpq' ? 'border-t border-black/8' : 'border-t border-current/20'}`}>
               <p className="font-display text-3xl md:col-span-2">{String(i + 1).padStart(2, '0')}</p>
               <div className="md:col-span-9">
                 <h3 className="font-display text-2xl tracking-tight">{item.title}</h3>
-                <p className={`mt-3 max-w-2xl text-sm leading-relaxed ${id === 'ops' ? 'text-white/70' : 'text-ink-soft'}`}>{item.body}</p>
+                <p className={`mt-3 max-w-2xl text-sm leading-relaxed ${soft(id)}`}>{item.body}</p>
               </div>
             </li>
           ))}
@@ -400,9 +402,9 @@ function ProcessSection({ project }: { project: Project }) {
                 id === 'ops'
                   ? 'relative pb-12 last:pb-0'
                   : id === 'system'
-                    ? 'grid gap-6 border-t border-ink/15 py-10 md:grid-cols-12'
+                    ? 'grid gap-6 border-t border-[#1B4F9E]/12 py-10 md:grid-cols-12'
                     : id === 'cpq'
-                      ? 'grid gap-4 border-t-2 border-ink py-10 md:grid-cols-12'
+                      ? 'grid gap-4 border-t border-black/8 py-10 md:grid-cols-12'
                       : 'py-10 first:pt-0'
               }
             >
@@ -411,9 +413,9 @@ function ProcessSection({ project }: { project: Project }) {
               ) : null}
               {id === 'editorial' ? (
                 <>
-                  <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted">{String(i + 1).padStart(2, '0')}</p>
+                  <p className={`font-sans text-[10px] tracking-[0.18em] uppercase ${mute(id)}`}>{String(i + 1).padStart(2, '0')}</p>
                   <h3 className="font-display mt-2 text-3xl tracking-tight">{step.title}</h3>
-                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-soft">{step.body}</p>
+                  <p className={`mt-4 max-w-2xl text-sm leading-relaxed ${soft(id)}`}>{step.body}</p>
                 </>
               ) : (
                 <>
@@ -423,11 +425,11 @@ function ProcessSection({ project }: { project: Project }) {
                   <div className="md:col-span-9">
                     {id !== 'ops' ? null : <span className="sr-only">Step</span>}
                     <h3 className={`font-display tracking-tight ${id === 'ops' ? 'text-2xl' : 'text-2xl md:text-3xl'}`}>{step.title}</h3>
-                    <p className={`mt-4 max-w-2xl text-sm leading-relaxed ${id === 'ops' ? 'text-white/70' : 'text-ink-soft'}`}>
+                  <p className={`mt-4 max-w-2xl text-sm leading-relaxed ${soft(id)}`}>
                       {step.body}
                     </p>
                     {step.artifacts ? (
-                      <p className={`mt-4 font-mono text-[10px] tracking-[0.08em] uppercase ${id === 'ops' ? 'text-white/40' : 'text-muted'}`}>
+                      <p className={`mt-4 font-sans text-[10px] tracking-[0.08em] uppercase ${mute(id)}`}>
                         {step.artifacts.join(' · ')}
                       </p>
                     ) : null}
@@ -435,7 +437,7 @@ function ProcessSection({ project }: { project: Project }) {
                 </>
               )}
               {id === 'editorial' && step.artifacts ? (
-                <p className="mt-3 font-mono text-[10px] tracking-[0.08em] uppercase text-muted">{step.artifacts.join(' · ')}</p>
+                <p className={`mt-3 font-sans text-[10px] tracking-[0.08em] uppercase ${mute(id)}`}>{step.artifacts.join(' · ')}</p>
               ) : null}
             </li>
           ))}
@@ -454,7 +456,7 @@ function ScreensSection({ project }: { project: Project }) {
         <h2 className="font-display mb-6 max-w-3xl text-3xl tracking-tight md:text-5xl">
           {id === 'system' ? 'The library, specified' : id === 'editorial' ? 'Templates and measurement' : 'Interfaces designed for this work'}
         </h2>
-        <p className={`mb-16 max-w-xl text-sm leading-relaxed ${id === 'ops' ? 'text-white/50' : 'text-muted'}`}>
+        <p className={`mb-16 max-w-xl text-sm leading-relaxed ${mute(id)}`}>
           Reconstructed product UI from the problems, flows and responsibilities on the CV — not client screenshots.
           Each frame is a concrete step in the delivery, in the visual language of that product.
         </p>
@@ -462,13 +464,13 @@ function ScreensSection({ project }: { project: Project }) {
           {project.screens.map((screen, i) => (
             <li key={screen.id} className={`grid items-start gap-8 ${id === 'editorial' ? 'lg:grid-cols-1' : 'lg:grid-cols-12'}`}>
               <div className={id === 'editorial' ? 'max-w-xl' : 'lg:col-span-4'}>
-                <p className={`font-mono text-[10px] tracking-[0.16em] uppercase ${id === 'ops' ? 'text-white/40' : 'text-muted'}`}>
+                <p className={`font-sans text-[10px] tracking-[0.16em] uppercase ${mute(id)}`}>
                   {String(i + 1).padStart(2, '0')}
                   <span className="mx-2 opacity-30">/</span>
                   {screen.device}
                 </p>
                 <h3 className="font-display mt-3 text-2xl tracking-tight md:text-3xl">{screen.title}</h3>
-                <p className={`mt-3 max-w-sm text-sm leading-relaxed ${id === 'ops' ? 'text-white/70' : 'text-ink-soft'}`}>
+                <p className={`mt-3 max-w-sm text-sm leading-relaxed ${soft(id)}`}>
                   {screen.caption}
                 </p>
               </div>
@@ -510,26 +512,26 @@ function OutcomeSection({ project }: { project: Project }) {
         </div>
         <div className="lg:col-span-8">
           <p className="max-w-2xl text-lg leading-relaxed md:text-xl">{project.result}</p>
-          <p className={`mt-8 max-w-2xl text-sm leading-relaxed ${id === 'ops' ? 'text-white/50' : 'text-muted'}`}>{project.role}</p>
+          <p className={`mt-8 max-w-2xl text-sm leading-relaxed ${mute(id)}`}>{project.role}</p>
         </div>
       </div>
     </section>
   )
 }
 
-function Meta({ label, value }: { label: string; value: string }) {
+function MetaOnBlue({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-white px-5 py-5 md:px-6">
-      <dt className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted">{label}</dt>
-      <dd className="mt-2 text-sm leading-snug">{value}</dd>
+    <div className="bg-white/10 px-5 py-5 md:px-6">
+      <dt className="font-sans text-[10px] tracking-[0.14em] uppercase text-white/55">{label}</dt>
+      <dd className="mt-2 text-sm leading-snug text-white">{value}</dd>
     </div>
   )
 }
 
-function MetaHeavy({ label, value }: { label: string; value: string }) {
+function MetaSoft({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border-ink px-5 py-4 sm:border-r-2 last:border-r-0">
-      <dt className="font-mono text-[10px] uppercase">{label}</dt>
+    <div className="rounded-2xl bg-white px-5 py-4">
+      <dt className="font-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6000FF]">{label}</dt>
       <dd className="mt-1 text-sm">{value}</dd>
     </div>
   )
@@ -553,16 +555,42 @@ function OverviewBlock({ title, body }: { title: string; body: string }) {
   )
 }
 
+function mute(id: ProjectIdentity) {
+  switch (id) {
+    case 'ops':
+      return 'text-white/40'
+    case 'system':
+      return 'text-[#1B4F9E]/45'
+    case 'cpq':
+      return 'text-[#595a70]'
+    case 'editorial':
+      return 'text-[#105C77]/45'
+  }
+}
+
+function soft(id: ProjectIdentity) {
+  switch (id) {
+    case 'ops':
+      return 'text-white/70'
+    case 'system':
+      return 'text-[#333]/80'
+    case 'cpq':
+      return 'text-[#454545]'
+    case 'editorial':
+      return 'text-[#105C77]/75'
+  }
+}
+
 function shellClass(id: ProjectIdentity) {
   switch (id) {
     case 'ops':
       return 'bg-[#1F232C] text-paper'
     case 'system':
-      return 'bg-[#f7f7f5] text-ink'
+      return 'bg-[#F4F8FC] text-[#333]'
     case 'cpq':
-      return 'bg-[#e8e6e1] text-ink'
+      return 'bg-[#f7f7fd] text-[#121212]'
     case 'editorial':
-      return 'bg-paper text-ink'
+      return 'bg-white text-[#105C77]'
   }
 }
 
@@ -571,33 +599,50 @@ function navClass(id: ProjectIdentity) {
     case 'ops':
       return 'border-white/10 bg-[#1F232C]'
     case 'system':
-      return 'border-ink/10 bg-white'
+      return 'border-[#1B4F9E]/12 bg-white'
     case 'cpq':
-      return 'border-ink bg-[#e8e6e1]'
+      return 'border-black/8 bg-[#f7f7fd]'
     case 'editorial':
-      return 'border-ink/10 bg-paper'
+      return 'border-[#105C77]/10 bg-white'
   }
 }
 
 function linkMute(id: ProjectIdentity) {
-  return id === 'ops' ? 'text-white/45 hover:text-white' : 'text-muted hover:text-ink'
+  switch (id) {
+    case 'ops':
+      return 'text-white/45 hover:text-white'
+    case 'system':
+      return 'text-[#1B4F9E]/45 hover:text-[#1B4F9E]'
+    case 'cpq':
+      return 'text-[#595a70] hover:text-[#121212]'
+    case 'editorial':
+      return 'text-[#105C77]/45 hover:text-[#105C77]'
+  }
 }
 
 function sectionRule(id: ProjectIdentity) {
-  if (id === 'cpq') return 'border-b-2 border-ink'
+  if (id === 'cpq') return 'border-b border-black/8'
   if (id === 'ops') return 'border-b border-white/10'
-  return 'border-b border-ink/15'
+  if (id === 'editorial') return 'border-b border-[#105C77]/10'
+  return 'border-b border-[#1B4F9E]/12'
 }
 
 function eyebrow(id: ProjectIdentity) {
-  return id === 'ops'
-    ? 'font-sans text-[10px] font-semibold tracking-[0.14em] uppercase text-[#FF6161]'
-    : 'eyebrow'
+  switch (id) {
+    case 'ops':
+      return 'font-sans text-[10px] font-semibold tracking-[0.14em] uppercase text-[#FF6161]'
+    case 'system':
+      return 'font-sans text-[10px] font-semibold tracking-[0.14em] uppercase text-[#1B4F9E]'
+    case 'cpq':
+      return 'font-sans text-[10px] font-semibold tracking-[0.14em] uppercase text-[#6000FF]'
+    case 'editorial':
+      return 'font-sans text-[10px] font-semibold tracking-[0.14em] uppercase text-[#13BBB2]'
+  }
 }
 
 function adjacentClass(id: ProjectIdentity) {
   if (id === 'ops') return 'border-t border-white/10 bg-[#1F232C] text-paper'
-  if (id === 'cpq') return 'border-t-2 border-ink bg-ink text-[#e8e6e1]'
-  if (id === 'system') return 'border-t border-ink bg-ink text-paper'
-  return 'border-t border-ink bg-night text-paper'
+  if (id === 'cpq') return 'border-t border-black/8 bg-[#121212] text-white'
+  if (id === 'system') return 'border-t border-[#1B4F9E] bg-[#1B4F9E] text-white'
+  return 'border-t border-[#105C77] bg-[#105C77] text-white'
 }

@@ -112,7 +112,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </p>
 
           <p className="print-hidden mt-6">
-            <Link to={href} className={project.identity === 'cpq' ? 'btn-secondary rounded-none' : 'btn-secondary'}>
+            <Link to={href} className={ctaClass(project.identity)}>
               Open case study
             </Link>
           </p>
@@ -125,13 +125,26 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 function previewFrame(identity: ProjectIdentity) {
   switch (identity) {
     case 'ops':
-      return 'bg-ink'
+      return 'rounded-xl bg-[#1F232C]'
     case 'system':
-      return 'border border-ink/20 bg-white'
+      return 'rounded-2xl border border-[#1B4F9E]/15 bg-white'
     case 'cpq':
-      return 'border-2 border-ink bg-[#e8e6e1]'
+      return 'rounded-[1.6rem] border border-black/8 bg-[#f7f7fd]'
     case 'editorial':
-      return 'rounded-2xl bg-white shadow-[0_20px_50px_-32px_rgba(11,11,11,0.35)]'
+      return 'rounded-2xl bg-white shadow-[0_20px_50px_-32px_rgba(16,92,119,0.35)]'
+  }
+}
+
+function ctaClass(identity: ProjectIdentity) {
+  switch (identity) {
+    case 'ops':
+      return 'btn-secondary'
+    case 'system':
+      return 'inline-flex h-11 items-center rounded-full bg-[#1B4F9E] px-5 text-xs font-medium tracking-[0.14em] text-white uppercase hover:bg-[#163f80]'
+    case 'cpq':
+      return 'inline-flex h-11 items-center rounded-full bg-[#121212] px-5 text-xs font-medium tracking-[0.14em] text-white uppercase hover:bg-[#2e3233]'
+    case 'editorial':
+      return 'inline-flex h-11 items-center rounded bg-[#FB5080] px-5 text-xs font-medium tracking-[0.14em] text-white uppercase hover:bg-[#e24673]'
   }
 }
 

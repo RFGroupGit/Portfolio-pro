@@ -153,7 +153,7 @@ export const projects: Project[] = [
     name: 'Prism',
     company: 'Lensys',
     identity: 'system',
-    category: 'Lensys · B2B software · Design System',
+    category: 'Lensys · Bow Medical · B2B software · Design System',
     timeframe: '2023 — 2024 · France · Alternance',
     summary: 'A shared Design System so four product squads stop redrawing the same buttons.',
     thesis:
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     problem:
       'Four squads, four button models, nine “primary” greys. Forms and tables drifted every sprint. Contrast was fixed after QA, not in the tokens. Every feature started from a blank artboard because nobody trusted the last file.',
     solution:
-      'I ran a UI inventory in workshops with the squads, killed accidental variants, then defined colour, type and spacing as tokens with AA contrast. Components were documented with states and do/don’t rules in a shared Figma library. Contribution went through a monthly review in Jira, next to feature work — not a side channel.',
+      'I ran a UI inventory in workshops with the squads, killed accidental variants, then defined colour, type and spacing as tokens with AA contrast in the Bow Medical clinical navy. Components were documented with states and do/don’t rules in a shared Figma library. Contribution went through a monthly review in Jira, next to feature work — not a side channel.',
     role: 'UX Designer — workshops, wireframes and interactive prototypes, scalable Design System, Agile coordination across squads.',
     tools: ['Figma', 'Figma Variables', 'Notion', 'Jira', 'Miro'],
     metrics: [
@@ -251,7 +251,7 @@ export const projects: Project[] = [
         id: 'prism-tokens',
         title: 'Foundations',
         caption:
-          'Documentation site. Colour, type and spacing tokens. Contrast is checked here so squads stop negotiating it on each screen.',
+          'Documentation site. Colour, type and spacing tokens in the Bow Medical navy. Contrast is checked here so squads stop negotiating it on each screen.',
         device: 'desktop',
       },
       {
@@ -279,7 +279,7 @@ export const projects: Project[] = [
         id: 'prism-product',
         title: 'In a Lensys product',
         caption:
-          'An orders screen rebuilt on Prism — same feature, one table, one button, one status. Proof the system can take production work.',
+          'An anaesthesia consultation screen rebuilt on Prism — same feature, one table, one button, one status, in the Bow Medical navy. Proof the system can take production work.',
         device: 'desktop',
       },
     ],
@@ -289,7 +289,7 @@ export const projects: Project[] = [
     name: 'Quote Builder',
     company: 'Techform',
     identity: 'cpq',
-    category: 'Techform · CPQ software · Front-end & UX',
+    category: 'Techform · Visiativ CPQ · Front-end & UX',
     timeframe: '2021 — 2022 · France · Alternance',
     summary: 'A guided CPQ flow I both designed and built, so sales could configure a quote without drowning in rules.',
     thesis:
@@ -299,7 +299,7 @@ export const projects: Project[] = [
     problem:
       'The legacy configurator dumped every rule on one page. Errors were caught by engineering days later. A complex quote took an afternoon. New reps were not trusted with a customer for months. Support tickets were a map of the UI we had not drawn.',
     solution:
-      'Working with PMs and designers, we reframed the job as product → configuration → summary. Progressive disclosure, inline validation of incompatible options, a live price in a persistent column. I built the HTML/CSS/JavaScript, kept the legacy app alive, and turned recurring tickets into contextual help.',
+      'Working with PMs and designers, we reframed the job as product → configuration → summary. Progressive disclosure, inline validation of incompatible options, a live price in a persistent column. I built the HTML/CSS/JavaScript in the Techform / Visiativ language — rounded product chrome, guided steps, a visible conflict — kept the legacy app alive, and turned recurring tickets into contextual help.',
     role: 'Front-End Developer — CPQ features, responsive UI, collaboration with PMs and designers, maintenance of the existing application, Agile delivery.',
     tools: ['Figma', 'HTML / CSS / JavaScript', 'Azure DevOps', 'Agile / Scrum'],
     metrics: [
@@ -426,7 +426,7 @@ export const projects: Project[] = [
     name: 'Product sites & SEO',
     company: 'Cegedim',
     identity: 'editorial',
-    category: 'Cegedim · Web + SEO',
+    category: 'Cegedim Santé · Web + SEO',
     timeframe: '2022 — 2023 · France · Alternance',
     summary: 'Mobile-first product pages, a demo form that works on a phone, and SEO so prospects can actually find the software.',
     thesis:
@@ -436,7 +436,7 @@ export const projects: Project[] = [
     problem:
       'The sites were not responsive. They ranked poorly on the queries prospects actually typed. The demo form had eleven fields and dropped most of its mobile traffic. Marketing, product and sales did not share a single idea of what a page was for.',
     solution:
-      'Workshops to lock audience, success (a demo request) and target queries. Then a mobile-first IA and templates I implemented in HTML/CSS/JavaScript. Semantic headings, metadata, internal links and performance were designed with the layout. Analytics and Search Console ran every sprint, not as a quarterly PDF.',
+      'Workshops to lock audience, success (a demo request) and target queries. Then a mobile-first IA and templates I implemented in HTML/CSS/JavaScript in the Cegedim Santé charter — teal navy, coral-pink demo action, one H1. Semantic headings, metadata, internal links and performance were designed with the layout. Analytics and Search Console ran every sprint, not as a quarterly PDF.',
     role: 'UX Designer / Front-End Developer — workshops, IA, responsive templates, front-end, SEO, analytics.',
     tools: ['Figma', 'HTML / CSS / JavaScript', 'Google Analytics', 'Google Search Console', 'Miro'],
     metrics: [
