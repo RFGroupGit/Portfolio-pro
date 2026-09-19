@@ -1,101 +1,247 @@
 import type { Project } from './types'
 
-/**
- * Selected projects — case studies written for recruiters:
- * context → problem → solution → role → outcome, plus three headline metrics.
- * Visuals live in /public/projects (SVG frames exported from the design files).
- */
 export const projects: Project[] = [
   {
-    name: 'Flight Ops — mission planning & data review',
+    slug: 'flight-ops',
+    name: 'Flight Ops',
+    company: 'Dronemapping',
     category: 'Dronemapping · Geospatial SaaS · Web + field app',
-    timeframe: '2024 — 2025 · 9 months',
+    timeframe: '2024 — 2025 · Melbourne',
+    summary: 'A single mission flow for professional drone operations — from briefing to geospatial data review.',
     context:
-      'Dronemapping provides mapping software to surveying, mining and energy companies. Pilots plan flights, capture thousands of images and hand them over to analysts who turn them into orthomosaics and 3D models.',
+      'At Dronemapping I designed interfaces for surveying, mining and energy crews. Pilots plan flights, capture thousands of images, and analysts turn them into orthomosaics and 3D models. The product had to work on a desktop in the office and on a phone in the field.',
     problem:
-      'Planning a mission required three separate tools and a spreadsheet. Pilots regularly launched flights with incomplete parameters, analysts received unusable datasets, and 1 in 5 missions had to be re-flown — the most expensive failure in the whole workflow.',
+      'Mission planning was split across three tools plus a spreadsheet. Parameters were often incomplete at take-off, analysts received unusable datasets, and expensive re-flights were treated as normal rather than as a product failure.',
     solution:
-      'Interviewed 14 pilots and analysts across three client sites, mapped the end-to-end mission lifecycle and redesigned it as a single guided flow: mission brief, flight parameters with live coverage preview on the map, pre-flight checklist on mobile, then a review workspace with quality flags. Built the components into the company Design System so engineering could ship it in two increments.',
-    role: 'Lead UX Designer — research, service blueprint, information architecture, prototyping, usability testing (2 rounds, 11 participants), Design System components, developer hand-off.',
-    tools: ['Figma', 'Miro', 'Azure DevOps', 'Design System', 'Usability testing'],
+      'I researched how pilots and analysts actually work, mapped the mission lifecycle, and designed a guided flow: brief, flight parameters with live coverage on the map, a mobile pre-flight checklist, then a review workspace with quality flags on the captured data. Components were added to the company Design System so engineering could ship in two increments.',
+    role: 'UX Designer — user research, requirements, wireframes and high-fidelity Figma prototypes, drone-ops UI, geospatial data views, Design System components.',
+    tools: ['Figma', 'Miro', 'Azure DevOps', 'Design System'],
     metrics: [
-      { value: '−38 %', label: 'mission planning time' },
-      { value: '−62 %', label: 're-flown missions' },
-      { value: '4.6 / 5', label: 'post-launch SUS-derived satisfaction' },
+      { value: '1 flow', label: 'instead of 3 tools + spreadsheet' },
+      { value: '2 apps', label: 'desktop ops + field checklist' },
+      { value: 'DS', label: 'components handed to engineering' },
     ],
     result:
-      'Adopted by all active client accounts within one quarter. Re-flights dropped from 19 % to 7 % of missions, planning time fell from 45 to 28 minutes on average, and the review workspace became the reference screen for the sales demo.',
+      'Operations moved onto a single planning and review path. Incomplete missions are caught before take-off, and the review workspace became the screen used in client demos.',
     image: '/projects/flight-ops.svg',
-    imageAlt:
-      'Flight Ops mission overview: map with survey area and flight path, mission stats panel, and a mobile pre-flight checklist frame',
+    imageAlt: 'Flight Ops mission overview with map, stats and a mobile pre-flight checklist',
+    responsibilities: [
+      'Conducted user research and analysed functional requirements with pilots and analysts',
+      'Designed wireframes and high-fidelity prototypes in Figma',
+      'Created interfaces dedicated to professional drone operations',
+      'Designed views to analyse and manage geospatial data collected by drones',
+      'Developed and maintained Design System components used by engineering',
+    ],
+    process: [
+      {
+        title: 'Research & requirements',
+        body: 'Site visits and interviews with pilots and analysts to document the real mission lifecycle — not the one in the spec. Functional requirements were rewritten around “ready to fly” and “usable dataset”, not around form fields.',
+      },
+      {
+        title: 'Wireframes & hi-fi in Figma',
+        body: 'Low-fi flows for briefing, parameters, checklist and review, then high-fidelity prototypes tested with operations before hand-off. Coverage on the map was the key decision: show completeness before take-off, not after.',
+      },
+      {
+        title: 'Drone-ops UI + field app',
+        body: 'Desktop for planning and analysis, mobile for the pre-flight checklist. Same language, different density. The field screen is a sequence of checks, not a miniature of the desktop.',
+      },
+      {
+        title: 'Geospatial data review',
+        body: 'The review workspace surfaces quality flags on the captured imagery so analysts do not open a full processing job on a broken set. Designed with the people who actually run the models.',
+      },
+      {
+        title: 'Design System',
+        body: 'Map controls, status chips, checklists and data tables were documented as components so the two engineering increments stayed visually and behaviourally consistent.',
+      },
+    ],
+    screens: [
+      { id: 'flight-map', title: 'Mission overview', caption: 'Desktop — survey area, flight path and readiness before take-off.', device: 'desktop' },
+      { id: 'flight-params', title: 'Flight parameters', caption: 'Altitude, overlap and GSD with a live coverage preview on the map.', device: 'desktop' },
+      { id: 'flight-mobile', title: 'Pre-flight checklist', caption: 'Field app — sequential checks so a mission cannot launch incomplete.', device: 'mobile' },
+      { id: 'flight-review', title: 'Data review', caption: 'Quality flags on captured imagery before it is sent to processing.', device: 'desktop' },
+      { id: 'flight-ds', title: 'Design System', caption: 'Components documented for engineering: status, map chrome, checklist.', device: 'desktop' },
+    ],
   },
   {
-    name: 'Prism — a multi-product Design System',
-    category: 'Lensys · B2B software · Design System & governance',
-    timeframe: '2023 — 2024 · 10 months',
+    slug: 'prism',
+    name: 'Prism',
+    company: 'Lensys',
+    category: 'Lensys · B2B software · Design System',
+    timeframe: '2023 — 2024 · France · Alternance',
+    summary: 'A shared Design System so four product squads stop redrawing the same buttons.',
     context:
-      'Lensys ships four B2B products maintained by separate squads. Each squad had accumulated its own buttons, forms and tables, and the design team spent most of its time re-drawing existing patterns.',
+      'Lensys ships several B2B products, each owned by a different squad. In alternance as UX Designer I spent as much time redrawing existing patterns as designing new ones. There was no single source of truth between Figma and code.',
     problem:
-      'Audit revealed 31 button variants and 9 shades of the primary colour across products. Onboarding a new developer took weeks, accessibility issues were fixed screen by screen, and every redesign started from zero.',
+      'Each squad had its own buttons, forms and tables. Accessibility was fixed screen by screen. A new developer needed weeks to understand “how we do UI here”, and every feature started from a blank artboard.',
     solution:
-      'Ran a UI inventory with the squads, defined foundations (tokens for colour, type, spacing, elevation) and a component library with documented states, accessibility notes and usage rules. Set up a contribution process, monthly design-system reviews and a shared component documentation with engineering so Figma and code stayed in sync.',
-    role: 'UX Designer & Design System lead — audit, tokens, component design, documentation, governance, workshops with 4 squads, Agile coordination.',
+      'I ran a UI inventory in workshops with the squads, defined foundations (colour, type, spacing) and a documented component library with states and usage rules. Monthly design-system reviews and a shared Figma library kept design and engineering in the same file.',
+    role: 'UX Designer — workshops, wireframes and interactive prototypes, scalable Design System, Agile coordination across squads.',
     tools: ['Figma', 'Figma Variables', 'Notion', 'Jira', 'Miro'],
     metrics: [
-      { value: '64', label: 'documented components' },
-      { value: '−45 %', label: 'design-to-dev hand-off time' },
-      { value: 'AA', label: 'WCAG contrast on all foundations' },
+      { value: '1 library', label: 'shared Figma + documented usage' },
+      { value: '4 squads', label: 'workshops and contribution rules' },
+      { value: 'AA', label: 'contrast on foundations' },
     ],
     result:
-      'Prism is now the default starting point for every new feature at Lensys. Two products were migrated within the first six months, hand-off time was nearly halved, and accessibility fixes moved from screens to tokens — fixed once, everywhere.',
+      'Prism became the default starting point for new work. Two products began migrating within the first months, and accessibility fixes moved from individual screens to tokens.',
     image: '/projects/prism-design-system.svg',
-    imageAlt:
-      'Prism Design System sheet: colour and type tokens, button states, form fields and a card component with Figma-style component labels',
+    imageAlt: 'Prism Design System sheet with tokens, buttons and form components',
+    responsibilities: [
+      'Facilitated UX workshops with stakeholders from four product squads',
+      'Designed and maintained a scalable Design System (foundations + components)',
+      'Created wireframes and interactive prototypes in Figma',
+      'Coordinated delivery in Agile with product and engineering',
+    ],
+    process: [
+      {
+        title: 'Workshops & inventory',
+        body: 'A UI audit on a wall (and in Figma): every button, field and table in production. Workshops with each squad to agree what was a real variant and what was accidental drift.',
+      },
+      {
+        title: 'Foundations',
+        body: 'Colour, type, spacing and contrast as tokens. The goal was not a pretty palette — it was one primary, one text colour, and AA contrast so squads would stop inventing greys.',
+      },
+      {
+        title: 'Components & prototypes',
+        body: 'Buttons, forms, tables and cards with all states, documented in Figma. Interactive prototypes of a real feature in each product to prove the system could take a new screen.',
+      },
+      {
+        title: 'Governance in Agile',
+        body: 'A simple contribution rule: new patterns go through a monthly review, not a side file. Backlog items for “migrate this screen to Prism” sat next to feature work.',
+      },
+    ],
+    screens: [
+      { id: 'prism-audit', title: 'UI inventory', caption: 'Workshop output — existing variants collected before anything was redesigned.', device: 'desktop' },
+      { id: 'prism-tokens', title: 'Foundations', caption: 'Colour, type and spacing tokens. Contrast checked at this layer, not on each screen.', device: 'desktop' },
+      { id: 'prism-button', title: 'Component spec', caption: 'Button and field states, usage notes, and the do / don’t rules for squads.', device: 'desktop' },
+      { id: 'prism-docs', title: 'Contribution', caption: 'How a squad proposes a new pattern without forking the library.', device: 'desktop' },
+      { id: 'prism-product', title: 'In product', caption: 'A Lensys screen rebuilt on Prism — same feature, one system.', device: 'desktop' },
+    ],
   },
   {
-    name: 'Quote Builder — CPQ configurator redesign',
+    slug: 'quote-builder',
+    name: 'Quote Builder',
+    company: 'Techform',
     category: 'Techform · CPQ software · Front-end & UX',
-    timeframe: '2021 — 2022 · 7 months',
+    timeframe: '2021 — 2022 · France · Alternance',
+    summary: 'A guided CPQ flow I both designed and built, so sales could configure a quote without drowning in rules.',
     context:
-      'Techform sells Configure-Price-Quote software to industrial equipment manufacturers. Sales reps assemble quotes with hundreds of options, dependencies and pricing rules.',
+      'Techform sells Configure-Price-Quote software to industrial equipment manufacturers. Sales reps assemble quotes with hundreds of options, dependencies and pricing rules. I joined as Front-End Developer, working with product managers and designers on the configurator.',
     problem:
-      'The legacy configurator exposed every rule at once in a dense form. Reps made errors that engineering caught days later, quotes took a full afternoon, and new hires needed two months before being trusted with a customer.',
+      'The legacy configurator showed every rule at once. Errors were caught by engineering days later. A quote took an afternoon, and new reps were not trusted with a customer for months.',
     solution:
-      'Reframed the configurator as a three-step guided flow — product, configuration, summary — with progressive disclosure of options, inline validation of rule conflicts and a live pricing summary. Implemented the front-end components myself in close collaboration with the back-end team, and paired the rollout with contextual help written from support tickets.',
-    role: 'Front-End Developer & UX Designer — user flows, wireframes, responsive UI implementation, validation patterns, Agile delivery.',
+      'We reframed it as a three-step flow — product, configuration, summary — with progressive disclosure, inline validation of conflicts, and a live price. I implemented the front-end, kept the existing app running, and wrote contextual help from support tickets.',
+    role: 'Front-End Developer — CPQ features, responsive UI, collaboration with PMs and designers, maintenance of the existing application, Agile delivery.',
     tools: ['Figma', 'HTML / CSS / JavaScript', 'Azure DevOps', 'Agile / Scrum'],
     metrics: [
-      { value: '−54 %', label: 'time to produce a quote' },
-      { value: '−71 %', label: 'configuration errors' },
-      { value: '3 wks', label: 'new-rep onboarding (from 8)' },
+      { value: '3 steps', label: 'product · configure · summary' },
+      { value: 'Live', label: 'price and rule conflicts in the UI' },
+      { value: 'Responsive', label: 'usable on a laptop in a plant' },
     ],
     result:
-      'Quote creation dropped from an average of 3 h 20 to 1 h 30 for complex products. Configuration errors caught in engineering fell by 71 %, and the guided flow became the template for the two other product lines.',
+      'Reps could produce a complex quote in one sitting. Configuration errors dropped because conflicts were visible before submit, and the same pattern was reused on other product lines.',
     image: '/projects/cpq-quote-builder.svg',
-    imageAlt:
-      'Quote Builder configurator: three-step progress, product options with inline validation, and a live pricing summary panel',
+    imageAlt: 'Quote Builder three-step configurator with live pricing',
+    responsibilities: [
+      'Developed front-end features for CPQ software solutions',
+      'Implemented responsive user interfaces',
+      'Collaborated with developers, product managers and designers',
+      'Maintained and improved the existing web application',
+      'Delivered inside Agile / Scrum cycles',
+    ],
+    process: [
+      {
+        title: 'Understand the existing app',
+        body: 'Before adding screens I mapped the current configurator with support tickets: where reps got stuck, which rules exploded, which fields were never used. Maintenance work paid for the redesign.',
+      },
+      {
+        title: 'Flow with PMs and designers',
+        body: 'A three-step IA agreed in working sessions: pick the product, configure with progressive disclosure, then a summary that can be sent. I prototyped in Figma then in the actual front-end.',
+      },
+      {
+        title: 'Build the UI',
+        body: 'HTML / CSS / JavaScript, responsive so a rep on site could finish a quote on a laptop. Inline validation for incompatible options, live price in the summary column.',
+      },
+      {
+        title: 'Ship in Agile',
+        body: 'Increments in Azure DevOps: first the shell and navigation, then rules, then help content. The old configurator stayed alive until the new flow covered the main product line.',
+      },
+    ],
+    screens: [
+      { id: 'quote-legacy', title: 'Before', caption: 'The dense legacy form — every rule visible, nothing progressive.', device: 'desktop' },
+      { id: 'quote-step1', title: '01 · Product', caption: 'Choose the equipment line before any option is shown.', device: 'desktop' },
+      { id: 'quote-config', title: '02 · Configuration', caption: 'Options with inline conflict validation. Only relevant rules appear.', device: 'desktop' },
+      { id: 'quote-summary', title: '03 · Summary', caption: 'Live price, BOM and a quote ready to send.', device: 'desktop' },
+      { id: 'quote-mobile', title: 'Responsive', caption: 'Same flow on a laptop in the plant — not a separate mobile app.', device: 'mobile' },
+    ],
   },
   {
-    name: 'Responsive web platform redesign & SEO',
-    category: 'Cegedim · Software & technology group · Web + SEO',
-    timeframe: '2022 — 2023 · 8 months',
+    slug: 'cegedim-web',
+    name: 'Product sites & SEO',
+    company: 'Cegedim',
+    category: 'Cegedim · Web + SEO',
+    timeframe: '2022 — 2023 · France · Alternance',
+    summary: 'Mobile-first product pages, a demo form that works on a phone, and SEO so prospects can actually find the software.',
     context:
-      'Cegedim operates a portfolio of software solutions, each with its own public web presence used by prospects to discover products, compare offers and request demos.',
+      'Cegedim’s software products each had a public site used to discover offers and request demos. In alternance as UX Designer / Front-End Developer I worked with marketing, product and sales on those sites.',
     problem:
-      'The main product sites were not responsive, ranked poorly on the queries prospects actually typed, and the demo-request form lost most of its traffic on mobile. Marketing, product and sales each had a different idea of what the sites were for.',
+      'The sites were not responsive. They ranked poorly on the queries prospects typed. The demo form lost most of its traffic on mobile. Marketing, product and sales did not share a single idea of what a page was for.',
     solution:
-      'Facilitated UX workshops with marketing, product and sales to agree on audiences and page goals, then redesigned the information architecture and page templates mobile-first. Implemented the responsive front-end, applied SEO best practices (semantic structure, performance, metadata, internal linking) and set up measurement with Google Analytics and Search Console to iterate on real data.',
-    role: 'UX Designer / Front-End Developer — workshops, IA and wireframes, responsive templates, front-end integration, SEO implementation, analytics set-up.',
+      'Workshops to agree audiences and page goals, then a mobile-first IA and templates. I built the responsive front-end, implemented SEO (structure, metadata, internal linking, performance) and set up Analytics + Search Console so we could iterate on real queries.',
+    role: 'UX Designer / Front-End Developer — workshops, IA, responsive templates, front-end, SEO, analytics.',
     tools: ['Figma', 'HTML / CSS / JavaScript', 'Google Analytics', 'Google Search Console', 'Miro'],
     metrics: [
-      { value: '+64 %', label: 'organic traffic in 6 months' },
-      { value: '−35 %', label: 'mobile bounce rate' },
-      { value: '×2.1', label: 'demo requests from mobile' },
+      { value: 'Mobile-first', label: 'templates for product pages' },
+      { value: 'SEO', label: 'structure, metadata, internal links' },
+      { value: 'Measure', label: 'Analytics + Search Console' },
     ],
     result:
-      'Organic traffic grew by 64 % over six months, mobile bounce rate fell by a third and demo requests from mobile more than doubled. The workshop format and the page templates were reused for the next two product launches.',
+      'Organic traffic and mobile demo requests moved in the right direction over the following months. The workshop format and templates were reused for later product launches.',
     image: '/projects/cegedim-web-seo.svg',
-    imageAlt:
-      'Responsive website redesign: desktop landing page with product sections next to a mobile version, and an analytics panel showing organic traffic growth',
+    imageAlt: 'Responsive product landing and a mobile demo form',
+    responsibilities: [
+      'Facilitated UX workshops with marketing, product and sales',
+      'Developed responsive web applications / templates',
+      'Improved visibility through SEO best practices',
+      'Set up measurement to iterate on real search and form data',
+    ],
+    process: [
+      {
+        title: 'Workshops',
+        body: 'Same room, three briefs. We aligned on who the page is for (prospect vs. existing customer), what “success” is (demo request), and which queries we actually wanted to rank for.',
+      },
+      {
+        title: 'IA & wireframes',
+        body: 'Mobile-first templates: hero with one action, product blocks, proof, form. Wireframes in Figma, then the same structure in HTML so SEO and design were not two different outlines.',
+      },
+      {
+        title: 'Responsive front-end',
+        body: 'Implemented the templates so the demo form was usable with one thumb. Performance and semantic headings were treated as UX, not as a later SEO ticket.',
+      },
+      {
+        title: 'SEO & measurement',
+        body: 'Metadata, internal links, Search Console and Analytics. We looked at queries and bounce on mobile every sprint, then adjusted copy and the form — not a one-shot audit.',
+      },
+    ],
+    screens: [
+      { id: 'ceg-workshop', title: 'Workshop', caption: 'Audiences, page goals and search queries agreed with marketing, product and sales.', device: 'desktop' },
+      { id: 'ceg-desktop', title: 'Product page', caption: 'Desktop template — one action, scannable blocks, semantic structure.', device: 'desktop' },
+      { id: 'ceg-mobile', title: 'Mobile', caption: 'Same page on a phone. The demo CTA stays reachable.', device: 'mobile' },
+      { id: 'ceg-form', title: 'Demo request', caption: 'Short form, designed after looking at where mobile traffic dropped.', device: 'mobile' },
+      { id: 'ceg-seo', title: 'Search Console', caption: 'Queries and pages we actually used to iterate the templates.', device: 'desktop' },
+    ],
   },
 ]
+
+export function getProject(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug)
+}
+
+export function getAdjacentProjects(slug: string): { prev?: Project; next?: Project } {
+  const index = projects.findIndex((project) => project.slug === slug)
+  if (index < 0) return {}
+  return {
+    prev: index > 0 ? projects[index - 1] : undefined,
+    next: index < projects.length - 1 ? projects[index + 1] : undefined,
+  }
+}

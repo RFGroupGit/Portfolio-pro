@@ -12,3 +12,8 @@ export const navigation: NavItem[] = [
   { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
 ]
+
+/** In-app link to a homepage section, works from case-study routes too. */
+export function homeSection(id: string) {
+  return { pathname: '/' as const, hash: `#${id}` }
+}

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { homeSection } from '../data/navigation'
 import { profile } from '../data/profile'
 
 export function Footer() {
@@ -10,9 +12,12 @@ export function Footer() {
           © {year} {profile.firstName} {profile.lastName}
         </p>
         <p className="print-hidden">
-          <a href="#top" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">
+          <Link
+            to={homeSection('top')}
+            className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper"
+          >
             Index
-          </a>
+          </Link>
         </p>
       </div>
     </footer>

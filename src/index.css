@@ -4,57 +4,40 @@
    Self-hosted fonts (no third-party requests, preloaded in index.html)
    ------------------------------------------------------------------ */
 @font-face {
-  font-family: 'Inter Variable';
+  font-family: 'Plus Jakarta Sans';
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 200 800;
   font-display: swap;
-  src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  src: url('/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
     U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Inter Variable';
+  font-family: 'Plus Jakarta Sans';
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 200 800;
   font-display: swap;
-  src: url('/fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  src: url('/fonts/plus-jakarta-sans-latin-ext-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
     U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: 'Instrument Serif';
+  font-family: 'Outfit';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/instrument-serif-latin-400-normal.woff2') format('woff2');
+  src: url('/fonts/outfit-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
     U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Instrument Serif';
+  font-family: 'Outfit';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/instrument-serif-latin-ext-400-normal.woff2') format('woff2');
+  src: url('/fonts/outfit-latin-ext-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
     U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'Inter Fallback';
-  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
-  size-adjust: 107%;
-  ascent-override: 90%;
-  descent-override: 22.5%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'Instrument Serif Fallback';
-  src: local('Times New Roman'), local('Times'), local('Georgia');
-  size-adjust: 96%;
-  ascent-override: 92%;
-  descent-override: 23%;
-  line-gap-override: 0%;
 }
 
 /* ------------------------------------------------------------------
@@ -63,8 +46,8 @@
    do the work. No chromatic accent, no elevation, no pills.
    ------------------------------------------------------------------ */
 @theme {
-  --font-sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
 
   --color-paper: #f4f4f1;
@@ -79,21 +62,21 @@
   --color-night: #0b0b0b;
   --color-fog: #a3a3a3;
 
-  --text-display: clamp(4.25rem, 16vw, 11rem);
-  --text-display--line-height: 0.76;
-  --text-display--letter-spacing: -0.055em;
-  --text-h2: clamp(3rem, 8vw, 6.5rem);
-  --text-h2--line-height: 0.86;
-  --text-h2--letter-spacing: -0.04em;
+  --text-display: clamp(4rem, 14vw, 9.5rem);
+  --text-display--line-height: 0.86;
+  --text-display--letter-spacing: -0.03em;
+  --text-h2: clamp(2.75rem, 7vw, 5.5rem);
+  --text-h2--line-height: 0.95;
+  --text-h2--letter-spacing: -0.028em;
   --text-lede: clamp(1.05rem, 1.5vw, 1.25rem);
   --text-lede--line-height: 1.55;
   --text-label: 0.6875rem;
   --text-label--line-height: 1;
   --text-label--letter-spacing: 0.18em;
 
-  --radius-sm: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
+  --radius-sm: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -121,7 +104,7 @@
 
   body {
     @apply bg-paper font-sans text-ink antialiased;
-    font-feature-settings: 'ss01', 'cv11';
+    font-feature-settings: 'ss01';
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
@@ -155,7 +138,7 @@
   .btn-primary,
   .btn-secondary,
   .btn-ghost {
-    @apply inline-flex h-11 cursor-pointer items-center justify-center gap-2 px-5 text-xs font-medium uppercase tracking-[0.16em] transition-colors duration-200 ease-out-quart;
+    @apply inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full px-5 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 ease-out-quart;
   }
   .btn-primary {
     @apply bg-ink text-paper hover:bg-paper hover:text-ink hover:ring-1 hover:ring-ink;

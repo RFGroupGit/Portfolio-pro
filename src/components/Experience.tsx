@@ -11,7 +11,7 @@ export function Experience() {
             className="print-avoid-break grid gap-6 border-t border-ink py-10 first:border-t-2 md:grid-cols-12 md:gap-8 md:py-14 print:py-5"
           >
             <div className="md:col-span-4">
-              <p className="font-sans text-4xl leading-none font-medium tracking-tight text-ink md:text-5xl">
+              <p className="font-display text-4xl leading-none font-medium tracking-tight text-ink md:text-5xl">
                 {item.period}
               </p>
               {item.location ? (

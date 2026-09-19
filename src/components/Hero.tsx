@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { homeSection } from '../data/navigation'
 import { profile } from '../data/profile'
 import { DownloadCvButton } from './ui/DownloadCvButton'
 
@@ -9,7 +11,7 @@ export function Hero() {
       <div className="mx-auto grid min-h-[calc(100svh-3.5rem)] max-w-7xl grid-cols-1 items-end gap-12 px-6 pt-16 pb-12 md:px-10 md:pt-24 md:pb-16 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-8">
           <p className="eyebrow mb-8">Portfolio / CV</p>
-          <h1 className="font-sans text-display font-medium text-ink">
+          <h1 className="font-display text-display font-medium text-ink">
             <span className="text-outline">{profile.firstName}</span>
             <br />
             {profile.lastName}
@@ -36,9 +38,9 @@ export function Hero() {
             <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn-secondary">
               LinkedIn
             </a>
-            <a href="#contact" className="btn-ghost">
+            <Link to={homeSection('contact')} className="btn-ghost">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       </div>

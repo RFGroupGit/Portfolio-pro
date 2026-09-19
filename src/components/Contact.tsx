@@ -25,7 +25,7 @@ export function Contact() {
         </h2>
         <a
           href={mailto}
-          className="mt-10 block font-sans text-2xl leading-tight font-medium tracking-tight text-paper underline decoration-paper/25 underline-offset-8 transition-colors hover:decoration-paper md:text-4xl lg:text-5xl"
+          className="mt-10 block font-display text-2xl leading-tight font-medium tracking-tight text-paper underline decoration-paper/25 underline-offset-8 transition-colors hover:decoration-paper md:text-4xl lg:text-5xl"
         >
           {profile.email}
         </a>

@@ -43,12 +43,27 @@ export interface ProjectMetric {
   label: string
 }
 
+export interface ProjectProcessStep {
+  title: string
+  body: string
+}
+
+export interface ProjectScreen {
+  id: string
+  title: string
+  caption: string
+  device: 'desktop' | 'mobile'
+}
+
 export interface Project {
+  slug: string
   name: string
+  company: string
   /** Short tag line under the name, e.g. "B2B SaaS · Redesign" */
   category: string
   /** e.g. "2024 — 2025 · 8 months" */
   timeframe?: string
+  summary: string
   context: string
   problem: string
   solution: string
@@ -60,7 +75,10 @@ export interface Project {
   /** Path to an image in /public. When undefined a placeholder is rendered. */
   image?: string
   imageAlt?: string
-  link?: string
+  /** CV-aligned responsibilities shown on the case-study page. */
+  responsibilities: string[]
+  process: ProjectProcessStep[]
+  screens: ProjectScreen[]
 }
 
 export interface SkillGroup {
