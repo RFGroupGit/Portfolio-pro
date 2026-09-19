@@ -6,7 +6,7 @@ export const projects: Project[] = [
     name: 'Flight Ops',
     company: 'Dronemapping',
     identity: 'ops',
-    category: 'Dronemapping · Geospatial SaaS · Web + field app',
+    category: 'Xpatial · Dronemapping · Geospatial SaaS · Web + field app',
     timeframe: '2024 — 2025 · Melbourne',
     summary: 'A single mission flow for professional drone operations — from briefing to geospatial data review.',
     thesis:
@@ -16,7 +16,7 @@ export const projects: Project[] = [
     problem:
       'Mission planning lived in three tools plus a spreadsheet. Parameters were often incomplete at take-off. Analysts opened full processing jobs on blurred or gapped sets. Re-flights were treated as a cost of doing business instead of a product failure. Nobody owned a single “ready to fly / ready to process” state.',
     solution:
-      'I interviewed pilots and analysts on site, rewrote requirements around those two states, and designed a guided lifecycle: briefing, flight parameters with live coverage on the map, a field checklist that can block launch, then a review workspace with quality flags. Map controls, status and checklists were added to the Design System so engineering could ship in two increments without redrawing the language.',
+      'I interviewed pilots and analysts on site, rewrote requirements around those two states, and designed a guided lifecycle: briefing, flight parameters with live coverage on the map, a field checklist that can block launch, then a review workspace with quality flags. Map controls, status and checklists landed in the Design System in the Xpatial navy / coral / cyan charter so engineering could ship two increments without inventing a third look.',
     role: 'UX Designer — user research, requirements, wireframes and high-fidelity Figma prototypes, drone-ops UI, geospatial data views, Design System components.',
     tools: ['Figma', 'Miro', 'Azure DevOps', 'Design System'],
     metrics: [
@@ -143,7 +143,7 @@ export const projects: Project[] = [
         id: 'flight-ds',
         title: 'Design System',
         caption:
-          'The live Flight Ops Design System — tokens, components and patterns handed to engineering so both increments stayed visually and behaviourally consistent.',
+          'The live Flight Ops Design System, specified in the Xpatial charter — navy canvas, coral actions, cyan for live coverage — so both increments stayed visually and behaviourally consistent.',
         device: 'desktop',
       },
     ],

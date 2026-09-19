@@ -13,7 +13,7 @@ const numbers = ['01', '02', '03', '04', '05', '06']
 export function IndexRail() {
   const { pathname } = useLocation()
   const onHome = pathname === '/'
-  const onOpsDs = pathname.startsWith('/projects/flight-ops/system')
+  const onOps = pathname.startsWith('/projects/flight-ops')
   const ids = useMemo(() => navigation.map((n) => n.id), [])
   const active = useActiveSection(onHome ? ids : [])
   const initials = `${profile.firstName.charAt(0)}${profile.lastName.charAt(0)}`
@@ -23,12 +23,12 @@ export function IndexRail() {
     <nav
       aria-label="Section index"
       className={`print-hidden fixed top-0 left-0 z-40 hidden h-dvh w-16 flex-col items-center justify-between border-r py-8 lg:flex ${
-        onOpsDs ? 'border-white/10 bg-[#0b0b0b]' : 'border-ink/15 bg-paper'
+        onOps ? 'border-white/10 bg-[#1F232C]' : 'border-ink/15 bg-paper'
       }`}
     >
       <Link
         to={homeSection('top')}
-        className={`text-[11px] font-medium tracking-[0.28em] ${onOpsDs ? 'text-white' : 'text-ink'}`}
+        className={`text-[11px] font-medium tracking-[0.28em] ${onOps ? 'text-white' : 'text-ink'}`}
       >
         {initials}
         <span className="sr-only">
@@ -48,10 +48,10 @@ export function IndexRail() {
                 aria-label={`${numbers[i]} ${item.label}`}
                 className={`block transition-colors ${
                   isActive
-                    ? onOpsDs
+                    ? onOps
                       ? 'text-white'
                       : 'text-ink'
-                    : onOpsDs
+                    : onOps
                       ? 'text-white/30 hover:text-white'
                       : 'text-ink/30 hover:text-ink'
                 }`}
@@ -63,7 +63,7 @@ export function IndexRail() {
         })}
       </ol>
 
-      <p className={`spine-year font-mono text-[10px] tracking-[0.28em] ${onOpsDs ? 'text-white/40' : 'text-ink/50'}`}>
+      <p className={`spine-year font-mono text-[10px] tracking-[0.28em] ${onOps ? 'text-white/40' : 'text-ink/50'}`}>
         {year}
       </p>
     </nav>

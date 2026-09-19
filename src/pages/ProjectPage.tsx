@@ -16,7 +16,7 @@ const toc = [
 ] as const
 
 const identityLabel: Record<ProjectIdentity, string> = {
-  ops: 'Operations console',
+  ops: 'Xpatial · Dronemapping',
   system: 'Design-system documentation',
   cpq: 'Industrial CPQ',
   editorial: 'Product marketing',
@@ -133,7 +133,7 @@ function CaseHero({
         <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pt-14 pb-16 md:px-10 md:pt-20 md:pb-20 lg:grid-cols-12">
           <div className="lg:col-span-6">
             {back}
-            <p className="mt-10 font-mono text-[10px] tracking-[0.18em] uppercase text-white/40">
+            <p className="mt-10 font-sans text-[10px] font-semibold tracking-[0.16em] uppercase text-[#FF6161]">
               {folio} · {identityLabel.ops}
             </p>
             <h1 className="font-display mt-4 text-5xl leading-[0.9] font-medium tracking-tight md:text-7xl">{project.name}</h1>
@@ -146,7 +146,7 @@ function CaseHero({
             </dl>
             <Link
               to="/projects/flight-ops/system"
-              className="mt-10 inline-flex items-center gap-2 border border-white/25 px-4 py-2.5 font-mono text-[10px] tracking-[0.14em] uppercase text-white hover:border-white hover:bg-white hover:text-black"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-[#FF6161] px-5 py-2.5 font-sans text-[12px] font-medium text-white hover:bg-[#ff7a7a]"
             >
               Open Design System
               <span aria-hidden="true">→</span>
@@ -407,7 +407,7 @@ function ProcessSection({ project }: { project: Project }) {
               }
             >
               {id === 'ops' ? (
-                <span className="absolute top-1.5 -left-[2.15rem] h-3 w-3 bg-white md:-left-[3.15rem]" />
+                <span className="absolute top-1.5 -left-[2.15rem] h-3 w-3 rounded-full bg-[#FF6161] md:-left-[3.15rem]" />
               ) : null}
               {id === 'editorial' ? (
                 <>
@@ -487,7 +487,7 @@ function ScreensSection({ project }: { project: Project }) {
             The live library — tokens, 20 components, patterns and hand-off — is the Flight Ops Design System.{' '}
             <Link
               to="/projects/flight-ops/system"
-              className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white"
+              className="text-[#FF6161] underline decoration-[#FF6161]/40 underline-offset-4 hover:decoration-[#FF6161]"
             >
               Open it
             </Link>
@@ -538,7 +538,7 @@ function MetaHeavy({ label, value }: { label: string; value: string }) {
 function MetaDark({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-[10px] tracking-[0.14em] uppercase text-white/40">{label}</dt>
+      <dt className="text-[10px] font-semibold tracking-[0.12em] uppercase text-[#FF6161]">{label}</dt>
       <dd className="mt-1 text-white">{value}</dd>
     </div>
   )
@@ -556,7 +556,7 @@ function OverviewBlock({ title, body }: { title: string; body: string }) {
 function shellClass(id: ProjectIdentity) {
   switch (id) {
     case 'ops':
-      return 'bg-[#0b0b0b] text-paper'
+      return 'bg-[#1F232C] text-paper'
     case 'system':
       return 'bg-[#f7f7f5] text-ink'
     case 'cpq':
@@ -569,7 +569,7 @@ function shellClass(id: ProjectIdentity) {
 function navClass(id: ProjectIdentity) {
   switch (id) {
     case 'ops':
-      return 'border-white/10 bg-[#0b0b0b]'
+      return 'border-white/10 bg-[#1F232C]'
     case 'system':
       return 'border-ink/10 bg-white'
     case 'cpq':
@@ -591,12 +591,12 @@ function sectionRule(id: ProjectIdentity) {
 
 function eyebrow(id: ProjectIdentity) {
   return id === 'ops'
-    ? 'font-mono text-[10px] tracking-[0.18em] uppercase text-white/40'
+    ? 'font-sans text-[10px] font-semibold tracking-[0.14em] uppercase text-[#FF6161]'
     : 'eyebrow'
 }
 
 function adjacentClass(id: ProjectIdentity) {
-  if (id === 'ops') return 'border-t border-white/15 bg-black text-paper'
+  if (id === 'ops') return 'border-t border-white/10 bg-[#1F232C] text-paper'
   if (id === 'cpq') return 'border-t-2 border-ink bg-ink text-[#e8e6e1]'
   if (id === 'system') return 'border-t border-ink bg-ink text-paper'
   return 'border-t border-ink bg-night text-paper'

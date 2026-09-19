@@ -27,6 +27,7 @@ import {
   UnitValue,
   WeatherRow,
 } from './components'
+import { mapGridStyle } from './brand'
 import { idPattern, opsColorCss, opsDensity, opsLayout, opsMotion, opsSpace, opsStroke, opsType, opsZ, units, vocabulary } from './tokens'
 
 export const dsNav = [
@@ -216,7 +217,7 @@ function Spec({
 }) {
   return (
     <article>
-      <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/35">{kicker ?? 'Flight Ops DS'}</p>
+      <p className="font-sans text-[10px] font-semibold tracking-[0.16em] uppercase text-[#FF6161]">{kicker ?? 'Flight Ops DS'}</p>
       <h1 className="font-display mt-3 text-4xl leading-none tracking-tight md:text-5xl">{title}</h1>
       <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/60">{intro}</p>
       <div className="mt-12 space-y-12">{children}</div>
@@ -236,11 +237,11 @@ function Block({ title, children }: { title: string; children: ReactNode }) {
 function DoDont({ do: d, dont }: { do: string; dont: string }) {
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      <p className="border border-white/15 p-4 text-sm leading-relaxed">
+      <p className="border border-white/15 p-4 text-sm leading-relaxed rounded-xl">
         <span className="font-mono text-[10px] tracking-[0.14em] uppercase">Do. </span>
         {d}
       </p>
-      <p className="border border-white/15 p-4 text-sm leading-relaxed text-white/55">
+      <p className="border border-white/15 p-4 text-sm leading-relaxed text-white/55 rounded-xl">
         <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-white/40">Don’t. </span>
         {dont}
       </p>
@@ -250,7 +251,7 @@ function DoDont({ do: d, dont }: { do: string; dont: string }) {
 
 function Canvas({ children, label }: { children: ReactNode; label?: string }) {
   return (
-    <div className="border border-white/10 bg-[#111]">
+    <div className="border border-white/10 bg-[#262C38] rounded-xl">
       {label ? (
         <p className="border-b border-white/10 px-3 py-2 font-mono text-[9px] tracking-[0.14em] uppercase text-white/35">
           {label}
@@ -292,7 +293,7 @@ function Overview() {
   return (
     <Spec
       title="Flight Ops Design System"
-      intro="The language for planning a mission, locking a launch, and holding a dataset. Built so desktop ops and the field app stay one product, and so engineering could ship two increments without inventing a third look."
+      intro="The language for planning a mission, locking a launch, and holding a dataset. Drawn in the Xpatial charter — navy, coral, cyan — so desktop ops, the field app and the public site read as one company."
     >
       <div className="grid gap-px bg-white/10 sm:grid-cols-4">
         {[
@@ -301,7 +302,7 @@ function Overview() {
           ['7 patterns', 'Ready-to-fly through review'],
           ['2 increments', 'Handed over as this library'],
         ].map(([v, l]) => (
-          <div key={l} className="bg-[#0b0b0b] px-5 py-6">
+          <div key={l} className="bg-[#1F232C] px-5 py-6">
             <p className="font-display text-2xl">{v}</p>
             <p className="mt-2 font-mono text-[10px] text-white/40">{l}</p>
           </div>
@@ -365,8 +366,8 @@ function Principles() {
           'Coverage, GSD and remaining strips live on the polygon. A settings modal is not a source of truth.',
         ],
         [
-          '04 · Colour is not the signal',
-          'Black and white, fill versus outline. Flags are labels (BLUR, GAP, EXPO), not a traffic-light palette. This keeps the product operational and accessible.',
+          '04 · Coral for action, cyan for live',
+          'The Xpatial charter: navy ground, coral headings and primary actions, cyan for capture and coverage. Never invent a traffic-light green or amber — those fight the map and the brand.',
         ],
       ].map(([t, b]) => (
         <div key={t} className="border-t border-white/10 pt-8">
@@ -406,7 +407,7 @@ function Using() {
         </div>
       </div>
       <Block title="Import">
-        <pre className="overflow-x-auto border border-white/10 bg-[#111] p-4 font-mono text-[11px] leading-relaxed text-white/70">
+        <pre className="overflow-x-auto rounded-xl border border-white/10 bg-[#262C38] p-4 font-mono text-[11px] leading-relaxed text-white/70">
           {`import {
   StatusChip,
   ChecklistRow,
@@ -423,7 +424,7 @@ function Colour() {
     <Spec
       kicker="Foundations"
       title="Colour"
-      intro="A black operations canvas. White is information, not decoration. There is no success green or warning amber — those would compete with the map and fail in sunlight on a phone."
+      intro="Navy from the Xpatial site. Coral is the action colour — headings, Ready, primary buttons. Cyan is live geospatial. No success-green or warning-amber: those would compete with the brand and with the map."
     >
       <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(opsColorCss).map(([key, { token, value, use }]) => (
@@ -454,8 +455,8 @@ function Colour() {
         </ul>
       </Block>
       <DoDont
-        do="Use fill versus outline to separate Ready from Blocked."
-        dont="Add a green or red to “make status clearer”. It fights the map and breaks in the field."
+        do="Use coral for the one action on the screen, and cyan for anything currently capturing."
+        dont="Add a green or amber to “make status clearer”. The charter is navy, coral, cyan — stop there."
       />
     </Spec>
   )
@@ -466,7 +467,7 @@ function Type() {
     <Spec
       kicker="Foundations"
       title="Typography"
-      intro="Three roles, not a scale for its own sake. Display is the readiness readout. Mono is the operational layer (IDs, parameters, status). Sans is rare — captions and DS documentation."
+      intro="Three roles. Display (Outfit) is the readout — Ready, GSD, the number an ops lead reads across the room. Sans (Plus Jakarta) is the product UI, matching Xpatial’s marketing site. Mono is reserved for mission IDs."
     >
       <div className="space-y-8">
         <div>
@@ -478,9 +479,9 @@ function Type() {
           <p className="mt-2 font-mono text-lg tracking-[0.08em]">SOL-441 · 2.6 cm/px · HOLD</p>
         </div>
         <div>
-          <p className="font-mono text-[10px] text-white/40">Sans · {opsType.sans} · documentation only</p>
+          <p className="font-mono text-[10px] text-white/40">Sans · {opsType.sans} · product UI</p>
           <p className="mt-2 max-w-md text-sm text-white/70">
-            Product UI does not editorialize. If a sentence is needed, it is an operational instruction.
+            Same family as the Xpatial site. Operational sentences, not marketing paragraphs.
           </p>
         </div>
       </div>
@@ -572,10 +573,10 @@ function Layout() {
     >
       <Canvas label={`Console · ${opsLayout.console} wide`}>
         <div className="flex h-32 border border-white/10 font-mono text-[9px] tracking-[0.1em] uppercase">
-          <div className="flex w-16 items-center justify-center border-r border-white/10 bg-[#0a0a0a] text-white/40">
+          <div className="flex w-16 items-center justify-center border-r border-white/10 bg-[#1F232C] text-white/40">
             Nav {opsLayout.nav}
           </div>
-          <div className="flex flex-1 items-center justify-center bg-[#161616] text-white/50">Map min {opsLayout.mapMin}</div>
+          <div className="flex flex-1 items-center justify-center bg-[#15202C] text-[#4EC8FF]/80">Map min {opsLayout.mapMin}</div>
           <div className="flex w-24 items-center justify-center border-l border-white/10 text-white/40">Rail {opsLayout.rail}</div>
         </div>
       </Canvas>
@@ -602,17 +603,17 @@ function Stroke() {
     <Spec
       kicker="Foundations"
       title="Stroke"
-      intro="Everything is a hairline. Radius is 0. The product is an instrument, not a consumer app. Rounding is reserved for the marketing site, never for ops."
+      intro="Hairlines stay. Corners follow the charter: 10 px on cards, full pills on actions — the same rounding as the Xpatial phone CTA and service tiles."
     >
       <div className="grid gap-4 md:grid-cols-3">
         <Canvas label={`${opsStroke.hairline}px hairline`}>
-          <div className="h-16 border border-white/20" />
+          <div className="h-16 rounded-[10px] border border-white/20" />
         </Canvas>
         <Canvas label="Dashed · pending">
-          <div className="h-16 border border-dashed border-white/20" />
+          <div className="h-16 rounded-[10px] border border-dashed border-white/20" />
         </Canvas>
-        <Canvas label={`Radius ${opsStroke.radius}`}>
-          <div className="h-16 bg-white" />
+        <Canvas label={`Radius ${opsStroke.radius} · pill ${opsStroke.pill}`}>
+          <div className="h-16 rounded-full bg-[#FF6161]" />
         </Canvas>
       </div>
       <Block title="Z-index">
@@ -680,7 +681,7 @@ function TokenIndex() {
       title="Token index"
       intro="The contract with engineering. Copy these names into Figma variables. Do not introduce a parallel palette."
     >
-      <pre className="overflow-x-auto border border-white/10 bg-[#111] p-4 font-mono text-[11px] leading-relaxed text-white/70">
+      <pre className="overflow-x-auto rounded-xl border border-white/10 bg-[#262C38] p-4 font-mono text-[11px] leading-relaxed text-white/70">
         {Object.values(opsColorCss)
           .map((t) => `${t.token}: ${t.value};`)
           .join('\n')}
@@ -699,7 +700,7 @@ function ButtonSpec() {
     <Spec
       kicker="Component · 1.2"
       title="Button"
-      intro="One primary per view. Primary is inverse (white). Ghost is an outline for secondary. Hold processing uses primary on purpose — it is the action, not a suggestion."
+      intro="One primary per view. Primary is coral, pill-shaped — the same CTA language as Call us on xpatial.com.au. Ghost is a coral outline. Hold processing uses primary on purpose: it is the action, not a suggestion."
     >
       <Canvas label="States">
         <div className="flex flex-wrap gap-3">
@@ -736,7 +737,7 @@ function StatusSpec() {
     <Spec
       kicker="Component · 1.4"
       title="Status"
-      intro="Four mission states. Ready is a fill so it reads at distance. Blocked is an outline so it never looks done. In flight carries a live mark. Review is a quiet fill for analysts."
+      intro="Four mission states. Ready is coral fill so it reads at distance. Blocked is a coral outline so it never looks done. In flight is cyan, like live capture on the map. Review is a quiet fill for analysts."
     >
       <Canvas>
         <div className="flex flex-wrap gap-2">
@@ -828,7 +829,7 @@ function ReadinessSpec() {
     >
       <div className="grid gap-4 md:grid-cols-2">
         <Canvas label="Ready">
-          <p className="font-display text-4xl">Ready</p>
+        <p className="font-display text-4xl text-[#FF6161]">Ready</p>
           <ul className="mt-4 max-w-xs">
             <ReadinessMetric label="Coverage" value="100%" />
             <ReadinessMetric label="Batteries" value="4 / 4" />
@@ -869,7 +870,7 @@ function MapSpec() {
       intro="The map is a workspace, not a thumbnail. Grid, polygon, dashed plan, waypoint. Tools sit on the map: zoom in, zoom out, locate. No extra card around the tools."
     >
       <Canvas>
-        <div className="relative h-48 bg-[#161616]">
+        <div className="relative h-48 overflow-hidden rounded-xl" style={mapGridStyle}>
           <div
             className="absolute inset-0"
             style={{
@@ -1470,10 +1471,10 @@ function A11y() {
     <Spec
       kicker="Accessibility"
       title="Accessible by default"
-      intro="Status is fill versus outline, not hue. Focus is a 2 px white ring. Field targets are 44 px. Reduced motion disables coverage animation. Screen readers get the state in text (Ready, Hold, Launch locked)."
+      intro="Status is coral versus cyan versus outline — never hue as the only signal. Focus is a 2 px coral ring. Field targets are 44 px. Reduced motion disables coverage animation. Screen readers still get the state in text (Ready, Hold, Launch locked)."
     >
       <ul className="max-w-2xl space-y-3 text-sm text-white/65">
-        <li>— Contrast: ink on canvas AAA; inverse ink on flags AAA.</li>
+        <li>— Contrast: ink on navy AAA; coral on navy is large-text / UI. Pair coral with a word (Ready, Hold).</li>
         <li>— Do not rely on the live dot alone; the word Live or In flight is always present.</li>
         <li>— Launch locked is announced as a disabled action, not as a colour change.</li>
         <li>— Map tools have visible labels in the DS; in-product they have aria-label.</li>
@@ -1482,7 +1483,7 @@ function A11y() {
       </ul>
       <Canvas label="Focus">
         <OpsButton size="sm">Tab here</OpsButton>
-        <p className="mt-3 font-mono text-[10px] text-white/40">Ring: 2px white · offset 2px</p>
+        <p className="mt-3 font-mono text-[10px] text-white/40">Ring: 2px coral · offset 2px</p>
       </Canvas>
     </Spec>
   )
@@ -1536,7 +1537,8 @@ function Handoff() {
           ['0.2', 'Parameters, coverage, readiness rail'],
           ['0.3', 'Field checklist + launch lock'],
           ['0.4', 'Quality flags + hold processing + crew row'],
-          ['0.5', 'Chrome, telemetry, tables, this documentation'],
+          ['0.5', 'Chrome, telemetry, tables, documentation'],
+          ['0.6', 'Xpatial charter — navy, coral, cyan, pills'],
         ].map(([v, n]) => (
           <li key={v} className="flex gap-4 border-b border-white/10 pb-3">
             <span className="text-white/40">{v}</span>
@@ -1565,7 +1567,7 @@ function Contribute() {
           ['2', 'Name it', 'Same string in Figma, this site, and the Azure DevOps item.'],
           ['3', 'States', 'Default, hold/blocked, disabled, field density if it leaves the desk.'],
           ['4', 'Do / don’t', 'One of each. If you cannot write the don’t, the component is not ready.'],
-          ['5', 'Ship the token', 'No one-off hex. If colour is required, you are probably wrong — reread principle 04.'],
+          ['5', 'Ship the token', 'No one-off hex. Coral, cyan or navy — if you need a fourth colour, you are off-charter.'],
         ].map(([n, t, b]) => (
           <li key={n} className="grid gap-2 border-t border-white/10 pt-6 md:grid-cols-[4rem_1fr]">
             <p className="font-mono text-[10px] text-white/40">{n}</p>

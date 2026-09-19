@@ -1,13 +1,17 @@
 import type { ReactNode } from 'react'
-import { FieldBar } from '../../design-system/flight-ops/components'
+import { FieldBar, LiveBadge } from '../../design-system/flight-ops/components'
+import { XpatialMark } from '../../design-system/flight-ops/brand'
 
 export function OpsFrame({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="overflow-hidden border border-white/15 bg-[#111] text-[11px] leading-snug text-white md:text-xs">
-      <div className="flex items-center justify-between border-b border-white/10 bg-[#0a0a0a] px-3 py-2 font-mono text-[10px] tracking-[0.14em] uppercase">
-        <span className="text-white/40">Dronemapping // ops</span>
-        <span className="truncate text-white/70">{title}</span>
-        <span className="rounded-sm bg-white px-1.5 py-0.5 text-[9px] tracking-normal text-black">LIVE</span>
+    <div className="overflow-hidden rounded-xl border border-white/10 bg-[#262C38] text-[12px] leading-snug text-white md:text-[13px]">
+      <div className="flex items-center justify-between border-b border-white/10 bg-[#1F232C] px-3 py-2">
+        <span className="flex items-center gap-2 text-white">
+          <XpatialMark className="h-5 w-5 text-white" />
+          <span className="font-sans text-[10px] font-semibold tracking-[0.16em] uppercase">Xpatial</span>
+        </span>
+        <span className="truncate font-sans text-[11px] text-white/60">{title}</span>
+        <LiveBadge />
       </div>
       <div className="min-h-[300px] md:min-h-[360px]">{children}</div>
     </div>
@@ -16,10 +20,10 @@ export function OpsFrame({ title, children }: { title: string; children: ReactNo
 
 export function FieldDevice({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto w-full max-w-[260px] bg-[#111] p-1.5">
-      <div className="overflow-hidden bg-[#0a0a0a] text-white">
+    <div className="mx-auto w-full max-w-[260px] rounded-[1.6rem] bg-[#262C38] p-1.5">
+      <div className="overflow-hidden rounded-[1.35rem] bg-[#1F232C] text-white">
         <FieldBar />
-        <div className="min-h-[440px] text-[11px]">{children}</div>
+        <div className="min-h-[440px] text-[12px]">{children}</div>
       </div>
     </div>
   )

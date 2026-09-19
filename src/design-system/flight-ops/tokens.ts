@@ -1,31 +1,35 @@
-/** Flight Ops design tokens — dark operations console. */
+/** Flight Ops tokens — Xpatial / Dronemapping charter. */
 
 export const opsColor = {
-  canvas: '#0b0b0b',
-  panel: '#111111',
-  map: '#161616',
-  chrome: '#0a0a0a',
+  canvas: '#1F232C',
+  panel: '#262C38',
+  map: '#15202C',
+  chrome: '#1F232C',
   ink: '#ffffff',
-  muted: 'rgba(255,255,255,0.45)',
-  faint: 'rgba(255,255,255,0.28)',
-  line: 'rgba(255,255,255,0.12)',
-  lineStrong: 'rgba(255,255,255,0.28)',
+  muted: 'rgba(255,255,255,0.62)',
+  faint: 'rgba(255,255,255,0.38)',
+  line: 'rgba(255,255,255,0.10)',
+  lineStrong: 'rgba(255,255,255,0.22)',
   inverse: '#ffffff',
-  inverseInk: '#0b0b0b',
+  inverseInk: '#1F232C',
+  accent: '#FF6161',
+  accentInk: '#ffffff',
+  geo: '#4EC8FF',
 } as const
 
 export const opsColorCss: Record<string, { token: string; value: string; use: string }> = {
-  canvas: { token: '--ops-canvas', value: opsColor.canvas, use: 'Page, DS, chrome' },
-  panel: { token: '--ops-panel', value: opsColor.panel, use: 'Frames, rails, device shells' },
+  canvas: { token: '--ops-canvas', value: opsColor.canvas, use: 'Page, header, DS chrome — Xpatial navy' },
+  panel: { token: '--ops-panel', value: opsColor.panel, use: 'Frames, rails, cards' },
   map: { token: '--ops-map', value: opsColor.map, use: 'Geospatial workspace' },
   chrome: { token: '--ops-chrome', value: opsColor.chrome, use: 'Window chrome, field status bar' },
-  ink: { token: '--ops-ink', value: '#FFFFFF', use: 'Primary text, ready fill' },
-  muted: { token: '--ops-muted', value: 'rgba(255,255,255,.45)', use: 'Secondary labels' },
-  faint: { token: '--ops-faint', value: 'rgba(255,255,255,.28)', use: 'Pending, disabled copy' },
-  line: { token: '--ops-line', value: 'rgba(255,255,255,.12)', use: 'Hairlines, grids' },
-  lineStrong: { token: '--ops-line-strong', value: 'rgba(255,255,255,.28)', use: 'Blocked outline, focus-adjacent' },
-  inverse: { token: '--ops-inverse', value: '#FFFFFF', use: 'Primary actions, flags' },
-  inverseInk: { token: '--ops-inverse-ink', value: '#0B0B0B', use: 'Text on inverse' },
+  ink: { token: '--ops-ink', value: '#FFFFFF', use: 'Primary text' },
+  muted: { token: '--ops-muted', value: 'rgba(255,255,255,.62)', use: 'Secondary labels' },
+  faint: { token: '--ops-faint', value: 'rgba(255,255,255,.38)', use: 'Pending, disabled copy' },
+  line: { token: '--ops-line', value: 'rgba(255,255,255,.10)', use: 'Hairlines, card edges' },
+  accent: { token: '--ops-accent', value: opsColor.accent, use: 'Headings, primary actions, Ready' },
+  geo: { token: '--ops-geo', value: opsColor.geo, use: 'Live capture, coverage, map grid' },
+  inverse: { token: '--ops-inverse', value: '#FFFFFF', use: 'Text on accent' },
+  inverseInk: { token: '--ops-inverse-ink', value: '#1F232C', use: 'Text on white tiles' },
 }
 
 export const opsSpace = {
@@ -43,28 +47,28 @@ export const opsType = {
   sans: 'Plus Jakarta Sans',
   mono: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
   tracking: {
-    ui: '0.12em',
-    kicker: '0.16em',
-    micro: '0.18em',
+    ui: '0.04em',
+    kicker: '0.12em',
+    micro: '0.14em',
   },
   sizes: {
     micro: 9,
     caption: 10,
-    body: 11,
-    ui: 12,
+    body: 12,
+    ui: 13,
     title: 24,
     readout: 32,
   },
 } as const
 
 export const opsMotion = {
-  status: 120,
-  panel: 180,
+  status: 160,
+  panel: 220,
   none: 0,
 } as const
 
 export const opsDensity = {
-  desktop: { row: 36, tap: 32, type: 11 },
+  desktop: { row: 36, tap: 32, type: 12 },
   field: { row: 48, tap: 44, type: 13 },
 } as const
 
@@ -79,7 +83,8 @@ export const opsLayout = {
 
 export const opsStroke = {
   hairline: 1,
-  radius: 0,
+  radius: 10,
+  pill: 999,
 } as const
 
 export const opsZ = {
