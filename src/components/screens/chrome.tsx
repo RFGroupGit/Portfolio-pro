@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { FieldBar } from '../../design-system/flight-ops/components'
 
 export function OpsFrame({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -17,11 +18,7 @@ export function FieldDevice({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto w-full max-w-[260px] bg-[#111] p-1.5">
       <div className="overflow-hidden bg-[#0a0a0a] text-white">
-        <div className="flex items-center justify-between bg-black px-3 py-1.5 font-mono text-[9px] text-white/50">
-          <span>GPS 12</span>
-          <span>SOL-441</span>
-          <span>74%</span>
-        </div>
+        <FieldBar />
         <div className="min-h-[440px] text-[11px]">{children}</div>
       </div>
     </div>

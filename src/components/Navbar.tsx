@@ -10,6 +10,7 @@ export function Navbar() {
   const toggleRef = useRef<HTMLButtonElement>(null)
   const { pathname } = useLocation()
   const onHome = pathname === '/'
+  const onOpsDs = pathname.startsWith('/projects/flight-ops/system')
   const ids = useMemo(() => navigation.map((n) => n.id), [])
   const active = useActiveSection(onHome ? ids : [])
 
@@ -33,9 +34,16 @@ export function Navbar() {
   }, [])
 
   return (
-    <header className="print-hidden sticky top-0 z-50 border-b border-ink/15 bg-paper/90 backdrop-blur-md lg:ml-16">
+    <header
+      className={`print-hidden sticky top-0 z-50 border-b backdrop-blur-md lg:ml-16 ${
+        onOpsDs ? 'border-white/10 bg-[#0b0b0b]/90' : 'border-ink/15 bg-paper/90'
+      }`}
+    >
       <nav aria-label="Main" className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6 md:px-10">
-        <Link to={homeSection('top')} className="text-xs font-medium tracking-[0.22em] uppercase text-ink">
+        <Link
+          to={homeSection('top')}
+          className={`text-xs font-medium tracking-[0.22em] uppercase ${onOpsDs ? 'text-white' : 'text-ink'}`}
+        >
           {profile.firstName} {profile.lastName}
           <span className="sr-only">, back to top</span>
         </Link>
@@ -49,7 +57,13 @@ export function Navbar() {
                   to={homeSection(item.id)}
                   aria-current={isActive ? 'true' : undefined}
                   className={`text-[11px] font-medium tracking-[0.16em] uppercase transition-colors ${
-                    isActive ? 'text-ink' : 'text-muted hover:text-ink'
+                    isActive
+                      ? onOpsDs
+                        ? 'text-white'
+                        : 'text-ink'
+                      : onOpsDs
+                        ? 'text-white/45 hover:text-white'
+                        : 'text-muted hover:text-ink'
                   }`}
                 >
                   {item.label}
@@ -58,14 +72,14 @@ export function Navbar() {
             )
           })}
           <li>
-            <DownloadCvButton variant="primary" className="h-8 px-4 text-[10px]" />
+            <DownloadCvButton variant="primary" className={`h-8 px-4 text-[10px] ${onOpsDs ? 'btn-on-dark' : ''}`} />
           </li>
         </ul>
 
         <button
           ref={toggleRef}
           type="button"
-          className="-mr-2 inline-flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          className={`-mr-2 inline-flex h-10 w-10 items-center justify-center md:hidden ${onOpsDs ? 'text-white' : 'text-ink'}`}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -86,7 +100,11 @@ export function Navbar() {
         </button>
       </nav>
 
-      <div id="mobile-menu" hidden={!open} className="border-t border-ink/15 bg-paper md:hidden">
+      <div
+        id="mobile-menu"
+        hidden={!open}
+        className={`border-t md:hidden ${onOpsDs ? 'border-white/10 bg-[#0b0b0b]' : 'border-ink/15 bg-paper'}`}
+      >
         <ul className="flex flex-col px-6 py-2">
           {navigation.map((item) => (
             <li key={item.id}>
@@ -94,8 +112,16 @@ export function Navbar() {
                 to={homeSection(item.id)}
                 onClick={() => setOpen(false)}
                 aria-current={onHome && active === item.id ? 'true' : undefined}
-                className={`flex items-center justify-between border-b border-ink/10 py-4 text-sm tracking-[0.12em] uppercase ${
-                  onHome && active === item.id ? 'text-ink' : 'text-ink-soft'
+                className={`flex items-center justify-between border-b py-4 text-sm tracking-[0.12em] uppercase ${
+                  onOpsDs ? 'border-white/10' : 'border-ink/10'
+                } ${
+                  onHome && active === item.id
+                    ? onOpsDs
+                      ? 'text-white'
+                      : 'text-ink'
+                    : onOpsDs
+                      ? 'text-white/70'
+                      : 'text-ink-soft'
                 }`}
               >
                 {item.label}
@@ -103,7 +129,7 @@ export function Navbar() {
             </li>
           ))}
           <li className="py-5">
-            <DownloadCvButton variant="primary" className="w-full" onDone={() => setOpen(false)} />
+            <DownloadCvButton variant="primary" className={`w-full ${onOpsDs ? 'btn-on-dark' : ''}`} onDone={() => setOpen(false)} />
           </li>
         </ul>
       </div>

@@ -1,3 +1,18 @@
+import {
+  ChecklistRow,
+  CoverageGrid,
+  CrewRow,
+  LaunchLock,
+  LiveBadge,
+  MapToolbar,
+  OpsButton,
+  OpsNav,
+  ParamRow,
+  QualityFlag,
+  ReadinessMetric,
+  SequenceStep,
+  StatusChip,
+} from '../../design-system/flight-ops/components'
 import { FieldDevice, OpsFrame } from './chrome'
 
 export function FlightMapScreen() {
@@ -21,6 +36,9 @@ export function FlightMapScreen() {
               WP1
             </text>
           </svg>
+          <div className="absolute top-3 right-3">
+            <MapToolbar />
+          </div>
           <div className="relative p-4">
             <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-white/40">Mission</p>
             <p className="mt-1 text-sm font-medium">Solar farm — Ballarat West</p>
@@ -30,23 +48,11 @@ export function FlightMapScreen() {
         <aside className="space-y-4 border-t border-white/10 p-4 md:border-t-0 md:border-l">
           <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-white/40">Readiness</p>
           <p className="font-display text-3xl leading-none">Ready</p>
-          <ul className="space-y-2 font-mono text-[10px] text-white/55">
-            <li className="flex justify-between border-b border-white/10 pb-2 text-white">
-              <span>Coverage</span>
-              <span>100%</span>
-            </li>
-            <li className="flex justify-between border-b border-white/10 pb-2">
-              <span>Batteries</span>
-              <span>4 / 4</span>
-            </li>
-            <li className="flex justify-between border-b border-white/10 pb-2">
-              <span>Window</span>
-              <span>2 h</span>
-            </li>
-            <li className="flex justify-between">
-              <span>Checklist</span>
-              <span>8 / 8</span>
-            </li>
+          <ul>
+            <ReadinessMetric label="Coverage" value="100%" />
+            <ReadinessMetric label="Batteries" value="4 / 4" />
+            <ReadinessMetric label="Window" value="2 h" />
+            <ReadinessMetric label="Checklist" value="8 / 8" />
           </ul>
         </aside>
       </div>
@@ -60,30 +66,18 @@ export function FlightParamsScreen() {
       <div className="grid min-h-[360px] md:grid-cols-[17rem_1fr]">
         <div className="space-y-3 border-b border-white/10 p-4 md:border-r md:border-b-0">
           <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-white/40">Parameters</p>
-          {[
-            ['Altitude', '120 m'],
-            ['Front overlap', '80 %'],
-            ['Side overlap', '70 %'],
-            ['GSD', '2.6 cm/px'],
-            ['Speed', '8 m/s'],
-          ].map(([label, value]) => (
-            <div key={label} className="flex items-center justify-between border-b border-white/10 py-2 font-mono text-[11px]">
-              <span className="text-white/45">{label}</span>
-              <span>{value}</span>
-            </div>
-          ))}
-          <p className="mt-4 bg-white py-2 text-center font-mono text-[10px] tracking-[0.12em] uppercase text-black">
-            Recalculate coverage
-          </p>
+          <ParamRow label="Altitude" value="120 m" />
+          <ParamRow label="Front overlap" value="80 %" />
+          <ParamRow label="Side overlap" value="70 %" />
+          <ParamRow label="GSD" value="2.6 cm/px" />
+          <ParamRow label="Speed" value="8 m/s" />
+          <div className="pt-2">
+            <OpsButton size="sm">Recalculate coverage</OpsButton>
+          </div>
         </div>
         <div className="bg-[#161616] p-4">
           <p className="mb-3 font-mono text-[10px] tracking-[0.16em] uppercase text-white/40">Live coverage</p>
-          <div className="grid h-52 grid-cols-8 grid-rows-5 gap-px bg-white/10 p-px">
-            {Array.from({ length: 40 }, (_, i) => (
-              <span key={i} className={i < 37 ? 'bg-white/80' : 'bg-white/15'} />
-            ))}
-          </div>
-          <p className="mt-3 font-mono text-[10px] text-white/45">37 / 40 strips · 3 remaining west</p>
+          <CoverageGrid />
         </div>
       </div>
     </OpsFrame>
@@ -96,29 +90,20 @@ export function FlightMobileScreen() {
       <div className="p-4">
         <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/40">Pre-flight</p>
         <h3 className="mt-1 font-display text-2xl">Checklist</h3>
+        <div className="mt-3">
+          <SequenceStep current={5} total={6} label="Checks" />
+        </div>
         <ul className="mt-5 space-y-1.5">
-          {[
-            ['Airspace NOTAM', true],
-            ['Batteries 4/4', true],
-            ['SD formatted', true],
-            ['Home point', true],
-            ['Coverage 100%', true],
-            ['Wind < 8 m/s', false],
-          ].map(([label, done]) => (
-            <li
-              key={String(label)}
-              className={`flex items-center justify-between px-3 py-3 font-mono text-[11px] ${
-                done ? 'bg-white text-black' : 'border border-white/20 text-white/50'
-              }`}
-            >
-              <span>{label}</span>
-              <span>{done ? 'OK' : 'HOLD'}</span>
-            </li>
-          ))}
+          <ChecklistRow label="Airspace NOTAM" state="ok" density="field" />
+          <ChecklistRow label="Batteries 4/4" state="ok" density="field" />
+          <ChecklistRow label="SD formatted" state="ok" density="field" />
+          <ChecklistRow label="Home point" state="ok" density="field" />
+          <ChecklistRow label="Coverage 100%" state="ok" density="field" />
+          <ChecklistRow label="Wind < 8 m/s" state="hold" density="field" />
         </ul>
-        <p className="mt-6 border border-white/20 py-3 text-center font-mono text-[10px] tracking-[0.14em] uppercase text-white/40">
-          Launch locked
-        </p>
+        <div className="mt-6">
+          <LaunchLock locked />
+        </div>
       </div>
     </FieldDevice>
   )
@@ -133,16 +118,22 @@ export function FlightReviewScreen() {
             <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-white/40">Geospatial QA</p>
             <p className="font-display text-2xl">1,248 images · 3 flags</p>
           </div>
-          <p className="bg-white px-3 py-1 font-mono text-[10px] uppercase text-black">Hold processing</p>
+          <OpsButton size="sm" variant="hold">
+            Hold processing
+          </OpsButton>
         </div>
         <div className="grid grid-cols-4 gap-1 md:grid-cols-6">
-          {Array.from({ length: 12 }, (_, i) => (
-            <div key={i} className={`aspect-[4/3] ${[2, 7, 10].includes(i) ? 'bg-white' : 'bg-white/10'}`}>
-              {[2, 7, 10].includes(i) ? (
-                <p className="p-2 font-mono text-[9px] text-black">{i === 2 ? 'BLUR' : i === 7 ? 'GAP' : 'EXPO'}</p>
-              ) : null}
-            </div>
-          ))}
+          {Array.from({ length: 12 }, (_, i) =>
+            i === 2 ? (
+              <QualityFlag key={i} kind="blur" />
+            ) : i === 7 ? (
+              <QualityFlag key={i} kind="gap" />
+            ) : i === 10 ? (
+              <QualityFlag key={i} kind="exposure" />
+            ) : (
+              <div key={i} className="aspect-[4/3] bg-white/10" />
+            ),
+          )}
         </div>
         <p className="mt-3 font-mono text-[10px] text-white/45">
           Flags must be accepted or the set is rejected before orthomosaic generation.
@@ -155,21 +146,16 @@ export function FlightReviewScreen() {
 export function FlightFleetScreen() {
   return (
     <OpsFrame title="fleet / today">
-      <div className="p-4">
-        <p className="mb-4 font-mono text-[10px] tracking-[0.16em] uppercase text-white/40">Crew board</p>
-        <div className="grid gap-2">
-          {[
-            ['SOL-441', 'Ballarat West', 'Ready', true],
-            ['MIN-208', 'Open cut north', 'Blocked — wind', false],
-            ['CON-055', 'Rail corridor', 'In flight', true],
-            ['SOL-390', 'Mildura array', 'Review', true],
-          ].map(([id, place, status, ok]) => (
-            <div key={String(id)} className="grid grid-cols-[6rem_1fr_auto] items-center gap-3 border border-white/10 px-3 py-2.5">
-              <span className="font-mono text-[10px]">{id}</span>
-              <span className="text-white/70">{place}</span>
-              <span className={`font-mono text-[10px] uppercase ${ok ? 'text-white' : 'text-white/40'}`}>{status}</span>
-            </div>
-          ))}
+      <div className="flex min-h-[320px]">
+        <OpsNav items={['Missions', 'Fleet', 'Datasets', 'Reports']} active="Fleet" />
+        <div className="flex-1 p-4">
+          <p className="mb-4 font-mono text-[10px] tracking-[0.16em] uppercase text-white/40">Crew board</p>
+          <div className="grid gap-2">
+            <CrewRow id="SOL-441" place="Ballarat West" status="ready" />
+            <CrewRow id="MIN-208" place="Open cut north" status="blocked" />
+            <CrewRow id="CON-055" place="Rail corridor" status="inflight" />
+            <CrewRow id="SOL-390" place="Mildura array" status="review" />
+          </div>
         </div>
       </div>
     </OpsFrame>
@@ -178,33 +164,33 @@ export function FlightFleetScreen() {
 
 export function FlightDsScreen() {
   return (
-    <OpsFrame title="ds / components">
-      <div className="grid gap-3 p-4 md:grid-cols-3">
-        <div className="border border-white/15 p-3">
-          <p className="mb-3 font-mono text-[10px] tracking-[0.14em] uppercase text-white/40">Status</p>
-          <div className="flex flex-wrap gap-1">
-            {['Ready', 'Blocked', 'In flight', 'Review'].map((s) => (
-              <span key={s} className="border border-white/30 px-2 py-1 font-mono text-[10px]">
-                {s}
-              </span>
-            ))}
+    <OpsFrame title="ds.dronemapping.com / components / status">
+      <div className="flex min-h-[320px]">
+        <aside className="hidden w-40 shrink-0 border-r border-white/10 bg-[#0a0a0a] p-3 md:block">
+          <p className="mb-3 font-mono text-[9px] tracking-[0.16em] uppercase text-white/35">Flight Ops DS</p>
+          {['Colour', 'Type', 'Status', 'Checklist', 'Map', 'Voice'].map((item) => (
+            <p
+              key={item}
+              className={`px-2 py-1.5 font-mono text-[10px] ${item === 'Status' ? 'bg-white text-black' : 'text-white/40'}`}
+            >
+              {item}
+            </p>
+          ))}
+        </aside>
+        <div className="flex-1 p-4">
+          <div className="mb-4 flex items-center justify-between">
+            <p className="font-display text-lg">Status</p>
+            <LiveBadge />
           </div>
-        </div>
-        <div className="border border-white/15 p-3">
-          <p className="mb-3 font-mono text-[10px] tracking-[0.14em] uppercase text-white/40">Checklist row</p>
-          <div className="space-y-1">
-            <div className="bg-white px-2 py-2 font-mono text-[10px] text-black">Complete</div>
-            <div className="border border-white/20 px-2 py-2 font-mono text-[10px] text-white/50">Pending</div>
+          <div className="flex flex-wrap gap-2">
+            <StatusChip status="ready" />
+            <StatusChip status="blocked" />
+            <StatusChip status="inflight" />
+            <StatusChip status="review" />
           </div>
-        </div>
-        <div className="border border-white/15 p-3">
-          <p className="mb-3 font-mono text-[10px] tracking-[0.14em] uppercase text-white/40">Map chrome</p>
-          <div className="h-20 bg-[#161616] p-2">
-            <div className="ml-auto w-7 space-y-1">
-              <span className="block h-7 bg-white/10" />
-              <span className="block h-7 bg-white/10" />
-            </div>
-          </div>
+          <p className="mt-6 font-mono text-[10px] text-white/40">
+            Ready is a fill. Blocked is an outline. Colour is not used as the only signal.
+          </p>
         </div>
       </div>
     </OpsFrame>

@@ -144,6 +144,13 @@ function CaseHero({
               <MetaDark label="When" value={project.timeframe ?? '—'} />
               <MetaDark label="Tools" value={project.tools.join(' · ')} />
             </dl>
+            <Link
+              to="/projects/flight-ops/system"
+              className="mt-10 inline-flex items-center gap-2 border border-white/25 px-4 py-2.5 font-mono text-[10px] tracking-[0.14em] uppercase text-white hover:border-white hover:bg-white hover:text-black"
+            >
+              Open Design System
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
           <div className="lg:col-span-6">
             <ProjectMock id="flight-map" />
@@ -475,6 +482,18 @@ function ScreensSection({ project }: { project: Project }) {
             </li>
           ))}
         </ol>
+        {id === 'ops' ? (
+          <p className="mt-16 max-w-xl text-sm leading-relaxed text-white/50">
+            The live library — tokens, 20 components, patterns and hand-off — is the Flight Ops Design System.{' '}
+            <Link
+              to="/projects/flight-ops/system"
+              className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white"
+            >
+              Open it
+            </Link>
+            .
+          </p>
+        ) : null}
       </div>
     </section>
   )

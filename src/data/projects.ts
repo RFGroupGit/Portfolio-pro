@@ -143,7 +143,7 @@ export const projects: Project[] = [
         id: 'flight-ds',
         title: 'Design System',
         caption:
-          'Status, map chrome and checklist documented for engineering so both increments stayed visually and behaviourally consistent.',
+          'The live Flight Ops Design System — tokens, components and patterns handed to engineering so both increments stayed visually and behaviourally consistent.',
         device: 'desktop',
       },
     ],

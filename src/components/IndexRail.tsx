@@ -13,6 +13,7 @@ const numbers = ['01', '02', '03', '04', '05', '06']
 export function IndexRail() {
   const { pathname } = useLocation()
   const onHome = pathname === '/'
+  const onOpsDs = pathname.startsWith('/projects/flight-ops/system')
   const ids = useMemo(() => navigation.map((n) => n.id), [])
   const active = useActiveSection(onHome ? ids : [])
   const initials = `${profile.firstName.charAt(0)}${profile.lastName.charAt(0)}`
@@ -21,9 +22,14 @@ export function IndexRail() {
   return (
     <nav
       aria-label="Section index"
-      className="print-hidden fixed top-0 left-0 z-40 hidden h-dvh w-16 flex-col items-center justify-between border-r border-ink/15 bg-paper py-8 lg:flex"
+      className={`print-hidden fixed top-0 left-0 z-40 hidden h-dvh w-16 flex-col items-center justify-between border-r py-8 lg:flex ${
+        onOpsDs ? 'border-white/10 bg-[#0b0b0b]' : 'border-ink/15 bg-paper'
+      }`}
     >
-      <Link to={homeSection('top')} className="text-[11px] font-medium tracking-[0.28em] text-ink">
+      <Link
+        to={homeSection('top')}
+        className={`text-[11px] font-medium tracking-[0.28em] ${onOpsDs ? 'text-white' : 'text-ink'}`}
+      >
         {initials}
         <span className="sr-only">
           {' '}
@@ -40,7 +46,15 @@ export function IndexRail() {
                 to={homeSection(item.id)}
                 aria-current={isActive ? 'true' : undefined}
                 aria-label={`${numbers[i]} ${item.label}`}
-                className={`block transition-colors ${isActive ? 'text-ink' : 'text-ink/30 hover:text-ink'}`}
+                className={`block transition-colors ${
+                  isActive
+                    ? onOpsDs
+                      ? 'text-white'
+                      : 'text-ink'
+                    : onOpsDs
+                      ? 'text-white/30 hover:text-white'
+                      : 'text-ink/30 hover:text-ink'
+                }`}
               >
                 {numbers[i]}
               </Link>
@@ -49,7 +63,9 @@ export function IndexRail() {
         })}
       </ol>
 
-      <p className="spine-year font-mono text-[10px] tracking-[0.28em] text-ink/50">{year}</p>
+      <p className={`spine-year font-mono text-[10px] tracking-[0.28em] ${onOpsDs ? 'text-white/40' : 'text-ink/50'}`}>
+        {year}
+      </p>
     </nav>
   )
 }
