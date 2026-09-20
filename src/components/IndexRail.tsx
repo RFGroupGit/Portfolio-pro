@@ -5,8 +5,6 @@ import { profile } from '../data/profile'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { chromeBar, chromeThemeFromPath } from '../lib/chromeTheme'
 
-const numbers = ['01', '02', '03', '04', '05', '06']
-
 /**
  * Book-spine index: a fixed left rail with initials, live section
  * numbers and the year. Hidden on small screens and in print.
@@ -36,16 +34,17 @@ export function IndexRail() {
 
       <ol className="flex flex-col items-center gap-3 font-mono text-[10px] tabular-nums">
         {navigation.map((item, i) => {
+          const folio = String(i + 1).padStart(2, '0')
           const isActive = onHome && active === item.id
           return (
             <li key={item.id}>
               <Link
                 to={homeSection(item.id)}
                 aria-current={isActive ? 'true' : undefined}
-                aria-label={`${numbers[i]} ${item.label}`}
+                aria-label={`${folio} ${item.label}`}
                 className={`block transition-colors ${isActive ? bar.linkActive : bar.link}`}
               >
-                {numbers[i]}
+                {folio}
               </Link>
             </li>
           )

@@ -15,11 +15,11 @@ export function Contact() {
         aria-hidden="true"
         className="print-hidden pointer-events-none absolute -top-10 right-0 font-sans text-[28vw] leading-none font-medium text-paper/5 select-none"
       >
-        08
+        09
       </span>
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-10">
-        <p className="eyebrow mb-6 text-paper/45">08</p>
+        <p className="eyebrow mb-6 text-paper/45">09</p>
         <h2 id="contact-title" className="font-display text-h2 max-w-4xl text-paper">
           Let’s talk.
         </h2>

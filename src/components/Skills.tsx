@@ -5,7 +5,7 @@ export function Skills() {
   return (
     <Section
       id="skills"
-      number="04"
+      number="05"
       title="Skills"
       intro="Organised by discipline, not by score. Each area reflects hands-on practice in real product teams."
       wide

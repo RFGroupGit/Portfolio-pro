@@ -3,7 +3,7 @@ import { Section } from './ui/Section'
 
 export function Languages() {
   return (
-    <Section id="languages" number="07" title="Languages" wide>
+    <Section id="languages" number="08" title="Languages" wide>
       <dl className="grid border-t border-ink sm:grid-cols-2">
         {languages.map((language) => (
           <div key={language.name} className="print-avoid-break border-ink/15 py-8 sm:border-r sm:px-8 sm:first:pl-0 sm:last:border-r-0">
