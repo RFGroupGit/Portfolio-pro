@@ -48,7 +48,13 @@ export function SurveyPlot({
   const plan = lawnmowerPath()
 
   return (
-    <svg className={className} viewBox="0 0 420 248" fill="none" aria-hidden="true">
+    <svg
+      className={className}
+      viewBox="0 0 420 248"
+      fill="none"
+      aria-hidden="true"
+      preserveAspectRatio="xMidYMid meet"
+    >
       <defs>
         <clipPath id={`aoi-${uid}`}>
           <polygon points={AOI} />
@@ -92,7 +98,7 @@ export function SurveyPlot({
         WP1
       </text>
       <circle cx="348" cy="188" r="3" fill="#4EC8FF" />
-      <text x="300" y="184" fill="#4EC8FF" fontSize="9" fontFamily="ui-monospace, monospace">
+      <text x="268" y="176" fill="#4EC8FF" fontSize="9" fontFamily="ui-monospace, monospace">
         WP14
       </text>
       {mode === 'plan' ? (

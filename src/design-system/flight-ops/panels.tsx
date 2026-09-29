@@ -28,7 +28,7 @@ import {
   WeatherRow,
 } from './components'
 import { surveyMapStyle } from './brand'
-import { SurveyPlot } from './survey-map'
+import { CaptureTile, SurveyPlot } from './survey-map'
 import { idPattern, opsColorCss, opsDensity, opsLayout, opsMotion, opsSpace, opsStroke, opsType, opsZ, units, vocabulary } from './tokens'
 
 export const dsNav = [
@@ -871,8 +871,8 @@ function MapSpec() {
       intro="The map is a workspace, not a thumbnail. Survey polygon, lawnmower strips, dashed plan, waypoints, scale and north. Tools sit on the map: zoom in, zoom out, locate. No extra card around the tools."
     >
       <Canvas>
-        <div className="relative h-56 overflow-hidden rounded-xl" style={surveyMapStyle}>
-          <SurveyPlot mode="plan" className="absolute inset-2" />
+        <div className="relative h-72 overflow-hidden rounded-xl" style={surveyMapStyle}>
+          <SurveyPlot mode="plan" className="h-full w-full" />
           <div className="absolute top-3 right-3">
             <MapToolbar />
           </div>
@@ -922,7 +922,7 @@ function FlagSpec() {
       <Canvas>
         <div className="grid max-w-md grid-cols-4 gap-1">
           <QualityFlag kind="blur" />
-          <div className="aspect-[4/3] bg-white/10" />
+          <CaptureTile seed={1} frame="0048" />
           <QualityFlag kind="gap" />
           <QualityFlag kind="exposure" />
         </div>
@@ -1277,7 +1277,7 @@ function HoldPattern() {
             <QualityFlag kind="blur" />
             <QualityFlag kind="gap" />
             <QualityFlag kind="exposure" />
-            <div className="aspect-[4/3] bg-white/10" />
+            <CaptureTile seed={4} frame="0091" />
           </div>
           <OpsButton size="sm" variant="hold">
             Hold processing
@@ -1387,7 +1387,7 @@ function ReviewPattern() {
             ) : i === 10 ? (
               <QualityFlag key={i} kind="exposure" />
             ) : (
-              <div key={i} className="aspect-[4/3] bg-white/10" />
+              <CaptureTile key={i} seed={i} frame={String(i * 67 + 12).padStart(4, '0')} />
             ),
           )}
         </div>

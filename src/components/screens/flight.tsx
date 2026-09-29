@@ -24,15 +24,6 @@ import { FieldDevice, OpsFrame } from './chrome'
 
 const SOL_META = 'SOL-441 · Ballarat West Solar · 09:14 AEST · CASA ReOC · J. Chen RePL'
 
-const hudItems = [
-  ['AGL', '120 m'],
-  ['GSD', '2.6 cm'],
-  ['Front', '80 %'],
-  ['Side', '70 %'],
-  ['Area', '64.2 ha'],
-  ['Pos', '37.562°S 143.851°E'],
-]
-
 function MapLayers({ active }: { active: string }) {
   return (
     <div className="flex flex-wrap gap-1">
@@ -65,7 +56,7 @@ export function FlightMapScreen() {
     <OpsFrame title="Missions / SOL-441" meta={SOL_META}>
       <div className="grid min-h-[360px] md:grid-cols-[1fr_16.5rem]">
         <div className="relative min-h-[280px]" style={surveyMapStyle}>
-          <SurveyPlot mode="plan" className="absolute inset-3" />
+          <SurveyPlot mode="plan" className="absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)]" />
           <div className="absolute top-3 right-3">
             <MapToolbar />
           </div>
@@ -76,14 +67,6 @@ export function FlightMapScreen() {
               <p className="font-sans text-[11px] text-white/50">AGL Energy · Polygon · 40 strips · lawnmower</p>
             </div>
             <MapLayers active="Plan" />
-          </div>
-          <div className="absolute right-3 bottom-10 hidden rounded-md border border-white/10 bg-[#1F232C]/80 px-2 py-1.5 font-mono text-[9px] text-white/55 lg:block">
-            {hudItems.map(([k, v]) => (
-              <p key={k} className="flex justify-between gap-4">
-                <span className="text-white/35">{k}</span>
-                <span>{v}</span>
-              </p>
-            ))}
           </div>
         </div>
         <aside className="space-y-3 border-t border-white/10 p-4 md:border-t-0 md:border-l">
@@ -107,7 +90,18 @@ export function FlightMapScreen() {
         </aside>
       </div>
       <TelemetryStrip
-        items={['M350 RTK', 'Zenmuse P1 24 mm', 'RTK FIX', 'Wind 4.1 m/s WSW', 'TB60 4/4', 'CASA ReOC', 'NOTAM nil']}
+        items={[
+          'M350 RTK',
+          'P1 24 mm',
+          'AGL 120 m',
+          'GSD 2.6 cm',
+          '80 / 70 %',
+          '64.2 ha',
+          '37.562°S 143.851°E',
+          'RTK FIX',
+          'Wind 4.1 m/s WSW',
+          'CASA ReOC',
+        ]}
       />
     </OpsFrame>
   )
@@ -142,7 +136,7 @@ export function FlightParamsScreen() {
             <MapLayers active="Nadir" />
           </div>
           <div className="relative min-h-[200px] flex-1">
-            <SurveyPlot mode="coverage" className="absolute inset-2" />
+            <SurveyPlot mode="coverage" className="absolute inset-2 h-[calc(100%-1rem)] w-[calc(100%-1rem)]" />
           </div>
           <div className="border-t border-white/10 bg-[#1F232C]/80 p-3">
             <CoverageGrid covered={37} total={40} />
