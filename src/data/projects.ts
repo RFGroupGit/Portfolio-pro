@@ -27,7 +27,7 @@ export const projects: Project[] = [
     result:
       'Operations moved onto a single planning and review path. Incomplete missions are caught before take-off. The review workspace became the screen used in client demos, because it is the first time quality is visible without opening a processing job.',
     image: '/projects/flight-ops.svg',
-    imageAlt: 'Flight Ops dark operations console with survey map and readiness panel',
+    imageAlt: 'Flight Ops console over Ballarat West Solar Farm with lawnmower strips, GSD readout and readiness rail',
     responsibilities: [
       'Conducted user research and analysed functional requirements with pilots and analysts',
       'Designed wireframes and high-fidelity prototypes in Figma',
@@ -84,7 +84,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Drone-ops desktop',
-        body: 'A dense operations console: missions, fleet, datasets. Planning is a map with a readiness rail, not a form with a map thumbnail. Status is a state the whole crew can read from across the room.',
+        body: 'A dense operations console: missions, fleet, datasets. Planning is a map with lawnmower coverage, GSD and a readiness rail — not a form with a map thumbnail. Status is a state the whole crew can read from across the room.',
         artifacts: ['Mission overview', 'Parameters + coverage'],
       },
       {
@@ -108,35 +108,35 @@ export const projects: Project[] = [
         id: 'flight-map',
         title: 'Mission overview',
         caption:
-          'Operations console. Survey polygon, planned path and a readiness rail. This is the screen a crew looks at before anyone drives to site.',
+          'Ops console on SOL-441, Ballarat West Solar Farm. Lawnmower path over the AOI, GSD 2.6 cm, Matrice 350 RTK + P1, CASA ReOC on the rail. This is the screen a crew looks at before anyone drives to site.',
         device: 'desktop',
       },
       {
         id: 'flight-params',
         title: 'Flight parameters',
         caption:
-          'Altitude, overlap, GSD and speed drive a live coverage preview. Incomplete strips stay visible on the western edge instead of hiding in a log.',
+          'AGL, overlap, GSD, line spacing and trigger drive the strip plan. Live coverage leaves three western strips open instead of hiding remainder in a log.',
         device: 'desktop',
       },
       {
         id: 'flight-mobile',
         title: 'Pre-flight checklist',
         caption:
-          'Field app. Ordered checks with a launch lock. Built as a sequence because a miniature of the desktop is unusable with gloves.',
+          'Field app. Ordered checks, RTK FIX on the status bar, wind 9.4 m/s against an 8 m/s limit — launch stays locked. A sequence, because a miniature of the desktop is unusable with gloves.',
         device: 'mobile',
       },
       {
         id: 'flight-review',
         title: 'Data review',
         caption:
-          'Geospatial QA before processing. Flags for blur, gap and exposure — the set is held until an analyst accepts or rejects it.',
+          'Nadir grid before an orthomosaic job. DJI frames with BLUR, GAP and EXPO flags, tie and RMSE on the header — the set is held until an analyst accepts or rejects it.',
         device: 'desktop',
       },
       {
         id: 'flight-fleet',
         title: 'Fleet readiness',
         caption:
-          'Ops lead view: which missions are ready, blocked or in flight. Designed from the research finding that “filled form” was not the same as “ready”.',
+          'Ops lead board for the Victorian day: client, airframe, PIC, AEST window and coverage. Ready is not a filled form — MIN-208 is blocked at 62 % and Geelong is held on weather.',
         device: 'desktop',
       },
       {

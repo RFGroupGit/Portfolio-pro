@@ -27,7 +27,8 @@ import {
   UnitValue,
   WeatherRow,
 } from './components'
-import { mapGridStyle } from './brand'
+import { surveyMapStyle } from './brand'
+import { CaptureTile, SurveyPlot } from './survey-map'
 import { idPattern, opsColorCss, opsDensity, opsLayout, opsMotion, opsSpace, opsStroke, opsType, opsZ, units, vocabulary } from './tokens'
 
 export const dsNav = [
@@ -867,18 +868,11 @@ function MapSpec() {
     <Spec
       kicker="Component · 1.0"
       title="Map chrome"
-      intro="The map is a workspace, not a thumbnail. Grid, polygon, dashed plan, waypoint. Tools sit on the map: zoom in, zoom out, locate. No extra card around the tools."
+      intro="The map is a workspace, not a thumbnail. Survey polygon, lawnmower strips, dashed plan, waypoints, scale and north. Tools sit on the map: zoom in, zoom out, locate. No extra card around the tools."
     >
       <Canvas>
-        <div className="relative h-48 overflow-hidden rounded-xl" style={mapGridStyle}>
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
-              backgroundSize: '22px 22px',
-            }}
-          />
+        <div className="relative h-72 overflow-hidden rounded-xl" style={surveyMapStyle}>
+          <SurveyPlot mode="plan" className="h-full w-full" />
           <div className="absolute top-3 right-3">
             <MapToolbar />
           </div>
@@ -923,12 +917,12 @@ function FlagSpec() {
     <Spec
       kicker="Component · 1.0"
       title="Quality flag"
-      intro="Blur, gap, exposure. Inverse tiles on the review grid. Designed with analysts. A flagged set holds processing until accept or reject."
+      intro="Blur, gap, exposure. Nadir tiles on the review grid with codes on white chips. Designed with analysts. A flagged set holds processing until accept or reject."
     >
       <Canvas>
         <div className="grid max-w-md grid-cols-4 gap-1">
           <QualityFlag kind="blur" />
-          <div className="aspect-[4/3] bg-white/10" />
+          <CaptureTile seed={1} frame="0048" />
           <QualityFlag kind="gap" />
           <QualityFlag kind="exposure" />
         </div>
@@ -1283,7 +1277,7 @@ function HoldPattern() {
             <QualityFlag kind="blur" />
             <QualityFlag kind="gap" />
             <QualityFlag kind="exposure" />
-            <div className="aspect-[4/3] bg-white/10" />
+            <CaptureTile seed={4} frame="0091" />
           </div>
           <OpsButton size="sm" variant="hold">
             Hold processing
@@ -1393,7 +1387,7 @@ function ReviewPattern() {
             ) : i === 10 ? (
               <QualityFlag key={i} kind="exposure" />
             ) : (
-              <div key={i} className="aspect-[4/3] bg-white/10" />
+              <CaptureTile key={i} seed={i} frame={String(i * 67 + 12).padStart(4, '0')} />
             ),
           )}
         </div>
