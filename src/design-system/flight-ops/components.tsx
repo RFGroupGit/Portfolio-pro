@@ -8,7 +8,8 @@ import type {
   OpsButtonVariant,
   TelemetryState,
 } from './tokens'
-import { flagCopy, statusCopy } from './tokens'
+import { statusCopy } from './tokens'
+import { CaptureTile } from './survey-map'
 
 const sizeClass: Record<OpsButtonSize, string> = {
   sm: 'h-8 px-4 text-[11px]',
@@ -121,11 +122,8 @@ export function LaunchLock({ locked }: { locked: boolean }) {
 }
 
 export function QualityFlag({ kind }: { kind: FlagKind }) {
-  return (
-    <div className="flex aspect-[4/3] items-start rounded-md bg-white p-2">
-      <span className="font-sans text-[9px] font-semibold tracking-[0.1em] text-[#FF6161]">{flagCopy[kind]}</span>
-    </div>
-  )
+  const seed = kind === 'blur' ? 2 : kind === 'gap' ? 7 : 10
+  return <CaptureTile seed={seed} flag={kind} />
 }
 
 export function ReadinessMetric({
@@ -173,15 +171,20 @@ export function CrewRow({
 }
 
 export function CoverageGrid({ covered = 37, total = 40 }: { covered?: number; total?: number }) {
+  const open = total - covered
   return (
     <div>
-      <div className="grid h-40 grid-cols-8 grid-rows-5 gap-px rounded-lg bg-[#4EC8FF]/20 p-px">
+      <div className="grid grid-cols-8 gap-x-0.5 gap-y-1.5">
         {Array.from({ length: total }, (_, i) => (
-          <span key={i} className={i < covered ? 'bg-[#4EC8FF]/85' : 'bg-white/10'} />
+          <span
+            key={i}
+            className={`h-2.5 rounded-[2px] ${i < covered ? 'bg-[#4EC8FF]/90' : 'border border-dashed border-[#FF6161]/70 bg-[#FF6161]/15'}`}
+          />
         ))}
       </div>
       <p className="mt-2 font-sans text-[11px] text-white/50">
         {covered} / {total} strips
+        {open > 0 ? ` · ${open} open west` : ''}
       </p>
     </div>
   )
@@ -221,7 +224,7 @@ export function OpsNav({ items, active }: { items: string[]; active: string }) {
   )
 }
 
-export function FieldBar({ mission = 'SOL-441', gps = 'GPS 12', battery = '74%' }: { mission?: string; gps?: string; battery?: string }) {
+export function FieldBar({ mission = 'SOL-441', gps = 'RTK FIX 18', battery = '74%' }: { mission?: string; gps?: string; battery?: string }) {
   return (
     <div className="flex items-center justify-between bg-[#1F232C] px-3 py-1.5 font-sans text-[9px] text-white/55">
       <span>{gps}</span>
