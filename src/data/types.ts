@@ -67,6 +67,19 @@ export interface ProjectDecision {
   body: string
 }
 
+export interface ProjectFinding {
+  quote: string
+  who: string
+  insight: string
+}
+
+export interface ProjectIteration {
+  title: string
+  before: string
+  after: string
+  why: string
+}
+
 /** Visual language of the case-study page and reconstructed product UI. */
 export type ProjectIdentity = 'ops' | 'system' | 'cpq' | 'editorial'
 
@@ -86,6 +99,10 @@ export interface Project {
   problem: string
   solution: string
   role: string
+  /** Who was around the table, e.g. "Ops lead · 5 pilots · 1 developer · me". */
+  team: string
+  /** How long and in what rhythm, e.g. "12 months · alternance". */
+  duration: string
   tools: string[]
   result: string
   /** Up to three headline outcomes displayed above the details. */
@@ -97,8 +114,14 @@ export interface Project {
   responsibilities: string[]
   users: ProjectUser[]
   constraints: string[]
+  /** Verbatims from research, tickets or workshops, each with what it changed. */
+  findings: ProjectFinding[]
   decisions: ProjectDecision[]
   process: ProjectProcessStep[]
+  /** Versions that did not survive testing or review, and what replaced them. */
+  iterations: ProjectIteration[]
+  /** Honest limits: what did not ship, what was not measured, what I would do next. */
+  limits: string[]
   screens: ProjectScreen[]
   /** Screen shown on the homepage card. Defaults to screens[0]. */
   previewScreen?: string

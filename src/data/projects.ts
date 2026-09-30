@@ -15,10 +15,12 @@ export const projects: Project[] = [
     context:
       'Xpatial is a CASA-certified drone mapping and reality-capture company based in Melbourne. Its pilots fly construction progress surveys, stockpile volumes, roof and façade inspections and large-area mapping across Victoria; the office turns the imagery into orthomosaics, 3D models and reports for clients. I joined as UX Designer and worked with the operations lead, the pilots, the data processing team and the developer building the internal tools.',
     problem:
-      'A job was spread across a shared calendar, flight-planning apps, a paper-style pre-flight checklist and folders on a drive. Pilots sometimes arrived on site with overlap or altitude that did not match the brief. Gaps or blurred images were often only noticed once the dataset was already in photogrammetry, which meant a second trip. Nobody could say at a glance which jobs were actually ready.',
+      'It started with a stockpile survey that had to be re-flown: the front overlap had been left at the previous job’s setting, and the gaps only showed up two days later, in photogrammetry. It was not a one-off. A job was spread across a shared calendar, the flight-planning app, a paper-style pre-flight checklist and folders on a drive. Nobody could say at a glance which jobs were actually ready, and quality problems were found when fixing them meant driving back to site.',
     solution:
       'I shadowed pilots and processors, mapped the real job lifecycle and wrote the requirements around two states the team already used informally: “ready to fly” and “dataset usable”. I then designed a desktop view for planning and review, and a phone flow for the pre-flight checklist on site. Recurring elements — map controls, status chips, checklist rows, parameter fields — were built as Design System components in Figma so the developer could reuse them instead of redrawing each screen.',
     role: 'UX Designer — field research, requirements, wireframes and high-fidelity Figma prototypes, ops and field interfaces, geospatial data review, Design System components.',
+    team: 'Operations lead · 5 remote pilots · 2 data processors · 1 developer · me (UX)',
+    duration: '6 weeks of discovery, first release after about 4 months, then iterations through 2025',
     tools: ['Figma', 'Miro', 'Azure DevOps', 'Design System'],
     metrics: [
       { value: 'CASA', label: 'certified operations — the checklist follows them' },
@@ -26,7 +28,7 @@ export const projects: Project[] = [
       { value: '2 years', label: 'in the Melbourne team' },
     ],
     result:
-      'The pre-flight checklist and the job board were the first parts used day to day: pilots worked from the phone flow on site, and the ops lead planned the week from the board instead of the calendar. The dataset review screen was rolled out more gradually, as the developer connected it to the processing workflow. The component library kept those screens consistent as new ones were added.',
+      'The pre-flight checklist and the job board were the first parts used every day: pilots ran the checklist on their phone on site, and the ops lead planned the week from the board instead of the calendar. Re-flights caused by wrong overlap or altitude became rare, according to the ops lead. The dataset review screen was rolled out more gradually, as the developer connected it to the processing workflow, and the component library kept new screens consistent.',
     image: '/projects/flight-ops.svg',
     imageAlt: 'Flight Ops dark operations console with survey map and readiness panel',
     responsibilities: [
@@ -58,6 +60,28 @@ export const projects: Project[] = [
       'A small team: one developer for internal tools, so screens had to reuse the same components',
       'Pre-flight steps come from CASA operating procedures — the UI could reorder them for the field, not remove them',
       'Sun, wind and gloves on site: large targets, high contrast, no dense tables on the phone',
+    ],
+    findings: [
+      {
+        quote: 'I plan in the flight app, check the weather on my phone and tick the checklist on paper. Three places, and none of them talk to each other.',
+        who: 'Remote pilot, 4 years at Xpatial',
+        insight: 'The pre-flight was not missing — it was scattered. The tool had to bring the existing CASA steps into one ordered flow, not invent a new procedure.',
+      },
+      {
+        quote: 'By the time I see the blur, the crew is already on another site.',
+        who: 'Data processor',
+        insight: 'Quality was checked too late. A quick review right after upload, before processing starts, catches most of what used to cost a re-flight.',
+      },
+      {
+        quote: 'The calendar tells me who is where. It doesn’t tell me who can actually fly.',
+        who: 'Operations lead',
+        insight: '“Scheduled” and “ready” are two different states. The job board shows readiness and the reason a job is blocked, not just dates.',
+      },
+      {
+        quote: 'Gloves on, sun on the screen — if the button is small, I’ll skip it.',
+        who: 'Remote pilot, during a site visit',
+        insight: 'Field constraints set the phone UI: one check per screen, large targets, high contrast, nothing else on it.',
+      },
     ],
     decisions: [
       {
@@ -99,6 +123,31 @@ export const projects: Project[] = [
         body: 'Map chrome, status chips, checklist rows, parameter fields and tables documented as components, with the same names in Figma and in the developer’s tickets. New screens start from the library.',
         artifacts: ['DS components', 'Hand-off specs'],
       },
+    ],
+    iterations: [
+      {
+        title: 'Pre-flight checklist',
+        before: 'One scrolling list of 14 checks, like the paper form.',
+        after: 'Six grouped steps, one per screen, with a “hold” state for wind and airspace.',
+        why: 'On the first two real jobs, pilots scrolled past items in bright sun and ticked the list at the end, from memory.',
+      },
+      {
+        title: 'Readiness indicator',
+        before: 'A score: “83 % ready”.',
+        after: 'Ready or Blocked, with the blocking reason written out.',
+        why: 'The ops lead’s reaction in the walkthrough: “83 % of what?” A partial score did not help decide whether to send a crew.',
+      },
+      {
+        title: 'Dataset flags',
+        before: 'A flag on every image under the blur threshold.',
+        after: 'Flags grouped by flight strip; the processor accepts or rejects a strip.',
+        why: 'Façade and roof jobs produced dozens of false positives. Processors think in strips, not single images.',
+      },
+    ],
+    limits: [
+      'Offline mode for the phone checklist was designed but not built while I was there — pilots still need signal to sync.',
+      'Wind and weather are entered by hand; connecting a weather service stayed in the backlog.',
+      'Re-flights were tracked in the ops spreadsheet, not measured before and after properly. “Fewer re-flights” is the team’s observation, not a figure I can prove.',
     ],
     screens: [
       {
@@ -159,10 +208,12 @@ export const projects: Project[] = [
     context:
       'Lensys is a small French publisher — around fifteen people — of an anaesthesia suite: Direct-Agenda (appointments), Direct-Consult (pre-anaesthesia consultation) and Direct-Op (peri- and post-operative follow-up), used by clinics and anaesthetists. It joined the Bow Medical group, publisher of the DIANE suite, in 2022. I worked there as a UX Designer in alternance, with the product owner and the development team.',
     problem:
-      'Each product had its own buttons, forms, tables and alert styles. The same action looked different from one product to the next, which matters when the same anaesthetist uses Direct-Agenda in the morning and Direct-Consult during the consultation. New screens were designed from scratch, and contrast or error states were checked late, screen by screen.',
+      'The trigger was small: a developer was rebuilding a date picker for Direct-Op, the third one in the suite, because nobody knew the Direct-Agenda one could be reused. The inventory that followed found 11 button styles and 4 different date pickers across the three products. The same action looked different from one product to the next — which matters when the same anaesthetist uses Direct-Agenda in the morning and Direct-Consult during the consultation — and contrast or error states were checked late, screen by screen.',
     solution:
       'I started with an inventory of the interface elements used across the three products and reviewed it in workshops with the product owner and developers. We kept what worked, merged duplicates, and I defined foundations (colour, type, spacing, contrast) and core components — buttons, fields, tables, statuses, alerts — with all their states in a shared Figma library. Each component had usage notes, and changes went through the team’s backlog like any other work.',
     role: 'UX Designer (alternance) — UI inventory, workshops, Design System in Figma, wireframes and interactive prototypes, Agile coordination with the product owner and developers.',
+    team: 'Product owner · 4 developers · 1 QA · me (UX Designer, alternance)',
+    duration: '12 months of alternance, in a company / school rhythm',
     tools: ['Figma', 'Figma Variables', 'Jira', 'Miro'],
     metrics: [
       { value: '3 products', label: 'Direct-Agenda · Direct-Consult · Direct-Op' },
@@ -170,7 +221,7 @@ export const projects: Project[] = [
       { value: 'WCAG AA', label: 'contrast checked on the foundations' },
     ],
     result:
-      'The kit became the starting point for new screens during my alternance, and the first Direct-Consult screens were redesigned on it. Migrating the rest of the existing interface was planned in the backlog, product by product, rather than as a one-off redesign. Contrast and error states are now decided once, in the foundations.',
+      'The kit became the starting point for every new screen during my alternance, and the first Direct-Consult screens were rebuilt on it. Developers stopped asking which button to use, because the answer was in the spec. Migrating the rest of the suite was planned in the backlog, product by product, rather than as a one-off redesign.',
     image: '/projects/prism-design-system.svg',
     imageAlt: 'Design system documentation with tokens, component spec and contribution rules',
     responsibilities: [
@@ -200,6 +251,23 @@ export const projects: Project[] = [
       'Three products in production with clinical users — no big-bang redesign',
       'A small development team: every component had to be realistic to implement and maintain',
       'Medical context: readability, error states and contrast are safety questions, not taste',
+    ],
+    findings: [
+      {
+        quote: 'In the agenda, red means cancelled. In the consultation, red means allergy. I shouldn’t have to think about that.',
+        who: 'Anaesthetist at a client clinic, interview organised with the product owner',
+        insight: 'Colour meaning had to be shared. Appointment statuses and clinical alerts became two separate families of tokens, and red is reserved for clinical risk.',
+      },
+      {
+        quote: 'I copy the CSS from the other product and hope it’s the latest version.',
+        who: 'Front-end developer',
+        insight: 'There was no single source. Every component in the kit has a name and states that map one-to-one to what developers implement.',
+      },
+      {
+        quote: 'We can’t stop features for six months to redo the interface.',
+        who: 'Product owner',
+        insight: 'No big-bang redesign: the kit is applied screen by screen, through the same backlog as client features.',
+      },
     ],
     decisions: [
       {
@@ -236,6 +304,31 @@ export const projects: Project[] = [
         body: 'Component work and screen migrations were tickets in the same Jira backlog as features, reviewed in the sprint rituals with the team.',
         artifacts: ['Jira tickets', 'Migration plan'],
       },
+    ],
+    iterations: [
+      {
+        title: 'Colour tokens',
+        before: 'Named by colour: blue-500, red-600.',
+        after: 'Named by role: action, danger, info, text-muted.',
+        why: 'In the first review, two developers mapped the same blue to different uses. Role names removed the guesswork.',
+      },
+      {
+        title: 'Buttons',
+        before: 'Five variants, including an outlined “tertiary”.',
+        after: 'Three variants plus a destructive one.',
+        why: 'The product owner and developers asked to cut: nobody could explain when to use tertiary instead of secondary.',
+      },
+      {
+        title: 'Clinical alerts',
+        before: 'A banner at the top of the screen.',
+        after: 'The alert sits next to the information concerned — an allergy next to the patient’s name.',
+        why: 'In a test on the consultation screen, the anaesthetist scrolled past the banner without reading it.',
+      },
+    ],
+    limits: [
+      'During my alternance, only part of Direct-Consult was migrated; Direct-Op kept its old interface.',
+      'The kit lived in Figma. Each product still implemented its own coded components — a shared front-end library was the next step, not something we delivered.',
+      'Accessibility work covered contrast and states. There was no audit with screen-reader users.',
     ],
     screens: [
       {
@@ -292,10 +385,12 @@ export const projects: Project[] = [
     context:
       'Techform was a French publisher of CPQ (configure, price, quote) software for industrial SMEs: sales reps configure products with options and variants, the software checks compatibilities, prices in real time and generates the quote. The product was later acquired by Visiativ. I joined the development team as a Front-End Developer in alternance, working with developers, product managers and designers.',
     problem:
-      'In the existing configurator, many options were shown on one long page. Incompatibilities between options only appeared at validation, and the interface did not adapt to smaller laptop screens used by reps on the move. Maintenance tickets regularly came back to the same confusing fields.',
+      'The most frequent support ticket read like this: the quote had been rejected by the technical office, because the rep had chosen an option incompatible with the motor voltage and only found out at validation. In the existing configurator, many options were shown on one long page, incompatibilities appeared only at the end, and the interface did not adapt to the small laptop screens reps used on the move.',
     solution:
       'The product team designed a three-step flow — product, configuration, summary — with the price always visible and compatibility messages next to the option that causes them. I implemented it in HTML, CSS and JavaScript: step navigation, responsive layout, display of the rule messages returned by the configuration engine, and the summary before the quote PDF. In parallel I maintained and fixed the existing application.',
     role: 'Front-End Developer (alternance) — front-end features for the CPQ, responsive interfaces, collaboration with developers, product managers and designers, maintenance of the existing application, Agile cycles.',
+    team: 'Lead developer (my tutor) · 3 developers · product manager · UI designer · me (front-end, alternance)',
+    duration: '12 months of alternance, two-week sprints',
     tools: ['HTML / CSS / JavaScript', 'Figma', 'Azure DevOps', 'Agile / Scrum'],
     metrics: [
       { value: 'Alternance', label: '2021 — 2022' },
@@ -303,7 +398,7 @@ export const projects: Project[] = [
       { value: 'Industrial', label: 'SME manufacturers as clients' },
     ],
     result:
-      'The step-based flow was delivered over several sprints, alongside the existing configurator which stayed available during the transition. Compatibility problems became visible while configuring instead of after submission. For me, it was a year of learning to build interfaces that have to follow a rule engine exactly — and of seeing, through maintenance tickets, where users actually got lost.',
+      'The step-based flow was delivered over several sprints, while the old configurator stayed available during the transition. Compatibility problems became visible during configuration instead of after submission, and support saw fewer tickets about the fields that had their own explanation. For me, it was the year I learned to build interfaces that follow a rule engine exactly.',
     image: '/projects/cpq-quote-builder.svg',
     imageAlt: 'Three-step product configurator with live pricing column',
     previewScreen: 'quote-step1',
@@ -335,6 +430,23 @@ export const projects: Project[] = [
       'The compatibility and pricing rules live in the configuration engine — the front-end displays them, it does not re-implement them',
       'The existing configurator had to keep working while the new flow was delivered',
       'Laptops, not phones: responsive meant small laptop screens and resized windows',
+    ],
+    findings: [
+      {
+        quote: 'I filled in the whole page and at the end it tells me the motor doesn’t fit. Which field am I supposed to change?',
+        who: 'Sales rep, support ticket',
+        insight: 'A rule message is only useful on the field that causes it, with the alternative — not in a list after submission.',
+      },
+      {
+        quote: 'Half of these fields don’t apply to this compressor, but I still have to scroll past them.',
+        who: 'Sales rep, feedback session with the product manager',
+        insight: 'Choose the product family first, then show only the options that apply to it.',
+      },
+      {
+        quote: 'We get the same call every week about direct starting above 11 kW.',
+        who: 'Support team',
+        insight: 'Recurring questions got a short explanation on the field itself, written with support.',
+      },
     ],
     decisions: [
       {
@@ -371,6 +483,31 @@ export const projects: Project[] = [
         body: 'Work tracked in Azure DevOps and delivered increment by increment, with the existing configurator kept in place until the new flow was ready.',
         artifacts: ['Azure DevOps', 'Code reviews'],
       },
+    ],
+    iterations: [
+      {
+        title: 'State between steps',
+        before: 'Each step kept its own state; going back to step 1 lost the configuration.',
+        after: 'One configuration state shared by the three steps and kept in session storage.',
+        why: 'Found in my first code review with the lead developer, before it reached users.',
+      },
+      {
+        title: 'Price updates',
+        before: 'The price was recalculated on every keystroke.',
+        after: 'Recalculated on change, with a short delay and a “calculating…” state.',
+        why: 'Each keystroke called the pricing engine; on large configurations the column lagged and flickered.',
+      },
+      {
+        title: 'Rule messages',
+        before: 'The engine’s error text displayed as-is.',
+        after: 'Error codes mapped to messages written with support, including the alternative to choose.',
+        why: '“RULE_ERR_4312: incompatible voltage” meant nothing to a sales rep.',
+      },
+    ],
+    limits: [
+      'It was my first year on a production codebase: my first merge requests came back with a lot of review comments, and I learned the team’s conventions the hard way.',
+      'Responsive work stopped at laptops and tablets; phones were not a target for this product.',
+      'I had no access to usage analytics. Feedback came through support tickets and the product manager.',
     ],
     screens: [
       {
@@ -426,10 +563,12 @@ export const projects: Project[] = [
     context:
       'Cegedim Santé, part of the Cegedim group, publishes practice-management software and services for health professionals — doctors, paramedics, pharmacies, health centres. In alternance as UX Designer / Front-End Developer, I worked with the marketing team on the public product pages: workshops, page structure, front-end integration, SEO and follow-up in Google Analytics and Search Console.',
     problem:
-      'Some product pages were hard to use on a phone, their structure differed from one product to the next, and the demo request form asked for more information than needed to call a practitioner back. On the search side, pages did not always match the words practitioners actually type, such as “logiciel médecin généraliste”.',
+      'Marketing noticed a gap: most visits to the doctors’ software pages came from phones, but almost all demo requests came from desktop. On a phone, the demo button sat below a long introduction, and the form asked for eleven fields. Page structures also differed from one product to the next, and pages ranked for internal product names rather than the words practitioners type, such as “logiciel médecin généraliste”.',
     solution:
       'Workshops with marketing and product to agree, for each page, on the audience, the main message and the single expected action: request a demo. From there I proposed a common page structure, mobile first, and integrated responsive templates in HTML, CSS and JavaScript. Heading hierarchy, titles, meta descriptions and internal links were handled with the layout, and the demo form was shortened to the fields sales needed to call back.',
     role: 'UX Designer / Front-End Developer (alternance) — UX workshops, page structure, responsive templates, front-end integration, SEO, analytics follow-up.',
+    team: 'Web marketing manager · 2 product marketers · 1 web developer · sales contact · me (UX / front-end, alternance)',
+    duration: '12 months of alternance',
     tools: ['Figma', 'HTML / CSS / JavaScript', 'Google Analytics', 'Google Search Console', 'Miro'],
     metrics: [
       { value: 'Alternance', label: '2022 — 2023' },
@@ -437,7 +576,7 @@ export const projects: Project[] = [
       { value: 'Search Console', label: 'queries reviewed with marketing' },
     ],
     result:
-      'The redesigned pages shared one responsive structure, which made new product pages quicker to produce. Search Console and Analytics were reviewed regularly with marketing, and titles and content were adjusted from the queries practitioners actually used. The workshop format was reused for later pages.',
+      'The redesigned pages shared one responsive structure, which made new product pages quicker to produce. The demo request became reachable in the first screen on mobile, and Search Console and Analytics were reviewed regularly with marketing to adjust titles from the queries practitioners actually used. The workshop format was reused for later pages.',
     image: '/projects/cegedim-web-seo.svg',
     imageAlt: 'Healthcare software product page with a single demo request action and a mobile form',
     responsibilities: [
@@ -467,6 +606,23 @@ export const projects: Project[] = [
       'Several products and audiences on the same site — one structure had to fit them all',
       'Regulated sector: claims about certifications and funding had to stay accurate and validated by marketing',
       'SEO and design had to share one page outline, not two separate documents',
+    ],
+    findings: [
+      {
+        quote: 'I look at software between two patients, on my phone. If it’s long, I tell myself I’ll come back later — and I don’t.',
+        who: 'General practitioner, call organised through sales',
+        insight: 'The page must say what the software does and offer a demo within the first screen on mobile.',
+      },
+      {
+        quote: 'Half of what the form asks, I ask again on the phone anyway.',
+        who: 'Sales representative',
+        insight: 'The form only needs what sales uses to call back and route the request.',
+      },
+      {
+        quote: 'Top queries: product names. “Logiciel médecin” barely appears.',
+        who: 'Search Console review with marketing',
+        insight: 'Titles and H1s were written in practitioners’ words, product names came second.',
+      },
     ],
     decisions: [
       {
@@ -503,6 +659,31 @@ export const projects: Project[] = [
         body: 'Titles, meta descriptions, internal links; then regular reviews of Search Console queries and Analytics with marketing to adjust content.',
         artifacts: ['Search Console', 'Google Analytics', 'Internal links'],
       },
+    ],
+    iterations: [
+      {
+        title: 'Demo form',
+        before: 'Cut to three fields: name, email, phone.',
+        after: 'Four fields, with profession as a list.',
+        why: 'Sales needed the profession to route the request to the right team. We added it back — as a list, not free text.',
+      },
+      {
+        title: 'Hero',
+        before: 'A carousel of product screenshots.',
+        after: 'One static image and one message.',
+        why: 'The carousel was the heaviest element on mobile and slowed the first display; nobody clicked beyond the first slide.',
+      },
+      {
+        title: 'Titles and claims',
+        before: 'Titles rewritten with strong marketing wording.',
+        after: 'Factual titles, validated by marketing.',
+        why: 'Some claims could not be backed up in a regulated sector. Accurate beats catchy.',
+      },
+    ],
+    limits: [
+      'The results were followed over a few months; with seasonality and other campaigns running, the effect of the SEO work alone cannot be isolated.',
+      'Some product pages stayed on the old template when my alternance ended.',
+      'The CMS did not allow A/B testing, so changes were compared before and after, not tested side by side.',
     ],
     screens: [
       {

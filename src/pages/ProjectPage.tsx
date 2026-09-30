@@ -10,7 +10,9 @@ import { NotFoundPage } from './NotFoundPage'
 const toc = [
   { id: 'overview', label: 'Overview' },
   { id: 'people', label: 'People' },
+  { id: 'research', label: 'Research' },
   { id: 'process', label: 'Process' },
+  { id: 'iterations', label: 'Iterations' },
   { id: 'screens', label: 'Screens' },
   { id: 'outcome', label: 'Outcome' },
 ] as const
@@ -67,8 +69,10 @@ export function ProjectPage() {
 
         <OverviewSection project={project} />
         <PeopleSection project={project} />
+        <FindingsSection project={project} />
         <DecisionsSection project={project} />
         <ProcessSection project={project} />
+        <IterationsSection project={project} />
         <ScreensSection project={project} />
         <OutcomeSection project={project} />
 
@@ -317,6 +321,16 @@ function OverviewSection({ project }: { project: Project }) {
             ))}
           </div>
         )}
+        <dl className={`mt-16 grid gap-8 pt-8 md:grid-cols-2 ${id === 'cpq' ? 'border-t border-black/8' : 'border-t border-current/15'}`}>
+          <div>
+            <dt className={`font-sans text-[10px] tracking-[0.14em] uppercase ${mute(id)}`}>Team</dt>
+            <dd className={`mt-2 text-sm leading-relaxed ${soft(id)}`}>{project.team}</dd>
+          </div>
+          <div>
+            <dt className={`font-sans text-[10px] tracking-[0.14em] uppercase ${mute(id)}`}>Duration</dt>
+            <dd className={`mt-2 text-sm leading-relaxed ${soft(id)}`}>{project.duration}</dd>
+          </div>
+        </dl>
       </div>
     </section>
   )
@@ -361,6 +375,32 @@ function PeopleSection({ project }: { project: Project }) {
             ))}
           </ul>
         </div>
+      </div>
+    </section>
+  )
+}
+
+function FindingsSection({ project }: { project: Project }) {
+  const id = project.identity
+  return (
+    <section id="research" className={`scroll-mt-32 ${sectionRule(id)} py-20 md:py-28`}>
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+        <p className={`mb-5 ${eyebrow(id)}`}>Research</p>
+        <h2 className="font-display mb-12 max-w-3xl text-3xl tracking-tight md:text-5xl">What we heard</h2>
+        <ul className="grid gap-x-12 gap-y-14 md:grid-cols-2">
+          {project.findings.map((finding) => (
+            <li key={finding.quote}>
+              <blockquote className="font-display text-xl leading-snug tracking-tight md:text-2xl">
+                “{finding.quote}”
+              </blockquote>
+              <p className={`mt-3 font-sans text-[10px] tracking-[0.14em] uppercase ${mute(id)}`}>{finding.who}</p>
+              <p className={`mt-4 text-sm leading-relaxed ${soft(id)}`}>
+                <span className={eyebrow(id)}>So </span>
+                {finding.insight}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
@@ -449,6 +489,47 @@ function ProcessSection({ project }: { project: Project }) {
   )
 }
 
+function IterationsSection({ project }: { project: Project }) {
+  const id = project.identity
+  const card =
+    id === 'cpq'
+      ? 'rounded-2xl bg-white p-5'
+      : id === 'ops'
+        ? 'border border-white/15 p-5'
+        : id === 'system'
+          ? 'rounded-2xl border border-[#1B4F9E]/12 bg-white p-5'
+          : 'rounded-xl bg-[#EDF3F6] p-5'
+  return (
+    <section id="iterations" className={`scroll-mt-32 ${sectionRule(id)} py-20 md:py-28`}>
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+        <p className={`mb-5 ${eyebrow(id)}`}>Iterations</p>
+        <h2 className="font-display mb-12 max-w-3xl text-3xl tracking-tight md:text-5xl">What changed after testing</h2>
+        <ol className="space-y-12">
+          {project.iterations.map((item) => (
+            <li key={item.title} className="grid gap-6 lg:grid-cols-12">
+              <h3 className="font-display text-2xl tracking-tight lg:col-span-3">{item.title}</h3>
+              <div className="grid gap-4 sm:grid-cols-2 lg:col-span-9">
+                <div className={card}>
+                  <p className={`font-sans text-[10px] tracking-[0.14em] uppercase ${mute(id)}`}>First version</p>
+                  <p className={`mt-2 text-sm leading-relaxed ${soft(id)}`}>{item.before}</p>
+                </div>
+                <div className={card}>
+                  <p className={eyebrow(id)}>Shipped</p>
+                  <p className={`mt-2 text-sm leading-relaxed ${soft(id)}`}>{item.after}</p>
+                </div>
+                <p className={`text-sm leading-relaxed sm:col-span-2 ${soft(id)}`}>
+                  <span className="font-medium">Why: </span>
+                  {item.why}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )
+}
+
 function ScreensSection({ project }: { project: Project }) {
   const id = project.identity
   return (
@@ -459,8 +540,8 @@ function ScreensSection({ project }: { project: Project }) {
           {id === 'system' ? 'The library, specified' : id === 'editorial' ? 'Templates and measurement' : 'Interfaces designed for this work'}
         </h2>
         <p className={`mb-16 max-w-xl text-sm leading-relaxed ${mute(id)}`}>
-          Reconstructed product UI from the problems, flows and responsibilities on the CV — not client screenshots.
-          Each frame is a concrete step in the delivery, in the visual language of that product.
+          Redrawn for this portfolio: client interfaces and data are confidential, so names, figures and patient data are fictional.
+          Each frame is a real step in the delivery, in the visual language of that product.
         </p>
         <ol className="space-y-24">
           {project.screens.map((screen, i) => (
@@ -515,6 +596,16 @@ function OutcomeSection({ project }: { project: Project }) {
         <div className="lg:col-span-8">
           <p className="max-w-2xl text-lg leading-relaxed md:text-xl">{project.result}</p>
           <p className={`mt-8 max-w-2xl text-sm leading-relaxed ${mute(id)}`}>{project.role}</p>
+          <div className={`mt-14 pt-8 ${id === 'cpq' ? 'border-t border-black/8' : 'border-t border-current/15'}`}>
+            <p className={`mb-5 ${eyebrow(id)}`}>Limits and next steps</p>
+            <ul className="max-w-2xl space-y-3">
+              {project.limits.map((item) => (
+                <li key={item} className={`text-sm leading-relaxed ${soft(id)}`}>
+                  — {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
