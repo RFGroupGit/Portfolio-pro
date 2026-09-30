@@ -18,7 +18,7 @@ import { FieldDevice, OpsFrame } from './chrome'
 
 export function FlightMapScreen() {
   return (
-    <OpsFrame title="Missions / SOL-441">
+    <OpsFrame title="Jobs / CON-214">
       <div className="grid min-h-[360px] md:grid-cols-[1fr_15rem]">
         <div className="relative" style={mapGridStyle}>
           <svg className="absolute inset-6" viewBox="0 0 400 240" fill="none" aria-hidden="true">
@@ -38,9 +38,9 @@ export function FlightMapScreen() {
             <MapToolbar />
           </div>
           <div className="relative p-4">
-            <p className="font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#FF6161]">Mission</p>
-            <p className="mt-1 text-sm font-medium">Solar farm — Ballarat West</p>
-            <p className="font-sans text-[11px] text-white/50">Polygon · 64 ha · GSD 2.6 cm</p>
+            <p className="font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#FF6161]">Job</p>
+            <p className="mt-1 text-sm font-medium">Fishermans Bend — progress</p>
+            <p className="font-sans text-[11px] text-white/50">18 ha · GSD 2.2 cm</p>
           </div>
         </div>
         <aside className="space-y-4 border-t border-white/10 p-4 md:border-t-0 md:border-l">
@@ -49,8 +49,8 @@ export function FlightMapScreen() {
           <ul>
             <ReadinessMetric label="Coverage" value="100%" />
             <ReadinessMetric label="Batteries" value="4 / 4" />
-            <ReadinessMetric label="Window" value="2 h" />
-            <ReadinessMetric label="Checklist" value="8 / 8" />
+            <ReadinessMetric label="Wind" value="5 m/s" />
+            <ReadinessMetric label="Checklist" value="6 / 6" />
           </ul>
         </aside>
       </div>
@@ -60,15 +60,15 @@ export function FlightMapScreen() {
 
 export function FlightParamsScreen() {
   return (
-    <OpsFrame title="Missions / SOL-441 / Parameters">
+    <OpsFrame title="Jobs / CON-214 / Parameters">
       <div className="grid min-h-[360px] md:grid-cols-[17rem_1fr]">
         <div className="space-y-3 border-b border-white/10 p-4 md:border-r md:border-b-0">
           <p className="font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#FF6161]">Parameters</p>
-          <ParamRow label="Altitude" value="120 m" />
+          <ParamRow label="Altitude" value="80 m AGL" />
           <ParamRow label="Front overlap" value="80 %" />
           <ParamRow label="Side overlap" value="70 %" />
-          <ParamRow label="GSD" value="2.6 cm/px" />
-          <ParamRow label="Speed" value="8 m/s" />
+          <ParamRow label="GSD" value="2.2 cm/px" />
+          <ParamRow label="Speed" value="7 m/s" />
           <div className="pt-2">
             <OpsButton size="sm">Recalculate coverage</OpsButton>
           </div>
@@ -92,7 +92,7 @@ export function FlightMobileScreen() {
           <SequenceStep current={5} total={6} label="Checks" />
         </div>
         <ul className="mt-5 space-y-1.5">
-          <ChecklistRow label="Airspace NOTAM" state="ok" density="field" />
+          <ChecklistRow label="Airspace check" state="ok" density="field" />
           <ChecklistRow label="Batteries 4/4" state="ok" density="field" />
           <ChecklistRow label="SD formatted" state="ok" density="field" />
           <ChecklistRow label="Home point" state="ok" density="field" />
@@ -109,12 +109,12 @@ export function FlightMobileScreen() {
 
 export function FlightReviewScreen() {
   return (
-    <OpsFrame title="Datasets / SOL-441 / Review">
+    <OpsFrame title="Datasets / CON-214 / Review">
       <div className="p-4">
         <div className="mb-4 flex items-end justify-between gap-4">
           <div>
             <p className="font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#FF6161]">Geospatial QA</p>
-            <p className="font-display text-2xl">1,248 images · 3 flags</p>
+            <p className="font-display text-2xl">486 images · 3 flags</p>
           </div>
           <OpsButton size="sm" variant="hold">
             Hold processing
@@ -143,16 +143,16 @@ export function FlightReviewScreen() {
 
 export function FlightFleetScreen() {
   return (
-    <OpsFrame title="Fleet / today">
+    <OpsFrame title="Job board / this week">
       <div className="flex min-h-[320px]">
-        <OpsNav items={['Missions', 'Fleet', 'Datasets', 'Reports']} active="Fleet" />
+        <OpsNav items={['Jobs', 'Board', 'Datasets', 'Reports']} active="Board" />
         <div className="flex-1 p-4">
-          <p className="mb-4 font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#FF6161]">Crew board</p>
+          <p className="mb-4 font-sans text-[10px] font-semibold tracking-[0.12em] uppercase text-[#FF6161]">This week</p>
           <div className="grid gap-2">
-            <CrewRow id="SOL-441" place="Ballarat West" status="ready" />
-            <CrewRow id="MIN-208" place="Open cut north" status="blocked" />
-            <CrewRow id="CON-055" place="Rail corridor" status="inflight" />
-            <CrewRow id="SOL-390" place="Mildura array" status="review" />
+            <CrewRow id="CON-214" place="Fishermans Bend" status="ready" />
+            <CrewRow id="STK-087" place="Quarry stockpiles, Lysterfield" status="blocked" />
+            <CrewRow id="RF-132" place="Roof inspection, Dandenong South" status="inflight" />
+            <CrewRow id="SOL-441" place="Solar farm, Ballarat West" status="review" />
           </div>
         </div>
       </div>

@@ -85,7 +85,7 @@ export const dsNav = [
       { id: 'field-desktop', label: 'Field vs desktop' },
       { id: 'hold', label: 'Hold processing' },
       { id: 'recalculate', label: 'Recalculate' },
-      { id: 'fleet', label: 'Fleet board' },
+      { id: 'fleet', label: 'Job board' },
       { id: 'briefing', label: 'Briefing' },
       { id: 'review-qa', label: 'Review QA' },
     ],
@@ -300,7 +300,7 @@ function Overview() {
           ['2 surfaces', 'Desktop console + field device'],
           ['20 components', 'States, API and usage'],
           ['7 patterns', 'Ready-to-fly through review'],
-          ['2 increments', 'Handed over as this library'],
+          ['1 developer', 'Building from these specs'],
         ].map(([v, l]) => (
           <div key={l} className="bg-[#1F232C] px-5 py-6">
             <p className="font-display text-2xl">{v}</p>
@@ -337,8 +337,8 @@ function Overview() {
       </Block>
       <Block title="Governance">
         <p className="max-w-2xl text-sm leading-relaxed text-white/65">
-          Names in Figma, Azure DevOps and this site are identical. A squad that needs a new control writes it here first.
-          Screenshots in Slack are not a source of truth.
+          Names in Figma, Azure DevOps and this site are identical. When a screen needs a new control, it is specified here
+          first, then built — so the developer never has to reverse-engineer a mock-up.
         </p>
       </Block>
     </Spec>
@@ -778,7 +778,7 @@ function ChecklistSpec() {
     >
       <Canvas label="Field density">
         <div className="max-w-sm space-y-1.5">
-          <ChecklistRow label="Airspace NOTAM" state="ok" density="field" />
+          <ChecklistRow label="Airspace check" state="ok" density="field" />
           <ChecklistRow label="Batteries 4/4" state="ok" density="field" />
           <ChecklistRow label="Wind < 8 m/s" state="hold" density="field" />
           <ChecklistRow label="Radio check" state="pending" density="field" />
@@ -1013,7 +1013,7 @@ function ChromeSpec() {
     >
       <Canvas label="Ops nav">
         <div className="flex min-h-[160px] border border-white/10">
-          <OpsNav items={['Missions', 'Fleet', 'Datasets', 'Reports']} active="Fleet" />
+          <OpsNav items={['Jobs', 'Board', 'Datasets', 'Reports']} active="Board" />
           <div className="flex-1 p-4 font-mono text-[10px] text-white/40">Workspace</div>
         </div>
       </Canvas>
@@ -1081,7 +1081,7 @@ function FilterSpec() {
     <Spec
       kicker="Component · 1.0"
       title="Filter & search"
-      intro="Fleet and datasets. Search is a slash field. Filters are chips. Selected is inverse. Never hide Ready missions behind a dropdown."
+      intro="Jobs and datasets. Search is a slash field. Filters are chips. Selected is inverse. Never hide Ready jobs behind a dropdown."
     >
       <Canvas>
         <div className="max-w-md space-y-4">
@@ -1324,7 +1324,7 @@ function FleetPattern() {
   return (
     <Spec
       kicker="Pattern"
-      title="Fleet board"
+      title="Job board"
       intro="The ops-lead surface. Filter, then rows. Status is the last column because that is what they came to read. Place is a name, not a coordinate."
     >
       <Canvas>
@@ -1529,7 +1529,7 @@ function Handoff() {
     <Spec
       kicker="Delivery"
       title="Hand-off"
-      intro="This library was the contract with engineering. Increment 1: map chrome, status, parameters, coverage. Increment 2: checklist, launch lock, review flags, crew board. Azure DevOps items pointed at these component names, not at screenshots in Slack."
+      intro="This library was the working agreement with the developer. It grew in versions alongside the screens: first the ops console (map, status, parameters), then the field checklist, then dataset review. Azure DevOps tickets referenced these component names rather than screenshots."
     >
       <ol className="max-w-xl space-y-4 font-mono text-[12px]">
         {[
@@ -1547,8 +1547,8 @@ function Handoff() {
         ))}
       </ol>
       <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/55">
-        Figma library uses the same names as this documentation. If a squad needs a new pattern, it is added here first —
-        the same governance idea as a design system, scoped to one operational product.
+        The Figma library uses the same names as this documentation. A new pattern is added here before it is built —
+        the same governance idea as a larger design system, scoped to one small internal product.
       </p>
     </Spec>
   )

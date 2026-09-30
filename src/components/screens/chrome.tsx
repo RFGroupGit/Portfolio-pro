@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { FieldBar, LiveBadge } from '../../design-system/flight-ops/components'
-import { CegedimMark, LensysMark, VisiativMark, XpatialMark } from './marks'
+import { CegedimMark, LensysMark, TechformMark, XpatialMark } from './marks'
 
 export function OpsFrame({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -38,7 +38,7 @@ export function DocsFrame({ crumb, children }: { crumb: string; children: ReactN
         <span className="text-white/35">/</span>
         <span className="truncate font-sans text-[10px] text-white/80">{crumb}</span>
         <span className="ml-auto hidden rounded-full bg-white/15 px-2 py-0.5 font-sans text-[9px] tracking-[0.12em] uppercase sm:inline">
-          Prism
+          UI kit
         </span>
       </div>
       <div className="min-h-[300px] md:min-h-[360px]">{children}</div>
@@ -58,10 +58,10 @@ export function IndustrialFrame({
   return (
     <div className="overflow-hidden rounded-[1.6rem] border border-black/8 bg-white text-[11px] leading-snug text-[#121212] md:text-xs">
       <div className="flex items-center gap-3 border-b border-black/6 bg-[#f7f7fd] px-3 py-2">
-        <VisiativMark className="h-5 w-5 text-[#121212]" />
+        <TechformMark className="h-5 w-5 text-[#121212]" />
         <span className="font-sans text-[12px] font-semibold tracking-tight">Techform</span>
         <span className="ml-2 hidden gap-1 sm:flex">
-          {['Product', 'Configuration', 'Summary'].map((tab) => (
+          {['Produit', 'Configuration', 'Récapitulatif'].map((tab) => (
             <span
               key={tab}
               className={`rounded-full px-2.5 py-1 text-[10px] font-medium ${
@@ -74,7 +74,7 @@ export function IndustrialFrame({
         </span>
         <span className="ml-auto hidden truncate text-[10px] text-[#595a70] md:inline">{title}</span>
         <span className="hidden rounded-full bg-gradient-to-r from-[#ffb56a] via-[#c44bff] to-[#62c4ff] p-[1px] sm:inline">
-          <span className="block rounded-full bg-white px-2.5 py-0.5 text-[9px] font-semibold text-[#121212]">Quote</span>
+          <span className="block rounded-full bg-white px-2.5 py-0.5 text-[9px] font-semibold text-[#121212]">Devis</span>
         </span>
       </div>
       <div className="min-h-[300px] bg-white md:min-h-[360px]">{children}</div>
@@ -118,9 +118,9 @@ export function PlantDevice({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto w-full max-w-[300px] overflow-hidden rounded-[1.6rem] border border-black/8 bg-white">
       <div className="flex items-center gap-2 bg-[#f7f7fd] px-3 py-1.5">
-        <VisiativMark className="h-4 w-4 text-[#121212]" />
+        <TechformMark className="h-4 w-4 text-[#121212]" />
         <span className="font-sans text-[9px] font-semibold">Techform CPQ</span>
-        <span className="ml-auto text-[9px] text-[#595a70]">13″ plant laptop</span>
+        <span className="ml-auto text-[9px] text-[#595a70]">Poste commercial</span>
       </div>
       <div className="min-h-[400px] text-[11px] text-[#121212]">{children}</div>
     </div>

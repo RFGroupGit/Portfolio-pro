@@ -23,12 +23,11 @@ export function LensysMark({ className = 'h-7 w-7' }: { className?: string }) {
   )
 }
 
-export function VisiativMark({ className = 'h-7 w-7' }: { className?: string }) {
+export function TechformMark({ className = 'h-7 w-7' }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
-      <path d="M4 8 L16 28 L12.5 28 L2 10.5 Z" fill="currentColor" />
-      <path d="M20 8 L16 16 L19.2 16 L22.8 8 Z" fill="currentColor" opacity="0.55" />
-      <path d="M28 8 L18 28 L21.5 28 L30 10.5 Z" fill="currentColor" />
+      <path d="M4 5h24v5.5H18.8V28h-5.6V10.5H4Z" fill="currentColor" />
+      <rect x="21" y="15" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.5" />
     </svg>
   )
 }

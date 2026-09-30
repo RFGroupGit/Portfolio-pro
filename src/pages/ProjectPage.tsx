@@ -17,8 +17,8 @@ const toc = [
 
 const identityLabel: Record<ProjectIdentity, string> = {
   ops: 'Xpatial · Dronemapping',
-  system: 'Lensys · Bow Medical',
-  cpq: 'Techform · Visiativ CPQ',
+  system: 'Lensys · Anaesthesia software',
+  cpq: 'Techform · CPQ software',
   editorial: 'Cegedim Santé',
 }
 
@@ -173,7 +173,7 @@ function CaseHero({
                 {folio} / {identityLabel.system}
               </p>
               <h1 className="font-display mt-4 text-5xl leading-none tracking-tight md:text-6xl">{project.name}</h1>
-              <p className="mt-2 font-sans text-sm text-white/70">{project.company} library</p>
+              <p className="mt-2 font-sans text-sm text-white/70">Shared Figma library · 3 products</p>
             </div>
             <p className="max-w-xl text-lg leading-relaxed text-white/80 lg:col-span-8">{project.thesis}</p>
           </div>
@@ -187,7 +187,7 @@ function CaseHero({
             <span className="rounded-full bg-white px-4 py-2 text-xs text-[#1B4F9E]">Primary</span>
             <span className="rounded-full border border-white/70 px-4 py-2 text-xs text-white">Secondary</span>
             <span className="px-4 py-2 text-xs text-white/50">Disabled</span>
-            <span className="ml-auto font-sans text-[10px] text-white/60">Prism / button · Bow Medical navy</span>
+            <span className="ml-auto font-sans text-[10px] text-white/60">UI kit / button · Direct suite</span>
           </div>
         </div>
       </header>
@@ -206,7 +206,7 @@ function CaseHero({
             <h1 className="font-display mt-3 text-5xl leading-none font-semibold tracking-tight md:text-7xl">{project.name}</h1>
             <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/85">{project.thesis}</p>
             <ol className="mt-10 flex flex-wrap gap-2">
-              {['01 Product', '02 Configuration', '03 Summary'].map((step) => (
+              {['01 Produit', '02 Configuration', '03 Récapitulatif'].map((step) => (
                 <li key={step} className="rounded-full bg-white/20 px-4 py-2 font-sans text-[11px] font-medium">
                   {step}
                 </li>

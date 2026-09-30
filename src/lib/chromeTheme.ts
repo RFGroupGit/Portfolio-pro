@@ -2,7 +2,7 @@ export type ChromeTheme = 'mono' | 'ops' | 'system' | 'cpq' | 'editorial'
 
 export function chromeThemeFromPath(pathname: string): ChromeTheme {
   if (pathname.startsWith('/projects/flight-ops')) return 'ops'
-  if (pathname.startsWith('/projects/prism')) return 'system'
+  if (pathname.startsWith('/projects/direct-suite')) return 'system'
   if (pathname.startsWith('/projects/quote-builder')) return 'cpq'
   if (pathname.startsWith('/projects/cegedim-web')) return 'editorial'
   return 'mono'

@@ -24,7 +24,7 @@ export const experience: Experience[] = [
     role: 'UX Designer',
     period: '2023 — 2024',
     location: 'France',
-    summary: 'Software company — work-study programme (alternance).',
+    summary: 'Anaesthesia software publisher (Bow Medical group) — work-study programme (alternance).',
     highlights: [
       'Designed and maintained scalable Design Systems',
       'Created wireframes and interactive prototypes in Figma',
@@ -37,7 +37,7 @@ export const experience: Experience[] = [
     role: 'UX Designer / Front-End Developer',
     period: '2022 — 2023',
     location: 'France',
-    summary: 'Software and technology group — work-study programme (alternance).',
+    summary: 'Healthcare software and data group — work-study programme (alternance).',
     highlights: [
       'Developed responsive web applications',
       'Improved website visibility through SEO best practices',
