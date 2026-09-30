@@ -2,10 +2,18 @@ import type { ReactNode } from 'react'
 import { FieldBar, LiveBadge } from '../../design-system/flight-ops/components'
 import { CegedimMark, LensysMark, TechformMark, XpatialMark } from './marks'
 
-export function OpsFrame({ title, children }: { title: string; children: ReactNode }) {
+export function OpsFrame({
+  title,
+  meta,
+  children,
+}: {
+  title: string
+  meta?: string
+  children: ReactNode
+}) {
   return (
     <div className="overflow-hidden rounded-xl border border-white/10 bg-[#262C38] text-[12px] leading-snug text-white md:text-[13px]">
-      <div className="flex items-center justify-between border-b border-white/10 bg-[#1F232C] px-3 py-2">
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-[#1F232C] px-3 py-2">
         <span className="flex items-center gap-2 text-white">
           <XpatialMark className="h-5 w-5 text-white" />
           <span className="font-sans text-[10px] font-semibold tracking-[0.16em] uppercase">Xpatial</span>
@@ -13,6 +21,12 @@ export function OpsFrame({ title, children }: { title: string; children: ReactNo
         <span className="truncate font-sans text-[11px] text-white/60">{title}</span>
         <LiveBadge />
       </div>
+      {meta ? (
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-[#1F232C]/70 px-3 py-1 font-mono text-[9px] tracking-[0.04em] text-white/45">
+          <span className="truncate">{meta}</span>
+          <span className="hidden shrink-0 sm:inline">AEST · VIC</span>
+        </div>
+      ) : null}
       <div className="min-h-[300px] md:min-h-[360px]">{children}</div>
     </div>
   )
@@ -20,9 +34,9 @@ export function OpsFrame({ title, children }: { title: string; children: ReactNo
 
 export function FieldDevice({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto w-full max-w-[260px] rounded-[1.6rem] bg-[#262C38] p-1.5">
+    <div className="mx-auto w-full max-w-[280px] rounded-[1.6rem] bg-[#262C38] p-1.5">
       <div className="overflow-hidden rounded-[1.35rem] bg-[#1F232C] text-white">
-        <FieldBar />
+        <FieldBar mission="CON-214" gps="RTK FIX 18" battery="74%" />
         <div className="min-h-[440px] text-[12px]">{children}</div>
       </div>
     </div>

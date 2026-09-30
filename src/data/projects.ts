@@ -30,7 +30,7 @@ export const projects: Project[] = [
     result:
       'The pre-flight checklist and the job board were the first parts used every day: pilots ran the checklist on their phone on site, and the ops lead planned the week from the board instead of the calendar. Re-flights caused by wrong overlap or altitude became rare, according to the ops lead. The dataset review screen was rolled out more gradually, as the developer connected it to the processing workflow, and the component library kept new screens consistent.',
     image: '/projects/flight-ops.svg',
-    imageAlt: 'Flight Ops dark operations console with survey map and readiness panel',
+    imageAlt: 'Flight Ops console with lawnmower survey strips, GSD readout and readiness rail',
     responsibilities: [
       'Conducted user research with pilots, data processors and the operations lead',
       'Analysed functional requirements and turned them into user flows',
@@ -154,35 +154,35 @@ export const projects: Project[] = [
         id: 'flight-map',
         title: 'Job overview',
         caption:
-          'Desktop planning view: site polygon, planned path and a readiness panel — the screen the ops lead checks before a crew leaves.',
+          'Desktop planning view: site polygon, lawnmower strips, GSD/AGL telemetry and a readiness panel — the screen the ops lead checks before a crew leaves.',
         device: 'desktop',
       },
       {
         id: 'flight-params',
         title: 'Flight parameters',
         caption:
-          'Altitude, overlap, GSD and speed update a coverage preview. A strip with insufficient overlap stays visible instead of hiding in the flight app.',
+          'Altitude, overlap, line spacing, trigger and shutter update a coverage preview. Strips still open stay visible on the map instead of hiding in the flight app.',
         device: 'desktop',
       },
       {
         id: 'flight-mobile',
         title: 'Pre-flight checklist',
         caption:
-          'Phone flow on site. Ordered CASA checks with large targets; wind or airspace puts the job on hold rather than letting it be ticked off.',
+          'Phone flow on site. Ordered CASA checks with large targets; RTK FIX and a wind hold lock launch rather than letting the list be ticked off.',
         device: 'mobile',
       },
       {
         id: 'flight-review',
         title: 'Dataset review',
         caption:
-          'Before photogrammetry: blur, gap and exposure flags. The set is held until a processor accepts it or asks for a re-flight.',
+          'Before photogrammetry: nadir tiles, DJI frame IDs, BLUR/GAP/EXPO flags, tie and RMSE. The set is held until a processor accepts it or asks for a re-flight.',
         device: 'desktop',
       },
       {
         id: 'flight-fleet',
         title: 'Job board',
         caption:
-          'Ops lead view of the week: ready, on hold, in the field, in review. Built from the finding that a “filled form” was not the same as “ready”.',
+          'Ops lead view of the week: client, airframe, PIC, window and coverage. Built from the finding that a “filled form” was not the same as “ready”.',
         device: 'desktop',
       },
       {

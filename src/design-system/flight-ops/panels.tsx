@@ -27,7 +27,8 @@ import {
   UnitValue,
   WeatherRow,
 } from './components'
-import { mapGridStyle } from './brand'
+import { surveyMapStyle } from './brand'
+import { CaptureTile, SurveyPlot } from './survey-map'
 import { idPattern, opsColorCss, opsDensity, opsLayout, opsMotion, opsSpace, opsStroke, opsType, opsZ, units, vocabulary } from './tokens'
 
 export const dsNav = [
@@ -85,7 +86,7 @@ export const dsNav = [
       { id: 'field-desktop', label: 'Field vs desktop' },
       { id: 'hold', label: 'Hold processing' },
       { id: 'recalculate', label: 'Recalculate' },
-      { id: 'fleet', label: 'Job board' },
+      { id: 'fleet', label: 'Fleet board' },
       { id: 'briefing', label: 'Briefing' },
       { id: 'review-qa', label: 'Review QA' },
     ],
@@ -300,7 +301,7 @@ function Overview() {
           ['2 surfaces', 'Desktop console + field device'],
           ['20 components', 'States, API and usage'],
           ['7 patterns', 'Ready-to-fly through review'],
-          ['1 developer', 'Building from these specs'],
+          ['2 increments', 'Handed over as this library'],
         ].map(([v, l]) => (
           <div key={l} className="bg-[#1F232C] px-5 py-6">
             <p className="font-display text-2xl">{v}</p>
@@ -337,8 +338,8 @@ function Overview() {
       </Block>
       <Block title="Governance">
         <p className="max-w-2xl text-sm leading-relaxed text-white/65">
-          Names in Figma, Azure DevOps and this site are identical. When a screen needs a new control, it is specified here
-          first, then built — so the developer never has to reverse-engineer a mock-up.
+          Names in Figma, Azure DevOps and this site are identical. A squad that needs a new control writes it here first.
+          Screenshots in Slack are not a source of truth.
         </p>
       </Block>
     </Spec>
@@ -778,7 +779,7 @@ function ChecklistSpec() {
     >
       <Canvas label="Field density">
         <div className="max-w-sm space-y-1.5">
-          <ChecklistRow label="Airspace check" state="ok" density="field" />
+          <ChecklistRow label="Airspace NOTAM" state="ok" density="field" />
           <ChecklistRow label="Batteries 4/4" state="ok" density="field" />
           <ChecklistRow label="Wind < 8 m/s" state="hold" density="field" />
           <ChecklistRow label="Radio check" state="pending" density="field" />
@@ -867,18 +868,11 @@ function MapSpec() {
     <Spec
       kicker="Component · 1.0"
       title="Map chrome"
-      intro="The map is a workspace, not a thumbnail. Grid, polygon, dashed plan, waypoint. Tools sit on the map: zoom in, zoom out, locate. No extra card around the tools."
+      intro="The map is a workspace, not a thumbnail. Survey polygon, lawnmower strips, dashed plan, waypoints, scale and north. Tools sit on the map: zoom in, zoom out, locate. No extra card around the tools."
     >
       <Canvas>
-        <div className="relative h-48 overflow-hidden rounded-xl" style={mapGridStyle}>
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
-              backgroundSize: '22px 22px',
-            }}
-          />
+        <div className="relative h-72 overflow-hidden rounded-xl" style={surveyMapStyle}>
+          <SurveyPlot mode="plan" className="h-full w-full" />
           <div className="absolute top-3 right-3">
             <MapToolbar />
           </div>
@@ -923,12 +917,12 @@ function FlagSpec() {
     <Spec
       kicker="Component · 1.0"
       title="Quality flag"
-      intro="Blur, gap, exposure. Inverse tiles on the review grid. Designed with analysts. A flagged set holds processing until accept or reject."
+      intro="Blur, gap, exposure. Nadir tiles on the review grid with codes on white chips. Designed with analysts. A flagged set holds processing until accept or reject."
     >
       <Canvas>
         <div className="grid max-w-md grid-cols-4 gap-1">
           <QualityFlag kind="blur" />
-          <div className="aspect-[4/3] bg-white/10" />
+          <CaptureTile seed={1} frame="0048" />
           <QualityFlag kind="gap" />
           <QualityFlag kind="exposure" />
         </div>
@@ -1013,7 +1007,7 @@ function ChromeSpec() {
     >
       <Canvas label="Ops nav">
         <div className="flex min-h-[160px] border border-white/10">
-          <OpsNav items={['Jobs', 'Board', 'Datasets', 'Reports']} active="Board" />
+          <OpsNav items={['Missions', 'Fleet', 'Datasets', 'Reports']} active="Fleet" />
           <div className="flex-1 p-4 font-mono text-[10px] text-white/40">Workspace</div>
         </div>
       </Canvas>
@@ -1081,7 +1075,7 @@ function FilterSpec() {
     <Spec
       kicker="Component · 1.0"
       title="Filter & search"
-      intro="Jobs and datasets. Search is a slash field. Filters are chips. Selected is inverse. Never hide Ready jobs behind a dropdown."
+      intro="Fleet and datasets. Search is a slash field. Filters are chips. Selected is inverse. Never hide Ready missions behind a dropdown."
     >
       <Canvas>
         <div className="max-w-md space-y-4">
@@ -1283,7 +1277,7 @@ function HoldPattern() {
             <QualityFlag kind="blur" />
             <QualityFlag kind="gap" />
             <QualityFlag kind="exposure" />
-            <div className="aspect-[4/3] bg-white/10" />
+            <CaptureTile seed={4} frame="0091" />
           </div>
           <OpsButton size="sm" variant="hold">
             Hold processing
@@ -1324,7 +1318,7 @@ function FleetPattern() {
   return (
     <Spec
       kicker="Pattern"
-      title="Job board"
+      title="Fleet board"
       intro="The ops-lead surface. Filter, then rows. Status is the last column because that is what they came to read. Place is a name, not a coordinate."
     >
       <Canvas>
@@ -1393,7 +1387,7 @@ function ReviewPattern() {
             ) : i === 10 ? (
               <QualityFlag key={i} kind="exposure" />
             ) : (
-              <div key={i} className="aspect-[4/3] bg-white/10" />
+              <CaptureTile key={i} seed={i} frame={String(i * 67 + 12).padStart(4, '0')} />
             ),
           )}
         </div>
@@ -1529,7 +1523,7 @@ function Handoff() {
     <Spec
       kicker="Delivery"
       title="Hand-off"
-      intro="This library was the working agreement with the developer. It grew in versions alongside the screens: first the ops console (map, status, parameters), then the field checklist, then dataset review. Azure DevOps tickets referenced these component names rather than screenshots."
+      intro="This library was the contract with engineering. Increment 1: map chrome, status, parameters, coverage. Increment 2: checklist, launch lock, review flags, crew board. Azure DevOps items pointed at these component names, not at screenshots in Slack."
     >
       <ol className="max-w-xl space-y-4 font-mono text-[12px]">
         {[
@@ -1547,8 +1541,8 @@ function Handoff() {
         ))}
       </ol>
       <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/55">
-        The Figma library uses the same names as this documentation. A new pattern is added here before it is built —
-        the same governance idea as a larger design system, scoped to one small internal product.
+        Figma library uses the same names as this documentation. If a squad needs a new pattern, it is added here first —
+        the same governance idea as a design system, scoped to one operational product.
       </p>
     </Spec>
   )
