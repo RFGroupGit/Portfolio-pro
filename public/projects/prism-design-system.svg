@@ -6,8 +6,8 @@
   </defs>
 
   <rect width="1200" height="750" fill="#ECECEA"/>
-  <text x="40" y="40" font-size="13" fill="#7A7A76">Prism DS  /  Foundations  &#8212;  Colour &#183; Type &#183; Spacing</text>
-  <text x="620" y="40" font-size="13" fill="#7A7A76">Prism DS  /  Components  &#8212;  Button &#183; Input &#183; Card</text>
+  <text x="40" y="40" font-size="13" fill="#7A7A76">Direct UI kit  /  Foundations  &#8212;  Colour &#183; Type &#183; Spacing</text>
+  <text x="620" y="40" font-size="13" fill="#7A7A76">Direct UI kit  /  Components  &#8212;  Button &#183; Input &#183; Card</text>
 
   <!-- Foundations frame -->
   <g filter="url(#shadow)">

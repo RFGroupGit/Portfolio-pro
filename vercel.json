@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/projects/prism", "destination": "/projects/direct-suite", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/((?!.*\\.).*)",
