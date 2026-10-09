@@ -11,7 +11,7 @@ export const profile: Profile = {
     'Digital professional combining UX design, web development and project management to create clear, useful and business-oriented digital experiences.',
   location: 'Lausanne / Vaud, Switzerland',
   email: 'robin.fremy12@gmail.com',
-  phone: '+33 6 15 91 06 64',
+  phone: '+41 76 751 53 03',
   linkedin: 'https://www.linkedin.com/in/robin-fremy-343578198/',
   cvPdfUrl: '/Robin-Fremy-CV.pdf',
   siteUrl: 'https://robinfux.vercel.app',
